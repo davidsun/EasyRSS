@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?pageBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:background="#2A2A2A"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/BtnMobilzedPage"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/tab_background_xml"
+            android:enabled="false"
+            android:text="@string/TxtMobilizedPage"
+            android:textColor="#AAA"
+            android:textSize="15dip" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:background="#3E3E3E" />
+
+        <Button
+            android:id="@+id/BtnOriginalPage"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/tab_background_xml"
+            android:enabled="false"
+            android:text="@string/TxtOriginalPage"
+            android:textColor="#AAA"
+            android:textSize="15dip" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:background="#3E3E3E" />
+
+        <Button
+            android:id="@+id/BtnClose"
+            android:layout_width="44dip"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_close_xml" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" >
+
+        <ScrollView
+            android:id="@+id/Mobilized"
+            style="?verticalScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="7dip" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/TxtGenerateEasyRSSMobilizer"
+                    android:textSize="11dip" />
+
+                <TextView
+                    android:id="@+id/ItemTitle"
+                    style="?itemTitleTextColor"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dip"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
+                    android:paddingTop="20dip"
+                    android:textSize="20dip"
+                    android:textStyle="bold" />
+
+                <View
+                    style="?itemBottomLineBackground"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip" />
+
+                <TextView
+                    android:id="@+id/ItemInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="3dip"
+                    android:gravity="left"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
+                    android:singleLine="true"
+                    android:textColor="#999"
+                    android:textSize="12dip" />
+
+                <ProgressBar
+                    android:id="@+id/MobilizedProgress"
+                    android:layout_width="48dip"
+                    android:layout_height="24dip"
+                    android:layout_gravity="center"
+                    android:indeterminateDrawable="@drawable/animated_loading" />
+
+                <WebView
+                    android:id="@+id/MobilizedContent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
+            </LinearLayout>
+        </ScrollView>
+
+        <WebView
+            android:id="@+id/OriginalContent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbarDefaultDelayBeforeFade="1000"
+            android:scrollbarFadeDuration="200"
+            android:scrollbarSize="8dip"
+            android:scrollbarThumbHorizontal="@drawable/scrollbar_normal"
+            android:scrollbarThumbVertical="@drawable/scrollbar_normal" />
+
+        <ProgressBar
+            android:id="@+id/OriginalProgress"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dip"
+            android:layout_marginTop="12dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3px"
+            android:background="@drawable/up_shadow" />
+    </RelativeLayout>
+
+</com.pursuer.reader.easyrss.view.CachedLinearLayout>

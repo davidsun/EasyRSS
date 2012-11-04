@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">Now logging ...</string>
+    <string name="MsgLoginSucceeded">Logged in!</string>
+    <string name="MsgLoginFailed">Login failed, please check your username and password.</string>
+    <string name="MsgSyncOnNetwork">Auto sync when network is available.</string>
+    <string name="MsgSyncOnWifi">Auto sync when WIFI network is available.</string>
+    <string name="MsgSyncDisabled">Auto sync disabled.</string>
+    <string name="MsgStarred">Starred.</string>
+    <string name="MsgUnstarred">Star removed.</string>
+    <string name="MsgNoteShared">Shared with note.</string>
+    <string name="MsgLoadingMoreItems">Started loading more items, please wait for a moment ...</string>
+    <string name="MsgAuthenticationSucceeded">Authentication succeeded, you\'ve logged in successfully!</string>
+    <string name="MsgAuthenticationFailed">Authentication failed.</string>
+    <string name="MsgCannotLaunchMarket">Sorry, Android Market is not available on your device.</string>
+    <string name="MsgFailedToLoadContent">Sorry, the content of this item cannot be loaded.</string>
+    <string name="MsgTickerTextNewItems">Items updated</string>
+    <string name="MsgTitleNewItems1">Items updated, with</string>
+    <string name="MsgTitleNewItems2">unread items.</string>
+    <string name="MsgClickToView">Click to view all of them ...</string>
+    <string name="MsgCopiedToClipboard">Copied to clipboard.</string>
+    <string name="MsgSavingImageTo">Saving image to</string>
+
+</resources>

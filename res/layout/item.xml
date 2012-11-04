@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.CachedRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ViewFlipper
+        android:id="@+id/ItemFlipper"
+        style="?pageBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@+id/Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:background="@drawable/item_menu_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip" >
+
+        <Button
+            android:id="@+id/BtnPrevious"
+            android:layout_width="40dip"
+            android:layout_height="88dip"
+            android:background="@drawable/menu_item_previous_xml" >
+        </Button>
+
+        <Button
+            android:id="@+id/BtnNext"
+            android:layout_width="40dip"
+            android:layout_height="88dip"
+            android:background="@drawable/menu_item_next_xml" >
+        </Button>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="35dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="35dip"
+            android:background="#66FFFFFF" />
+
+        <Button
+            android:id="@+id/BtnAddStar"
+            android:layout_width="40dip"
+            android:layout_height="88dip"
+            android:background="@drawable/menu_item_add_star_xml" >
+        </Button>
+
+        <Button
+            android:id="@+id/BtnSharing"
+            android:layout_width="40dip"
+            android:layout_height="88dip"
+            android:background="@drawable/menu_item_sharing_xml" >
+        </Button>
+
+        <Button
+            android:id="@+id/BtnOpenLink"
+            android:layout_width="40dip"
+            android:layout_height="88dip"
+            android:background="@drawable/menu_item_open_link_xml" >
+        </Button>
+    </LinearLayout>
+
+</com.pursuer.reader.easyrss.view.CachedRelativeLayout>

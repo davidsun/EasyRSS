@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Normal" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="textColor">@style/TextColorNormal</item>
+        <item name="pageBackground">@style/BackgroundNormal</item>
+        <item name="listItemBackground">@style/ListItemBackgroundNormal</item>
+        <item name="listItemUnclickableBackground">@style/ListItemUnclickableBackgroundNormal</item>
+        <item name="listItemArrow">@style/ListItemArrowNormal</item>
+        <item name="itemTitleTextColor">@style/ItemTitleTextColorNormal</item>
+        <item name="itemLastNextBackground">@style/ItemLastNextBackgroundNormal</item>
+        <item name="itemLastNextTextColor">@style/ItemLastNextTextColorNormal</item>
+        <item name="itemLastBorderColor">@style/ItemLastBorderColorNormal</item>
+        <item name="itemNextBorderColor">@style/ItemNextBorderColorNormal</item>
+        <item name="itemBottomLineBackground">@style/ItemBottomLineBackgroundNormal</item>
+        <item name="itemBottomMenuBackground">@style/ItemBottomMenuBackgroundNormal</item>
+        <item name="itemButtonMobilizedViewBackground">@style/ItemButtonMobilizedViewBackgroundNormal</item>
+        <item name="itemButtonOriginalViewBackground">@style/ItemButtonOriginalViewBackgroundNormal</item>
+        <item name="verticalScrollView">@style/VerticalScrollViewNormal</item>
+    </style>
+
+    <style name="Theme.Dark" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="textColor">@style/TextColorDark</item>
+        <item name="pageBackground">@style/BackgroundDark</item>
+        <item name="listItemBackground">@style/ListItemBackgroundDark</item>
+        <item name="listItemUnclickableBackground">@style/ListItemUnclickableBackgroundDark</item>
+        <item name="listItemArrow">@style/ListItemArrowDark</item>
+        <item name="itemTitleTextColor">@style/ItemTitleTextColorDark</item>
+        <item name="itemLastNextBackground">@style/ItemLastNextBackgroundDark</item>
+        <item name="itemLastNextTextColor">@style/ItemLastNextTextColorDark</item>
+        <item name="itemLastBorderColor">@style/ItemLastBorderColorDark</item>
+        <item name="itemNextBorderColor">@style/ItemNextBorderColorDark</item>
+        <item name="itemBottomLineBackground">@style/ItemBottomLineBackgroundDark</item>
+        <item name="itemBottomMenuBackground">@style/ItemBottomMenuBackgroundDark</item>
+        <item name="itemButtonMobilizedViewBackground">@style/ItemButtonMobilizedViewBackgroundDark</item>
+        <item name="itemButtonOriginalViewBackground">@style/ItemButtonOriginalViewBackgroundDark</item>
+        <item name="verticalScrollView">@style/VerticalScrollViewDark</item>
+    </style>
+
+</resources>

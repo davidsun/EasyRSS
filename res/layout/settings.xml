@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:background="#2A2A2A"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="36dip"
+            android:text="@string/TxtSettingsTitle"
+            android:textColor="#FFF"
+            android:textSize="20dip" >
+        </TextView>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:background="#3E3E3E" >
+        </View>
+
+        <Button
+            android:id="@+id/BtnClose"
+            android:layout_width="44dip"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_close_xml" >
+        </Button>
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/BackgroundNormal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ScrollView
+            style="@style/VerticalScrollViewNormal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="0dip"
+                    android:paddingLeft="8dip"
+                    android:paddingRight="8dip"
+                    android:paddingTop="12dip" >
+
+                    <TextView
+                        android:id="@+id/TitleName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="1dip"
+                        android:paddingLeft="6dip"
+                        android:singleLine="true"
+                        android:text="@string/TxtSyncing"
+                        android:textColor="#499FBC"
+                        android:textSize="12dip"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2px"
+                        android:background="#499FBC" >
+                    </View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingItemSync"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingAutoSync"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingAutoSyncIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SettingSyncStatus"
+                        android:layout_width="80dip"
+                        android:layout_height="wrap_content" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingImageFetching"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImageFetching"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImageFetchingIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SettingImageFetchingStatus"
+                        android:layout_width="80dip"
+                        android:layout_height="wrap_content" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingSyncInterval"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingSyncInterval"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingSyncIntervalIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/TxtSyncInterval"
+                        style="@style/TextColorNormal"
+                        android:layout_width="80dip"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textSize="18dip"
+                        android:textStyle="bold" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingImagePrefetching"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImagePrefetching"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImagePrefetchingIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchImageFetching"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingImmediateStateSyncing"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImmediateStateSyncing"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingImmediateStateSyncingIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchImmediateStateSyncing"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingHttpsConnection"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingHttpsConnection"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingHttpsConnectionIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchHttpsConnection"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="0dip"
+                    android:paddingLeft="8dip"
+                    android:paddingRight="8dip"
+                    android:paddingTop="12dip" >
+
+                    <TextView
+                        android:id="@+id/TitleName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="1dip"
+                        android:paddingLeft="6dip"
+                        android:singleLine="true"
+                        android:text="@string/TxtStorage"
+                        android:textColor="#499FBC"
+                        android:textSize="12dip"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2px"
+                        android:background="#499FBC" >
+                    </View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingMaxItems"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingMaxNoOfItems"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingMaxNoOfItemsIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/SettingMaxItemsCount"
+                        style="@style/TextColorNormal"
+                        android:layout_width="80dip"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textSize="18dip"
+                        android:textStyle="bold" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingSpaceCalculation"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/TxtSpace"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtNotCalculated"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="80dip"
+                        android:layout_height="fill_parent" >
+
+                        <Button
+                            android:id="@+id/BtnCalculation"
+                            android:layout_width="40dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_calculation_xml"
+                            android:gravity="center"
+                            android:text="@string/TxtButtonCalculation"
+                            android:textColor="#FFF"
+                            android:textSize="14dip"
+                            android:textStyle="bold" >
+                        </Button>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="0dip"
+                    android:paddingLeft="8dip"
+                    android:paddingRight="8dip"
+                    android:paddingTop="12dip" >
+
+                    <TextView
+                        android:id="@+id/TitleName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="1dip"
+                        android:paddingLeft="6dip"
+                        android:singleLine="true"
+                        android:text="@string/TxtReading"
+                        android:textColor="#499FBC"
+                        android:textSize="12dip"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2px"
+                        android:background="#499FBC" >
+                    </View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingBrowserChoice"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dip"
+                        android:paddingTop="6dip" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingBrowserChoice"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingBrowserChoiceIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SettingSyncStatus"
+                        android:layout_width="80dip"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/setting_browser_choice" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingFontSize"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingFontSize"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingFontSizeIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/TxtFontSize"
+                        style="@style/TextColorNormal"
+                        android:layout_width="80dip"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textSize="18dip"
+                        android:textStyle="bold" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingTheme"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingTheme"
+                            android:textSize="16dip" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingThemeIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/TxtTheme"
+                        style="@style/TextColorNormal"
+                        android:layout_width="80dip"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textSize="16dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingVolumnKeySwitching"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingVolumnKeySwitching"
+                            android:textSize="16dip" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingVolumnKeySwitchingIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchVolumnKeySwitching"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingDecendingItemsOrdering"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingDecendingItemsOrdering"
+                            android:textSize="16dip" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingDecendingItemsOrderingIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchDecendingItemsOrdering"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingNotificationOn"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingNotificationOn"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingNotificationOnIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchNotificationOn"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingMarkAllAsReadConfirmation"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="10dip" >
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/TextColorNormal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingMarkAllAsReadConfirmation"
+                            android:textSize="16dip" >
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/TxtSettingMarkAllAsReadConfirmationIntro"
+                            android:textColor="#999"
+                            android:textSize="12dip" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/SwitchMarkAllAsReadConfirmation"
+                        android:layout_width="52dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="14dip"
+                        android:layout_marginRight="14dip" >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="0dip"
+                    android:paddingLeft="8dip"
+                    android:paddingRight="8dip"
+                    android:paddingTop="12dip" >
+
+                    <TextView
+                        android:id="@+id/TitleName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="1dip"
+                        android:paddingLeft="6dip"
+                        android:singleLine="true"
+                        android:text="@string/TxtAbout"
+                        android:textColor="#499FBC"
+                        android:textSize="12dip"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2px"
+                        android:background="#499FBC" >
+                    </View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingAboutEasyRSS"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <TextView
+                        style="@style/TextColorNormal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/TxtAboutEasyRSS"
+                        android:textSize="16dip" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/TxtSettingVersionNumber"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#999"
+                        android:textSize="12dip" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingAboutAuthor"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <TextView
+                        style="@style/TextColorNormal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/TxtAboutAuthor"
+                        android:textSize="16dip" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="www.pursuer.me"
+                        android:textColor="#999"
+                        android:textSize="12dip" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SettingRate"
+                    style="@style/ListItemBackgroundNormal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dip"
+                    android:paddingLeft="14dip"
+                    android:paddingTop="6dip" >
+
+                    <TextView
+                        style="@style/TextColorNormal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/TxtRate"
+                        android:textSize="16dip" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/TxtRateIntro"
+                        android:textColor="#999"
+                        android:textSize="12dip" >
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3px"
+            android:background="@drawable/up_shadow" >
+        </View>
+    </RelativeLayout>
+
+</com.pursuer.reader.easyrss.view.CachedLinearLayout>

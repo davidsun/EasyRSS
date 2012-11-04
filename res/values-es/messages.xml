@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">Iniciando sesión...</string>
+    <string name="MsgLoginSucceeded">¡Sesión iniciada!</string>
+    <string name="MsgLoginFailed">Fallo al iniciar sesión. Comprueba tu usuario y contraseña.</string>
+    <string name="MsgSyncOnNetwork">Sincronización automática cuando la red esté disponible</string>
+    <string name="MsgSyncOnWifi">Sincronización automática con WIFI</string>
+    <string name="MsgSyncDisabled">Sincronización automática deshabilitada.</string>
+    <string name="MsgStarred">Marcado como destacado.</string>
+    <string name="MsgUnstarred">Eliminado como destacado.</string>
+    <string name="MsgNoteShared">Compartido.</string>
+    <string name="MsgLoadingMoreItems">Cargando más artículos, por favor espere un momento...</string>
+    <string name="MsgAuthenticationSucceeded">¡Autenticado correctamente!</string>
+    <string name="MsgAuthenticationFailed">La autenticación ha fallado.</string>
+    <string name="MsgCannotLaunchMarket">Lo siento, Google Play Store no se encuentra en su dispositivo.</string>
+    <string name="MsgFailedToLoadContent">Lo siento, el contenido de este artículo no se puede cargar.</string>
+    <string name="MsgTickerTextNewItems">Artículos actualizados</string>
+    <string name="MsgTitleNewItems1">Artículos actualizados con</string>
+    <string name="MsgTitleNewItems2">artículos no leídos.</string>
+    <string name="MsgClickToView">Pulsa para ver todos...</string>
+    <string name="MsgCopiedToClipboard">Copiado al portapapeles.</string>
+    <string name="MsgSavingImageTo">Saving image to</string>
+
+</resources>

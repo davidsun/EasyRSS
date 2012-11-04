@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">正在登录 ...</string>
+    <string name="MsgLoginSucceeded">登录成功！</string>
+    <string name="MsgLoginFailed">登录失败，请确认您输入了正确的用户名和密码。</string>
+    <string name="MsgSyncOnNetwork">网络可用时自动同步。</string>
+    <string name="MsgSyncOnWifi">WIFI连接时自动同步。</string>
+    <string name="MsgSyncDisabled">自动同步已禁用。</string>
+    <string name="MsgStarred">已添加星标。</string>
+    <string name="MsgUnstarred">已移除星标。</string>
+    <string name="MsgNoteShared">已分享并添加了笔记。</string>
+    <string name="MsgLoadingMoreItems">已开始载入新的条目，请稍等 ...</string>
+    <string name="MsgAuthenticationSucceeded">认证成功，您已成功登录!</string>
+    <string name="MsgAuthenticationFailed">认证失败。</string>
+    <string name="MsgCannotLaunchMarket">抱歉，Android 市场在您的手机上无法打开。</string>
+    <string name="MsgFailedToLoadContent">抱歉，此条目的内容无法被载入。</string>
+    <string name="MsgTickerTextNewItems">阅读条目已更新</string>
+    <string name="MsgTitleNewItems1">阅读条目已更新，共有</string>
+    <string name="MsgTitleNewItems2">条未读条目。</string>
+    <string name="MsgClickToView">点击查看 ...</string>
+    <string name="MsgCopiedToClipboard">已复制到剪贴板。</string>
+    <string name="MsgSavingImageTo">正在将图片保存到</string>
+
+</resources>

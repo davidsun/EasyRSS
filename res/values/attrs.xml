@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="pageBackground" format="reference" />
+    <attr name="textColor" format="reference" />
+    <attr name="listItemBackground" format="reference" />
+    <attr name="listItemUnclickableBackground" format="reference" />
+    <attr name="listItemArrow" format="reference" />
+    <attr name="itemTitleTextColor" format="reference" />
+    <attr name="itemLastNextBackground" format="reference" />
+    <attr name="itemLastNextTextColor" format="reference" />
+    <attr name="itemLastBorderColor" format="reference" />
+    <attr name="itemNextBorderColor" format="reference" />
+    <attr name="itemBottomLineBackground" format="reference" />
+    <attr name="itemBottomMenuBackground" format="reference" />
+    <attr name="itemButtonMobilizedViewBackground" format="reference" />
+    <attr name="itemButtonOriginalViewBackground" format="reference" />
+    <attr name="verticalScrollView" format="reference" />
+
+</resources>

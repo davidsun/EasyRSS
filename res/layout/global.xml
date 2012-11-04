@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.HorizontalSwipeView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GlobalView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#333" >
+
+    <ViewFlipper
+        android:id="@+id/GlobalFlipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</com.pursuer.reader.easyrss.view.HorizontalSwipeView>

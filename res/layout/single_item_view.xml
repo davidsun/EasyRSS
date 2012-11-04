@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.OverScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ItemScrollView"
+    style="?verticalScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:fadingEdgeLength="4dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/LastItemView"
+            style="?itemLastNextBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:paddingTop="50dip" >
+
+            <ImageView
+                android:id="@+id/LastItemArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:src="@drawable/down_arrow" />
+
+            <TextView
+                android:id="@+id/LastItemTitle"
+                style="?itemLastNextTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:gravity="center_vertical"
+                android:minHeight="48dip"
+                android:textSize="15dip" >
+            </TextView>
+        </LinearLayout>
+
+        <View
+            style="?itemLastBorderColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1px" >
+        </View>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip" >
+
+            <TextView
+                android:id="@+id/ItemTitle"
+                style="?itemTitleTextColor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="35dip"
+                android:textSize="20dip"
+                android:textStyle="bold" >
+            </TextView>
+
+            <View
+                style="?itemBottomLineBackground"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip" >
+            </View>
+
+            <TextView
+                android:id="@+id/ItemInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="3dip"
+                android:gravity="left"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:singleLine="true"
+                android:textColor="#999"
+                android:textSize="12dip" >
+            </TextView>
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" >
+            </WebView>
+
+            <LinearLayout
+                android:id="@+id/ShowExtra"
+                style="?itemBottomMenuBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dip"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/BtnShowMobilized"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dip"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:paddingTop="8dip" >
+
+                    <View
+                        style="?itemButtonMobilizedViewBackground"
+                        android:layout_width="20dip"
+                        android:layout_height="fill_parent" />
+
+                    <TextView
+                        android:id="@+id/BtnText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:text="@string/TxtMobilizedPage"
+                        android:textColor="#AA787878"
+                        android:textSize="14dip" >
+                    </TextView>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:background="#CCC" >
+                </View>
+
+                <LinearLayout
+                    android:id="@+id/BtnShowOriginal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dip"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:paddingTop="8dip" >
+
+                    <View
+                        style="?itemButtonOriginalViewBackground"
+                        android:layout_width="20dip"
+                        android:layout_height="fill_parent" />
+
+                    <TextView
+                        android:id="@+id/BtnText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:text="@string/TxtOriginalPage"
+                        android:textColor="#BB787878"
+                        android:textSize="14dip" >
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="100dip" >
+            </View>
+        </LinearLayout>
+
+        <View
+            style="?itemNextBorderColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1px" >
+        </View>
+
+        <LinearLayout
+            android:id="@+id/NextItemView"
+            style="?itemLastNextBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="50dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:paddingTop="20dip" >
+
+            <ImageView
+                android:id="@+id/NextItemArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:src="@drawable/up_arrow" />
+
+            <TextView
+                android:id="@+id/NextItemTitle"
+                style="?itemLastNextTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:gravity="center_vertical"
+                android:minHeight="48dip"
+                android:textSize="15dip" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.pursuer.reader.easyrss.view.OverScrollView>

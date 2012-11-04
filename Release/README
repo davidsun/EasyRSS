@@ -1,0 +1,15 @@
+== Open source projects related ==
+
+LibAndroidHttp
+- cURL support for Android
+- https://github.com/davidsun/LibAndroidHttp
+
+HtmlCleaner
+- Open-source HTML parser
+- https://github.com/davidsun/HtmlCleaner
+
+HorizontalPager
+- An Android horizontally scrolling view that snaps to child pages neatly and supports nested vertically scrolling child views.
+- https://github.com/davidsun/horizontalpager
+
+EasyRSS Homepage: http://easyrss.pursuer.me

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/HomeView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:background="#2A2A2A"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/BtnHomeMore"
+            android:layout_width="44dip"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_menu_xml" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#3E3E3E" >
+        </View>
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="EasyRSS"
+            android:textColor="#FFF"
+            android:textSize="20dip" >
+        </TextView>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#3E3E3E" >
+        </View>
+
+        <Button
+            android:id="@+id/BtnHomeSyncMethod"
+            android:layout_width="44dip"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_wifi_xml" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/HomeNavWrap"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#404040"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="@drawable/up_shadow" >
+        </View>
+
+        <LinearLayout
+            android:id="@+id/HomeNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="1dip"
+            android:paddingTop="3dip" >
+
+            <Button
+                android:id="@+id/BtnHomeStarred"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/TxtStarred"
+                android:textColor="#AAA"
+                android:textSize="13dip" >
+            </Button>
+
+            <Button
+                android:id="@+id/BtnHomeAll"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/TxtAll"
+                android:textColor="#AAA"
+                android:textSize="13dip" >
+            </Button>
+
+            <Button
+                android:id="@+id/BtnHomeUnread"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/TxtUnread"
+                android:textColor="#AAA"
+                android:textSize="13dip" >
+            </Button>
+        </LinearLayout>
+
+        <View
+            android:layout_width="70dip"
+            android:layout_height="5px"
+            android:layout_gravity="center"
+            android:background="#499FBC" >
+        </View>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3px"
+            android:layout_gravity="center"
+            android:background="#499FBC" >
+        </View>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <com.pursuer.reader.easyrss.view.HorizontalPager
+            android:id="@+id/HomeListPager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <include
+                android:id="@+id/HomeListStarred"
+                layout="@layout/standard_list" >
+            </include>
+
+            <include
+                android:id="@+id/HomeListAll"
+                layout="@layout/standard_list" >
+            </include>
+
+            <include
+                android:id="@+id/HomeListUnread"
+                layout="@layout/standard_list" >
+            </include>
+        </com.pursuer.reader.easyrss.view.HorizontalPager>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3px"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/down_shadow" >
+        </View>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:background="#1B1B1B"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:id="@+id/ProgressBarProcess"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="180dip"
+                android:layout_height="6dip"
+                android:layout_gravity="center"
+                android:max="100"
+                android:progressDrawable="@drawable/progressbar"
+                android:value="50"
+                android:visibility="gone" >
+            </ProgressBar>
+
+            <TextView
+                android:id="@+id/TxtProgress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:layout_marginTop="2dip"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#CCC"
+                android:textSize="11dip" >
+            </TextView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#3E3E3E" />
+
+        <ProgressBar
+            android:id="@+id/ProgressBarHomeLoading"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/BtnHomeRefresh"
+            android:layout_width="40dip"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_refresh_xml" >
+        </Button>
+    </LinearLayout>
+
+</com.pursuer.reader.easyrss.view.CachedLinearLayout>

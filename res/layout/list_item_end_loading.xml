@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListItemEndLoading"
+    style="?listItemUnclickableBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="10dip"
+    android:paddingTop="10dip" >
+
+    <LinearLayout
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#45A8C0"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip" >
+
+        <ProgressBar
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_gravity="center_vertical" >
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/TxtLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:paddingRight="20dip"
+            android:text="@string/TxtLoading"
+            android:textColor="#FFF" />
+    </LinearLayout>
+
+</FrameLayout>

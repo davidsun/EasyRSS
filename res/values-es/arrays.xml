@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="SettingItemSync">
+        <item>Sincronización automática con WIFI</item>
+        <item>Sincronización automática cuando la red esté disponible</item>
+        <item>Desactivar la sincronización automática</item>
+    </string-array>
+    <string-array name="SettingImageFetching">
+        <item>Descargar imágenes con WIFI</item>
+        <item>Descargar imágenes cuando la red esté disponible</item>
+        <item>No descargar imágenes</item>
+    </string-array>
+    <string-array name="SettingMaxItems">
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>4000</item>
+    </string-array>
+    <string-array name="SettingTheme">
+        <item>Tema por defecto</item>
+        <item>Tema oscuro</item>
+    </string-array>
+    <string-array name="SettingFontSize">
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+    </string-array>
+    <string-array name="SettingSyncInterval">
+        <item>1 hora</item>
+        <item>2 horas</item>
+        <item>3 horas</item>
+        <item>4 horas</item>
+        <item>6 horas</item>
+    </string-array>
+
+</resources>

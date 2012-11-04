@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">ログイン中 ...</string>
+    <string name="MsgLoginSucceeded">ログイン完了！</string>
+    <string name="MsgLoginFailed">ログイン失敗、アカウントとパスワードをチェックしてください。</string>
+    <string name="MsgSyncOnNetwork">ネットワーク有りの時のみ自動同期。</string>
+    <string name="MsgSyncOnWifi">WLAN有りの時のみ自動同期。</string>
+    <string name="MsgSyncDisabled">自動同期オフ。</string>
+    <string name="MsgStarred">スターを付きました。</string>
+    <string name="MsgUnstarred">スターを解除しました。</string>
+    <string name="MsgNoteShared">共有してノートをしました。</string>
+    <string name="MsgLoadingMoreItems">ロード中、少々お待ちください ...</string>
+    <string name="MsgAuthenticationSucceeded">認証完了、ログイン成功！</string>
+    <string name="MsgAuthenticationFailed">認証失敗。</string>
+    <string name="MsgCannotLaunchMarket">すみませんが、この携帯ではマーケットは利用できない。</string>
+    <string name="MsgFailedToLoadContent">申し訳ありませんが、このアイテムは読み込みできません。</string>
+    <string name="MsgTickerTextNewItems">アイテムの更新完了</string>
+    <string name="MsgTitleNewItems1">未読</string>
+    <string name="MsgTitleNewItems2">件アイテムの更新完了。</string>
+    <string name="MsgClickToView">クリックしてアイテムを表示 ...</string>
+    <string name="MsgCopiedToClipboard">Copied to clipboard.</string>
+    <string name="MsgSavingImageTo">Saving image to</string>
+
+</resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pursuer.reader.easyrss.view.CachedFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#EFEFEF" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dip"
+        android:background="#EFEFEF"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.0"
+            android:scaleType="fitCenter"
+            android:src="@+drawable/login_pic" />
+
+        <EditText
+            android:id="@+id/TxtUsername"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="30dip"
+            android:hint="@string/TxtGoogleReaderAccount"
+            android:inputType="textEmailAddress" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/TxtPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="5dip"
+            android:hint="@string/TxtPassword"
+            android:inputType="textPassword"
+            android:orientation="horizontal" >
+        </EditText>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="5dip"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/BtnShowAccounts"
+                android:layout_width="45dip"
+                android:layout_height="fill_parent"
+                android:src="@drawable/icon_add_account_xml" />
+
+            <Button
+                android:id="@+id/BtnLogin"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="3dip"
+                android:layout_weight="1"
+                android:text="@string/TxtLogin"
+                android:textSize="18dip"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="36dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="16dip"
+                android:layout_height="24dip"
+                android:layout_marginLeft="5dip"
+                android:src="@drawable/notify_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="40dip"
+                android:layout_marginTop="9dip"
+                android:text="@string/TxtLoginThroughAuthenticated"
+                android:textColor="#333"
+                android:textSize="11dip" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.pursuer.reader.easyrss.view.CachedFrameLayout>

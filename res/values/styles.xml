@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Animations" />
+
+    <style name="Animations.PopupMenu">
+        <item name="@android:windowEnterAnimation">@anim/popup_menu_showup</item>
+        <item name="@android:windowExitAnimation">@anim/popup_menu_hide</item>
+    </style>
+
+    <style name="BackgroundNormal">
+        <item name="android:background">@color/NormalBackground</item>
+    </style>
+
+    <style name="BackgroundDark">
+        <item name="android:background">@color/DarkBackground</item>
+    </style>
+
+    <style name="ListItemArrowDark">
+        <item name="android:src">@drawable/item_right_arrow_dark</item>
+    </style>
+
+    <style name="ListItemArrowNormal">
+        <item name="android:src">@drawable/item_right_arrow</item>
+    </style>
+
+    <style name="ItemTitleTextColorDark">
+        <item name="android:textColor">#DDD</item>
+    </style>
+
+    <style name="ItemTitleTextColorNormal">
+        <item name="android:textColor">#222</item>
+    </style>
+
+    <style name="ItemLastNextBackgroundDark">
+        <item name="android:background">#222</item>
+    </style>
+
+    <style name="ItemLastNextBackgroundNormal">
+        <item name="android:background">#DDD</item>
+    </style>
+
+    <style name="ItemLastNextTextColorDark">
+        <item name="android:textColor">#CCC</item>
+    </style>
+
+    <style name="ItemLastNextTextColorNormal">
+        <item name="android:textColor">#333</item>
+    </style>
+
+    <style name="ListItemUnclickableBackgroundDark">
+        <item name="android:background">@color/DarkBackground</item>
+    </style>
+
+    <style name="ListItemUnclickableBackgroundNormal">
+        <item name="android:background">@color/NormalBackground</item>
+    </style>
+
+    <style name="ListItemBackgroundDark">
+        <item name="android:background">@drawable/item_background_dark</item>
+    </style>
+
+    <style name="ListItemBackgroundNormal">
+        <item name="android:background">@drawable/item_background_normal</item>
+    </style>
+
+    <style name="TextColorNormal">
+        <item name="android:textColor">#111</item>
+    </style>
+
+    <style name="TextColorDark">
+        <item name="android:textColor">#EEE</item>
+    </style>
+
+    <style name="ItemLastBorderColorDark">
+        <item name="android:background">#333</item>
+    </style>
+
+    <style name="ItemLastBorderColorNormal">
+        <item name="android:background">#F7F7F7</item>
+    </style>
+
+    <style name="ItemNextBorderColorDark">
+        <item name="android:background">#080808</item>
+    </style>
+
+    <style name="ItemNextBorderColorNormal">
+        <item name="android:background">#BBB</item>
+    </style>
+
+    <style name="ItemBottomLineBackgroundDark">
+        <item name="android:background">#333</item>
+    </style>
+
+    <style name="ItemBottomLineBackgroundNormal">
+        <item name="android:background">#CCC</item>
+    </style>
+
+    <style name="ItemBottomMenuBackgroundDark">
+        <item name="android:background">@drawable/single_item_view_buttons_background_dark</item>
+    </style>
+
+    <style name="ItemBottomMenuBackgroundNormal">
+        <item name="android:background">@drawable/single_item_view_buttons_background_normal</item>
+    </style>
+
+    <style name="ItemButtonMobilizedViewBackgroundDark">
+        <item name="android:background">@drawable/button_mobilized_page_dark</item>
+    </style>
+
+    <style name="ItemButtonMobilizedViewBackgroundNormal">
+        <item name="android:background">@drawable/button_mobilized_page</item>
+    </style>
+
+    <style name="ItemButtonOriginalViewBackgroundDark">
+        <item name="android:background">@drawable/button_original_page_dark</item>
+    </style>
+
+    <style name="ItemButtonOriginalViewBackgroundNormal">
+        <item name="android:background">@drawable/button_original_page</item>
+    </style>
+
+    <style name="VerticalScrollViewNormal" parent="@style/BackgroundNormal">
+        <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
+        <item name="android:scrollbarFadeDuration">200</item>
+        <item name="android:scrollbarSize">8dip</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_normal</item>
+    </style>
+
+    <style name="VerticalScrollViewDark" parent="@style/BackgroundDark">
+        <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
+        <item name="android:scrollbarFadeDuration">200</item>
+        <item name="android:scrollbarSize">8dip</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_dark</item>
+    </style>
+
+</resources>

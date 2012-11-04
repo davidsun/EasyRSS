@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="SettingItemSync">
+        <item>在WIFI可用时自动同步</item>
+        <item>在网络可用时自动同步</item>
+        <item>关闭自动同步</item>
+    </string-array>
+    <string-array name="SettingImageFetching">
+        <item>在WIFI可用时下载图片</item>
+        <item>在网络可用时下载图片</item>
+        <item>关闭图片下载</item>
+    </string-array>
+    <string-array name="SettingTheme">
+        <item>默认主题</item>
+        <item>夜间模式</item>
+    </string-array>
+    <string-array name="SettingSyncInterval">
+        <item>1小时</item>
+        <item>2小时</item>
+        <item>3小时</item>
+        <item>4小时</item>
+        <item>6小时</item>
+    </string-array>
+
+</resources>
