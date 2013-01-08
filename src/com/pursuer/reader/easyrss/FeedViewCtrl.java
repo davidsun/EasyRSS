@@ -36,7 +36,6 @@ import com.pursuer.reader.easyrss.network.NetworkMgr;
 import com.pursuer.reader.easyrss.network.NetworkUtils;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -44,6 +43,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -80,7 +80,10 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
                 if (item instanceof ListItemItem) {
                     lastX = event.getX();
                     lastY = event.getY();
-                    final Message msg = handler.obtainMessage(MSG_ITEM_LONG_CLICK, item.getId());
+                    final Message msg = handler.obtainMessage(MSG_ITEM_LONG_CLICK, FeedViewCtrl.this);
+                    final Bundle bundle = new Bundle();
+                    bundle.putString(INTENT_KEY_ID, item.getId());
+                    msg.setData(bundle);
                     handler.sendMessageDelayed(msg, 600);
                 }
                 break;
@@ -114,9 +117,97 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
         }
     }
 
+    final static private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            if (msg.what == MSG_ITEM_LONG_CLICK && msg.obj instanceof FeedViewCtrl) {
+                final FeedViewCtrl viewCtrl = (FeedViewCtrl) msg.obj;
+                final Integer pos = viewCtrl.lstWrapper.getAdapter().getItemLocationById(
+                        msg.getData().getString(INTENT_KEY_ID));
+                if (pos == null) {
+                    return;
+                }
+                final AbsListItem absItem = viewCtrl.lstWrapper.getAdapter().getItem(pos);
+                if (!(absItem instanceof ListItemItem)) {
+                    return;
+                }
+                final ListItemItem item = (ListItemItem) absItem;
+                final AlertDialog.Builder builder = new AlertDialog.Builder(viewCtrl.context);
+                final String[] popup = new String[4];
+                popup[0] = viewCtrl.context
+                        .getString(item.isRead() ? R.string.TxtMarkAsUnread : R.string.TxtMarkAsRead);
+                popup[1] = viewCtrl.context.getString(R.string.TxtMarkPreviousAsRead);
+                popup[2] = viewCtrl.context.getString(item.isStarred() ? R.string.TxtRemoveStar : R.string.TxtAddStar);
+                popup[3] = viewCtrl.context.getString(R.string.TxtSendTo);
+                builder.setItems(popup, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        switch (id) {
+                        case 0:
+                            if (item.isRead()) {
+                                viewCtrl.dataMgr.markItemAsUnreadWithTransactionByUid(item.getId());
+                            } else {
+                                viewCtrl.dataMgr.markItemAsReadWithTransactionByUid(item.getId());
+                            }
+                            NetworkMgr.getInstance().startImmediateItemStateSyncing();
+                            break;
+                        case 1:
+                            final ProgressDialog pDialog = ProgressDialog.show(viewCtrl.context,
+                                    viewCtrl.context.getString(R.string.TxtWorking),
+                                    viewCtrl.context.getString(R.string.TxtMarkingPreviousItemsAsRead));
+                            final Thread thread = new Thread() {
+                                @Override
+                                public void run() {
+                                    for (int i = 0; i <= pos; i++) {
+                                        final AbsListItem item = viewCtrl.lstWrapper.getAdapter().getItem(i);
+                                        if (item instanceof ListItemItem) {
+                                            final ListItemItem pItem = (ListItemItem) viewCtrl.lstWrapper.getAdapter()
+                                                    .getItem(i);
+                                            if (!pItem.isRead()) {
+                                                viewCtrl.dataMgr.markItemAsReadWithTransactionByUid(pItem.getId());
+                                            }
+                                        }
+                                    }
+                                    NetworkMgr.getInstance().startImmediateItemStateSyncing();
+                                    handler.sendMessage(handler.obtainMessage(MSG_DISMISS_DIALOG, pDialog));
+                                }
+                            };
+                            thread.setPriority(Thread.MIN_PRIORITY);
+                            thread.start();
+                            break;
+                        case 2:
+                            viewCtrl.dataMgr.markItemAsStarredWithTransactionByUid(item.getId(), !item.isStarred());
+                            Toast.makeText(viewCtrl.context,
+                                    item.isStarred() ? R.string.MsgUnstarred : R.string.MsgStarred, Toast.LENGTH_LONG)
+                                    .show();
+                            NetworkMgr.getInstance().startImmediateItemStateSyncing();
+                            break;
+                        case 3:
+                            DataUtils.sendTo(viewCtrl.context, viewCtrl.dataMgr.getItemByUid(item.getId()));
+                            break;
+                        default:
+                        }
+                    }
+                });
+                builder.show();
+            } else if (msg.what == MSG_DISMISS_DIALOG && msg.obj instanceof ProgressDialog) {
+                ((ProgressDialog) msg.obj).dismiss();
+            } else if (msg.what == MSG_QUIT && msg.obj instanceof FeedViewCtrl) {
+                final FeedViewCtrl viewCtrl = (FeedViewCtrl) msg.obj;
+                if (viewCtrl.listener != null) {
+                    viewCtrl.listener.onBackNeeded();
+                }
+            }
+        }
+    };
+
+    final private static String INTENT_KEY_ID = "id";
     final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, ItemState._ISREAD,
             ItemState._ISSTARRED, Item._TIMESTAMP, Item._SOURCETITLE };
+    
+    final private static int MSG_DISMISS_DIALOG = 1;
     final private static int MSG_ITEM_LONG_CLICK = 0;
+    final private static int MSG_QUIT = 2;
 
     private static String appendCondition(final String condition, final String newCondition) {
         return (condition.length() == 0) ? newCondition : (condition + " AND " + newCondition);
@@ -128,17 +219,16 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
         }
         builder.append(newCondition);
     }
-
+    
+    private boolean isAvailable;
     final private boolean isDecendingOrdering;
+    private boolean isEnd;
+    private String lastDateString;
+    private long lastTimestamp;
     final private ItemListWrapper lstWrapper;
-    final private Handler handler;
     private ItemDataSyncer syncer;
     private final String uid;
     private final int viewType;
-    private boolean isAvailable;
-    private boolean isEnd;
-    private long lastTimestamp;
-    private String lastDateString;
 
     public FeedViewCtrl(final DataMgr dataMgr, final Context context, final String uid, final int viewType) {
         super(dataMgr, R.layout.feed, context);
@@ -156,84 +246,6 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
 
         lstWrapper.setListener(this);
         lstWrapper.setAdapterListener(new FeedListAdapterListener());
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                if (msg.what == MSG_ITEM_LONG_CLICK) {
-                    final Integer pos = lstWrapper.getAdapter().getItemLocationById((String) msg.obj);
-                    if (pos == null) {
-                        return;
-                    }
-                    final AbsListItem absItem = lstWrapper.getAdapter().getItem(pos);
-                    if (!(absItem instanceof ListItemItem)) {
-                        return;
-                    }
-                    final ListItemItem item = (ListItemItem) absItem;
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    final String[] popup = new String[4];
-                    popup[0] = context.getString(item.isRead() ? R.string.TxtMarkAsUnread : R.string.TxtMarkAsRead);
-                    popup[1] = context.getString(R.string.TxtMarkPreviousAsRead);
-                    popup[2] = context.getString(item.isStarred() ? R.string.TxtRemoveStar : R.string.TxtAddStar);
-                    popup[3] = context.getString(R.string.TxtSendTo);
-                    builder.setItems(popup, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(final DialogInterface dialog, final int id) {
-                            switch (id) {
-                            case 0:
-                                if (item.isRead()) {
-                                    dataMgr.markItemAsUnreadWithTransactionByUid(item.getId());
-                                } else {
-                                    dataMgr.markItemAsReadWithTransactionByUid(item.getId());
-                                }
-                                NetworkMgr.getInstance().startImmediateItemStateSyncing();
-                                break;
-                            case 1:
-                                final ProgressDialog pDialog = ProgressDialog.show(context,
-                                        context.getString(R.string.TxtWorking),
-                                        context.getString(R.string.TxtMarkingPreviousItemsAsRead));
-                                final Handler handler = new Handler() {
-                                    @Override
-                                    public void handleMessage(final Message msg) {
-                                        pDialog.dismiss();
-                                    }
-                                };
-                                final Thread thread = new Thread() {
-                                    @Override
-                                    public void run() {
-                                        for (int i = 0; i <= pos; i++) {
-                                            final AbsListItem item = lstWrapper.getAdapter().getItem(i);
-                                            if (item instanceof ListItemItem) {
-                                                final ListItemItem pItem = (ListItemItem) lstWrapper.getAdapter()
-                                                        .getItem(i);
-                                                if (!pItem.isRead()) {
-                                                    dataMgr.markItemAsReadWithTransactionByUid(pItem.getId());
-                                                }
-                                            }
-                                        }
-                                        NetworkMgr.getInstance().startImmediateItemStateSyncing();
-                                        handler.sendEmptyMessage(0);
-                                    }
-                                };
-                                thread.setPriority(Thread.MIN_PRIORITY);
-                                thread.start();
-                                break;
-                            case 2:
-                                dataMgr.markItemAsStarredWithTransactionByUid(item.getId(), !item.isStarred());
-                                Toast.makeText(context, item.isStarred() ? R.string.MsgUnstarred : R.string.MsgStarred,
-                                        Toast.LENGTH_LONG).show();
-                                NetworkMgr.getInstance().startImmediateItemStateSyncing();
-                                break;
-                            case 3:
-                                DataUtils.sendTo(context, dataMgr.getItemByUid(item.getId()));
-                                break;
-                            default:
-                            }
-                        }
-                    });
-                    builder.show();
-                }
-            }
-        };
     }
 
     private String getCondition(final long timestamp) {
@@ -300,15 +312,6 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
         dataMgr.removeOnItemUpdatedListener(lstWrapper);
         final ProgressDialog pDialog = ProgressDialog.show(context, context.getString(R.string.TxtWorking),
                 context.getString(R.string.TxtMarkingAllItemsAsRead));
-        final Handler handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                pDialog.dismiss();
-                if (listener != null) {
-                    listener.onBackNeeded();
-                }
-            }
-        };
         final Thread thread = new Thread() {
             @Override
             public void run() {
@@ -326,7 +329,8 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
                 cur.close();
                 dataMgr.markItemsAsReadWithTransaction(items);
                 NetworkMgr.getInstance().startImmediateItemStateSyncing();
-                handler.sendEmptyMessage(0);
+                handler.sendMessage(handler.obtainMessage(MSG_DISMISS_DIALOG, pDialog));
+                handler.sendMessage(handler.obtainMessage(MSG_QUIT, FeedViewCtrl.this));
             }
         };
         thread.setPriority(Thread.MIN_PRIORITY);

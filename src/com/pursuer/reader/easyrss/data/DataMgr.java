@@ -31,12 +31,42 @@ import android.os.Handler;
 import android.os.Message;
 
 final public class DataMgr {
-    final static private int MSG_ITEM_UPDATED = 0;
-    final static private int MSG_SETTING_UPDATED = 1;
-    final static private int MSG_SUBSCRIPTION_UPDATED = 2;
-    final static private int MSG_TAG_UPDATED = 3;
-
-    private static DataMgr instance = null;
+    final private static Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            if (instance != null) {
+                switch (msg.what) {
+                case MSG_ITEM_UPDATED:
+                    for (final OnItemUpdatedListener listener : instance.itemListeners) {
+                        listener.onItemUpdated((Item) msg.obj);
+                    }
+                    break;
+                case MSG_SETTING_UPDATED:
+                    for (final OnSettingUpdatedListener listener : instance.settingListeners) {
+                        listener.onSettingUpdated((String) msg.obj);
+                    }
+                    break;
+                case MSG_SUBSCRIPTION_UPDATED:
+                    for (final OnSubscriptionUpdatedListener listener : instance.subscriptionListeners) {
+                        listener.onSubscriptionUpdated((Subscription) msg.obj);
+                    }
+                    break;
+                case MSG_TAG_UPDATED:
+                    for (final OnTagUpdatedListener listener : instance.tagListeners) {
+                        listener.onTagUpdated((Tag) msg.obj);
+                    }
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    };
+    static private DataMgr instance = null;
+    static private final int MSG_ITEM_UPDATED = 0;
+    static private final int MSG_SETTING_UPDATED = 1;
+    static private final int MSG_SUBSCRIPTION_UPDATED = 2;
+    static private final int MSG_TAG_UPDATED = 3;
 
     public static DataMgr getInstance() {
         return instance;
@@ -49,12 +79,11 @@ final public class DataMgr {
     }
 
     final private Context context;
-    final private List<OnItemUpdatedListener> itemListeners;
-    final private List<OnSubscriptionUpdatedListener> subscriptionListeners;
-    final private List<OnSettingUpdatedListener> settingListeners;
-    final private List<OnTagUpdatedListener> tagListeners;
     final private DBOpenHelper dbOpenHelper;
-    final private Handler handler;
+    final private List<OnItemUpdatedListener> itemListeners;
+    final private List<OnSettingUpdatedListener> settingListeners;
+    final private List<OnSubscriptionUpdatedListener> subscriptionListeners;
+    final private List<OnTagUpdatedListener> tagListeners;
 
     private DataMgr(final Context context) {
         this.context = context;
@@ -62,35 +91,6 @@ final public class DataMgr {
         this.subscriptionListeners = new LinkedList<OnSubscriptionUpdatedListener>();
         this.settingListeners = new LinkedList<OnSettingUpdatedListener>();
         this.tagListeners = new LinkedList<OnTagUpdatedListener>();
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                switch (msg.what) {
-                case MSG_ITEM_UPDATED:
-                    for (final OnItemUpdatedListener listener : itemListeners) {
-                        listener.onItemUpdated((Item) msg.obj);
-                    }
-                    break;
-                case MSG_SETTING_UPDATED:
-                    for (final OnSettingUpdatedListener listener : settingListeners) {
-                        listener.onSettingUpdated((String) msg.obj);
-                    }
-                    break;
-                case MSG_SUBSCRIPTION_UPDATED:
-                    for (final OnSubscriptionUpdatedListener listener : subscriptionListeners) {
-                        listener.onSubscriptionUpdated((Subscription) msg.obj);
-                    }
-                    break;
-                case MSG_TAG_UPDATED:
-                    for (final OnTagUpdatedListener listener : tagListeners) {
-                        listener.onTagUpdated((Tag) msg.obj);
-                    }
-                    break;
-                default:
-                    break;
-                }
-            }
-        };
 
         DBOpenHelper.init(context);
         dbOpenHelper = DBOpenHelper.getInstance();
@@ -467,40 +467,6 @@ final public class DataMgr {
         notifyItemUpdated(item);
     }
 
-    /*
-     * This method will not send any signals like "ItemUpdated".
-     */
-    public void markItemsAsReadWithTransaction(final List<Item> items) {
-        final HashSet<String> tagsApp = new HashSet<String>();
-        final HashSet<String> subscriptionsApp = new HashSet<String>();
-        final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        database.beginTransaction();
-        try {
-            for (final Item item : items) {
-                database.execSQL(SQLConstants.MARK_ITEM_AS_READ, new String[] { item.getUid() });
-                addTransaction(database, new Transaction(item.getFullUid(), null, Transaction.TYPE_SET_READ));
-                subscriptionsApp.add(item.getSourceUri());
-                final Cursor cur = database.rawQuery(SQLConstants.SELECT_ITEM_TAGS_UID, new String[] { item.getUid() });
-                for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
-                    tagsApp.add(cur.getString(0));
-                }
-                cur.close();
-            }
-            database.setTransactionSuccessful();
-        } catch (final Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            database.endTransaction();
-        }
-        for (final String uid : tagsApp) {
-            notifyTagUpdated(getTagByUid(uid));
-        }
-        for (final String uid : subscriptionsApp) {
-            notifySubscriptionUpdated(getSubscriptionByUid(uid));
-        }
-        notifySettingUpdated(Setting.SETTING_GLOBAL_ITEM_UNREAD_COUNT);
-    }
-
     public void markItemAsStarredWithTransactionByUid(final String uid, final boolean isStarred) {
         final ContentResolver resolver = context.getContentResolver();
         final ContentValues values = new ContentValues();
@@ -625,6 +591,40 @@ final public class DataMgr {
         } finally {
             database.endTransaction();
         }
+    }
+
+    /*
+     * This method will not send any signals like "ItemUpdated".
+     */
+    public void markItemsAsReadWithTransaction(final List<Item> items) {
+        final HashSet<String> tagsApp = new HashSet<String>();
+        final HashSet<String> subscriptionsApp = new HashSet<String>();
+        final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
+        database.beginTransaction();
+        try {
+            for (final Item item : items) {
+                database.execSQL(SQLConstants.MARK_ITEM_AS_READ, new String[] { item.getUid() });
+                addTransaction(database, new Transaction(item.getFullUid(), null, Transaction.TYPE_SET_READ));
+                subscriptionsApp.add(item.getSourceUri());
+                final Cursor cur = database.rawQuery(SQLConstants.SELECT_ITEM_TAGS_UID, new String[] { item.getUid() });
+                for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
+                    tagsApp.add(cur.getString(0));
+                }
+                cur.close();
+            }
+            database.setTransactionSuccessful();
+        } catch (final Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            database.endTransaction();
+        }
+        for (final String uid : tagsApp) {
+            notifyTagUpdated(getTagByUid(uid));
+        }
+        for (final String uid : subscriptionsApp) {
+            notifySubscriptionUpdated(getSubscriptionByUid(uid));
+        }
+        notifySettingUpdated(Setting.SETTING_GLOBAL_ITEM_UNREAD_COUNT);
     }
 
     private void notifyItemUpdated(final Item item) {

@@ -16,7 +16,6 @@ import com.pursuer.reader.easyrss.data.DataMgr;
 import com.pursuer.reader.easyrss.listadapter.ListItemItem;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -28,8 +27,21 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ViewFlipper;
 
 public class VerticalItemViewCtrl extends AbsViewCtrl implements VerticalSingleItemViewListener {
+    private static Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            final VerticalItemViewCtrl viewCtrl = (VerticalItemViewCtrl) msg.obj;
+            if (msg.what == MSG_HIDE_ITEM_MENU) {
+                if (viewCtrl.itemMenuShowTime <= System.currentTimeMillis() - 2000) {
+                    viewCtrl.hideItemMenu();
+                } else {
+                    handler.sendMessageDelayed(obtainMessage(MSG_HIDE_ITEM_MENU, viewCtrl), 1000);
+                }
+            }
+        }
+    };
+
     final private FeedViewCtrl feedViewCtrl;
-    final private Handler handler;
     private long itemMenuShowTime;
     private ViewFlipper itemFlipper;
     private View itemMenu;
@@ -38,7 +50,6 @@ public class VerticalItemViewCtrl extends AbsViewCtrl implements VerticalSingleI
 
     final static private int MSG_HIDE_ITEM_MENU = 0;
 
-    @SuppressLint("HandlerLeak")
     public VerticalItemViewCtrl(final DataMgr dataMgr, final Context context, final String uid,
             final FeedViewCtrl feedViewCtrl) {
         super(dataMgr, R.layout.item, context);
@@ -46,18 +57,6 @@ public class VerticalItemViewCtrl extends AbsViewCtrl implements VerticalSingleI
         this.uid = uid;
         this.feedViewCtrl = feedViewCtrl;
         this.itemMenuShowTime = System.currentTimeMillis();
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                if (msg.what == MSG_HIDE_ITEM_MENU) {
-                    if (itemMenuShowTime <= System.currentTimeMillis() - 2000) {
-                        hideItemMenu();
-                    } else {
-                        handler.sendEmptyMessageDelayed(MSG_HIDE_ITEM_MENU, 1000);
-                    }
-                }
-            }
-        };
     }
 
     public void awakenItemMenu() {
@@ -67,7 +66,7 @@ public class VerticalItemViewCtrl extends AbsViewCtrl implements VerticalSingleI
             anim.setFillEnabled(true);
             itemMenu.startAnimation(anim);
             handler.removeMessages(MSG_HIDE_ITEM_MENU);
-            handler.sendEmptyMessageDelayed(MSG_HIDE_ITEM_MENU, 1000);
+            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ITEM_MENU, this), 1000);
         }
         itemMenuShowTime = System.currentTimeMillis();
     }

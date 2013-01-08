@@ -16,7 +16,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,17 +29,6 @@ import com.pursuer.reader.easyrss.data.readersetting.SettingSyncMethod;
 import com.pursuer.reader.easyrss.network.AbsDataSyncer.DataSyncerException;
 
 final public class NetworkMgr implements DataSyncerListener {
-    final static private String KEY_MAX_PROGRESS = "maxProgress";
-    final static private String KEY_PROGRESS = "progress";
-    final static private String KEY_SYNCER_TYPE = "syncerType";
-    final static private String KEY_SUCCEEDED = "succeeded";
-    final static private String KEY_TEXT = "text";
-
-    final static private int MSG_ON_DATA_SYNCER_PROGRESS_CHANGED = 0;
-    final static private int MSG_ON_LOGIN = 1;
-    final static private int MSG_SYNC_FINISHED = 2;
-    final static private int MSG_SYNC_STARTED = 3;
-
     private class ItemContentSyncThread extends Thread {
         private int networkConfig;
 
@@ -84,8 +72,7 @@ final public class NetworkMgr implements DataSyncerListener {
         public synchronized void waitForSync() throws InterruptedException {
             wait();
         }
-    };
-
+    }
     private class SyncThread extends Thread {
         @Override
         public void run() {
@@ -118,49 +105,18 @@ final public class NetworkMgr implements DataSyncerListener {
             }
         }
     }
-
-    private static NetworkMgr instance = null;
-
-    public static synchronized void init(final Context context) {
-        if (instance == null) {
-            instance = new NetworkMgr(context);
-        }
-    }
-
-    public static NetworkMgr getInstance() {
-        return instance;
-    }
-
-    final private Context context;
-    final private Queue<AbsDataSyncer> syncers;
-    final private List<NetworkListener> listeners;
-    final private ItemContentSyncThread itemContentSyncThread;
-    final private SyncThread syncThread;
-    final private Handler handler;
-    private Thread loginThread;
-
-    @SuppressLint("HandlerLeak")
-    private NetworkMgr(final Context context) {
-        this.context = context;
-        this.syncers = new LinkedList<AbsDataSyncer>();
-        this.listeners = new LinkedList<NetworkListener>();
-        this.syncThread = new SyncThread();
-        syncThread.setPriority(Thread.MIN_PRIORITY);
-        syncThread.start();
-        this.itemContentSyncThread = new ItemContentSyncThread();
-        itemContentSyncThread.setPriority(Thread.MIN_PRIORITY);
-        itemContentSyncThread.start();
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                final Bundle bundle = msg.getData();
+    final static private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            final Bundle bundle = msg.getData();
+            if (instance != null) {
                 switch (msg.what) {
                 case MSG_ON_DATA_SYNCER_PROGRESS_CHANGED: {
                     final String text = bundle.getString(KEY_TEXT);
                     final int progress = bundle.getInt(KEY_PROGRESS);
                     final int maxProgress = bundle.getInt(KEY_MAX_PROGRESS);
                     try {
-                        for (final NetworkListener listener : listeners) {
+                        for (final NetworkListener listener : instance.listeners) {
                             listener.onDataSyncerProgressChanged(text, progress, maxProgress);
                         }
                     } catch (final ConcurrentModificationException exception) {
@@ -171,7 +127,7 @@ final public class NetworkMgr implements DataSyncerListener {
                 case MSG_ON_LOGIN: {
                     final boolean succeeded = bundle.getBoolean(KEY_SUCCEEDED);
                     try {
-                        for (final NetworkListener listener : listeners) {
+                        for (final NetworkListener listener : instance.listeners) {
                             listener.onLogin(succeeded);
                         }
                     } catch (final ConcurrentModificationException exception) {
@@ -183,7 +139,7 @@ final public class NetworkMgr implements DataSyncerListener {
                     final String syncerType = bundle.getString(KEY_SYNCER_TYPE);
                     final boolean succeeded = bundle.getBoolean(KEY_SUCCEEDED);
                     try {
-                        for (final NetworkListener listener : listeners) {
+                        for (final NetworkListener listener : instance.listeners) {
                             listener.onSyncFinished(syncerType, succeeded);
                         }
                     } catch (final ConcurrentModificationException exception) {
@@ -194,7 +150,7 @@ final public class NetworkMgr implements DataSyncerListener {
                 case MSG_SYNC_STARTED: {
                     final String syncerType = bundle.getString(KEY_SYNCER_TYPE);
                     try {
-                        for (final NetworkListener listener : listeners) {
+                        for (final NetworkListener listener : instance.listeners) {
                             listener.onSyncStarted(syncerType);
                         }
                     } catch (final ConcurrentModificationException exception) {
@@ -206,7 +162,47 @@ final public class NetworkMgr implements DataSyncerListener {
                     break;
                 }
             }
-        };
+        }
+    };
+    private static NetworkMgr instance = null;
+    final static private String KEY_MAX_PROGRESS = "maxProgress";
+    final static private String KEY_PROGRESS = "progress";
+    final static private String KEY_SUCCEEDED = "succeeded";
+    final static private String KEY_SYNCER_TYPE = "syncerType";
+    final static private String KEY_TEXT = "text";
+
+    final static private int MSG_ON_DATA_SYNCER_PROGRESS_CHANGED = 0;;
+    final static private int MSG_ON_LOGIN = 1;
+    final static private int MSG_SYNC_FINISHED = 2;
+    final static private int MSG_SYNC_STARTED = 3;
+
+    public static NetworkMgr getInstance() {
+        return instance;
+    }
+
+    public static synchronized void init(final Context context) {
+        if (instance == null) {
+            instance = new NetworkMgr(context);
+        }
+    }
+    final private Context context;
+    final private ItemContentSyncThread itemContentSyncThread;
+    final private List<NetworkListener> listeners;
+    private Thread loginThread;
+    final private Queue<AbsDataSyncer> syncers;
+    final private SyncThread syncThread;
+
+    private NetworkMgr(final Context context) {
+        this.context = context;
+        this.syncers = new LinkedList<AbsDataSyncer>();
+        this.listeners = new LinkedList<NetworkListener>();
+        this.syncThread = new SyncThread();
+        this.itemContentSyncThread = new ItemContentSyncThread();
+        
+        syncThread.setPriority(Thread.MIN_PRIORITY);
+        syncThread.start();
+        itemContentSyncThread.setPriority(Thread.MIN_PRIORITY);
+        itemContentSyncThread.start();
     }
 
     /*
