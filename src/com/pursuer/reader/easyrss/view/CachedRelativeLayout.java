@@ -75,7 +75,7 @@ public class CachedRelativeLayout extends RelativeLayout implements ICachedView 
     }
 
     public void enableCache() {
-        if (!isCacheEnabled) {
+        if (!isCacheEnabled && android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
             updateCache();
             isCacheEnabled = true;
         }
