@@ -49,6 +49,7 @@ import android.view.animation.AnimationUtils;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CheckBox;
@@ -81,7 +82,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
     private boolean showBottom;
     private long imageClickTime;
 
-    @SuppressLint("NewApi")
+    @SuppressLint({ "NewApi", "SimpleDateFormat" })
     public VerticalSingleItemView(final DataMgr dataMgr, final Context context, final String uid, final View menu,
             final VerticalItemViewCtrl itemViewCtrl) {
         this.dataMgr = dataMgr;
@@ -323,6 +324,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
         settings.setJavaScriptEnabled(true);
         settings.setDefaultFontSize(fontSize);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        settings.setRenderPriority(RenderPriority.LOW);
 
         final StringBuffer content = new StringBuffer();
         if (item.getState().isCached()) {
