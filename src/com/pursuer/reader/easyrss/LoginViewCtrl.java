@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -136,7 +137,8 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
                     for (int i = 0; i < accounts.length; i++) {
                         items[i] = accounts[i].name;
                     }
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setTitle(R.string.TxtChooseYourAccount);
                     builder.setNegativeButton(context.getString(R.string.TxtCancel),
                             new DialogInterface.OnClickListener() {
@@ -146,8 +148,10 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
                             });
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         public void onClick(final DialogInterface dialog, final int id) {
-                            authPendingDialog = ProgressDialog.show(context, context.getString(R.string.TxtWorking),
-                                    context.getString(R.string.TxtWaitingForAuthentication));
+                            authPendingDialog = ProgressDialog.show(new ContextThemeWrapper(context,
+                                    android.R.style.Theme_DeviceDefault_Dialog),
+                                    context.getString(R.string.TxtWorking), context
+                                            .getString(R.string.TxtWaitingForAuthentication));
                             user = items[id].toString();
                             pass = null;
                             ReaderAccountMgr.getInstance().tryNonClicentLogin(user);

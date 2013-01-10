@@ -28,6 +28,7 @@ import com.pursuer.reader.easyrss.view.HorizontalSwipeViewListener;
 import com.pursuer.reader.easyrss.view.ViewCtrlListener;
 import com.pursuer.reader.easyrss.view.ViewManager;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -37,6 +38,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -247,15 +249,17 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
 
     @Override
     public void onLogoutRequired() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,
+                android.R.style.Theme_DeviceDefault_Dialog));
         builder.setIcon(android.R.drawable.ic_dialog_info);
         builder.setTitle(R.string.TxtConfirmation);
         builder.setMessage(R.string.TxtConfirmationLogout);
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @SuppressLint("HandlerLeak")
             @Override
             public void onClick(final DialogInterface dialog, final int which) {
-                ProgressDialog.show(Home.this, Home.this.getString(R.string.TxtWorking),
-                        Home.this.getString(R.string.TxtClearingCache));
+                ProgressDialog.show(new ContextThemeWrapper(Home.this, android.R.style.Theme_DeviceDefault_Dialog),
+                        Home.this.getString(R.string.TxtWorking), Home.this.getString(R.string.TxtClearingCache));
                 final Handler handler = new Handler() {
                     @Override
                     public void handleMessage(final Message msg) {
