@@ -39,6 +39,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -433,7 +434,8 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
                     case SettingBrowserChoice.BROWSER_CHOICE_UNKNOWN:
                         final LayoutInflater inflater = (LayoutInflater) context
                                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                android.R.style.Theme_DeviceDefault_Dialog));
                         final View popupView = inflater.inflate(R.layout.browser_choice_popup, null);
                         final CheckBox checkBox = (CheckBox) popupView.findViewById(R.id.CheckBoxDontShowAgain);
                         checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -522,7 +524,8 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
         btnSharing.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View view) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                        android.R.style.Theme_DeviceDefault_Dialog));
                 final String[] popup = new String[] { context.getString(R.string.TxtSendTo),
                         context.getString(R.string.TxtSendItemTextTo),
                         context.getString(R.string.TxtSendItemContentTo),

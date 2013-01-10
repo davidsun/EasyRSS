@@ -34,6 +34,7 @@ import com.pursuer.reader.easyrss.data.readersetting.SettingTheme;
 import com.pursuer.reader.easyrss.data.readersetting.SettingVolumeKeySwitching;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -45,6 +46,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -80,6 +82,7 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
 
         final View btnCal = view.findViewById(R.id.BtnCalculation);
         btnCal.setOnClickListener(new OnClickListener() {
+            @SuppressLint("HandlerLeak")
             @Override
             public void onClick(final View view) {
                 final ProgressDialog dialog = ProgressDialog.show(context, context.getString(R.string.TxtWorking),
@@ -139,6 +142,7 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
         dataMgr.removeOnSettingUpdatedListener(this);
     }
 
+    @SuppressLint("HandlerLeak")
     @Override
     public void onSettingUpdated(final String name) {
         if (name.equals(Setting.SETTING_SYNC_METHOD)) {
@@ -183,7 +187,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                     break;
                 case MotionEvent.ACTION_UP:
                     view.setPressed(false);
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setMessage(R.string.TxtAboutAuthorIntro);
                     builder.setNegativeButton(context.getString(R.string.TxtCancel),
                             new DialogInterface.OnClickListener() {
@@ -226,7 +231,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                     break;
                 case MotionEvent.ACTION_UP:
                     view.setPressed(false);
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setMessage(R.string.TxtAboutEasyRSSIntro);
                     builder.setNegativeButton(context.getString(R.string.TxtCancel),
                             new DialogInterface.OnClickListener() {
@@ -259,7 +265,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                         break;
                     case MotionEvent.ACTION_UP:
                         view.setPressed(false);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                android.R.style.Theme_DeviceDefault_Dialog));
                         final String items[] = new String[4];
                         items[0] = context.getString(R.string.TxtChooseEverytime);
                         items[1] = context.getString(R.string.TxtBuiltInMobilized);
@@ -322,7 +329,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                 case MotionEvent.ACTION_UP:
                     view.setPressed(false);
                     final String[] sItems = context.getResources().getStringArray(R.array.SettingSyncInterval);
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setTitle(context.getString(R.string.TxtSettingSyncInterval));
                     builder.setSingleChoiceItems(sItems, setting.getData(), new DialogInterface.OnClickListener() {
                         @Override
@@ -369,7 +377,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                     int selId;
                     for (selId = 0; selId < sItems.length && !setting.getData().equals(Integer.valueOf(sItems[selId])); selId++) {
                     }
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setTitle(context.getString(R.string.TxtSettingFontSize));
                     builder.setSingleChoiceItems(sItems, selId, new DialogInterface.OnClickListener() {
                         @Override
@@ -438,7 +447,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                         break;
                     case MotionEvent.ACTION_UP:
                         view.setPressed(false);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                android.R.style.Theme_DeviceDefault_Dialog));
                         builder.setTitle(context.getString(R.string.TxtSettingImageFetching));
                         builder.setSingleChoiceItems(context.getResources()
                                 .getStringArray(R.array.SettingImageFetching), sFetch.getData(),
@@ -537,7 +547,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                         for (selId = 0; selId < sItems.length
                                 && !sMaxItems.getData().equals(Integer.valueOf(sItems[selId])); selId++) {
                         }
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                android.R.style.Theme_DeviceDefault_Dialog));
                         builder.setTitle(context.getString(R.string.TxtSettingMaxNoOfItems));
                         builder.setSingleChoiceItems(sItems, selId, new DialogInterface.OnClickListener() {
                             @Override
@@ -655,7 +666,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                         break;
                     case MotionEvent.ACTION_UP:
                         view.setPressed(false);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                android.R.style.Theme_DeviceDefault_Dialog));
                         builder.setTitle(context.getString(R.string.TxtSettingAutoSync));
                         builder.setSingleChoiceItems(context.getResources().getStringArray(R.array.SettingItemSync),
                                 sSync.getData(), new DialogInterface.OnClickListener() {
@@ -703,7 +715,8 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
                 case MotionEvent.ACTION_UP:
                     view.setPressed(false);
                     final String[] sItems = context.getResources().getStringArray(R.array.SettingTheme);
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                            android.R.style.Theme_DeviceDefault_Dialog));
                     builder.setTitle(context.getString(R.string.TxtSettingTheme));
                     builder.setSingleChoiceItems(sItems, setting.getData(), new DialogInterface.OnClickListener() {
                         @Override

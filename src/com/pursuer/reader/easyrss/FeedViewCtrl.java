@@ -46,6 +46,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -204,7 +205,7 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
     final private static String INTENT_KEY_ID = "id";
     final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, ItemState._ISREAD,
             ItemState._ISSTARRED, Item._TIMESTAMP, Item._SOURCETITLE };
-    
+
     final private static int MSG_DISMISS_DIALOG = 1;
     final private static int MSG_ITEM_LONG_CLICK = 0;
     final private static int MSG_QUIT = 2;
@@ -219,7 +220,7 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
         }
         builder.append(newCondition);
     }
-    
+
     private boolean isAvailable;
     final private boolean isDecendingOrdering;
     private boolean isEnd;
@@ -355,7 +356,8 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
             public void onClick(final View view) {
                 final LayoutInflater inflater = (LayoutInflater) context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                        android.R.style.Theme_DeviceDefault_Dialog));
                 final SettingMarkAllAsReadConfirmation sMark = new SettingMarkAllAsReadConfirmation(dataMgr);
                 if (sMark.getData()) {
                     final View popupView = inflater.inflate(R.layout.mark_all_as_read_popup, null);
