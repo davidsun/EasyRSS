@@ -44,6 +44,26 @@ import com.pursuer.reader.easyrss.data.readersetting.SettingTheme;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
 public class WebpageItemViewCtrl extends AbsViewCtrl {
+    final static private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            if (msg.obj instanceof WebpageItemViewCtrl) {
+                final WebpageItemViewCtrl viewCtrl = (WebpageItemViewCtrl) msg.obj;
+                switch (msg.what) {
+                case MSG_LOADING_FINISHED:
+                    if (viewCtrl.showMobilized) {
+                        viewCtrl.view.findViewById(R.id.MobilizedProgress).setVisibility(View.GONE);
+                        viewCtrl.view.findViewById(R.id.MobilizedContent).setVisibility(View.VISIBLE);
+                        viewCtrl.mobilizedView.loadDataWithBaseURL(null, viewCtrl.pageContent, "text/html", "utf-8",
+                                null);
+                    }
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    };
     final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, Item._TIMESTAMP,
             Item._SOURCETITLE, Item._AUTHOR, Item._HREF };
     final private static int MSG_LOADING_FINISHED = 0;
@@ -57,40 +77,25 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
         return builder.toString();
     }
 
-    final private WebView mobilizedView;
-    final private WebView originalView;
-    final private Handler handler;
-    final private Item item;
-    final private int fontSize;
-    final private int theme;
-    private boolean showMobilized;
+    private final int fontSize;
+    private final Item item;
+    private final WebView mobilizedView;
+    private final WebView originalView;
     private String pageContent;
+    private boolean showMobilized;
+    private final int theme;
     private Thread thread;
 
-    @SuppressLint({ "SetJavaScriptEnabled", "HandlerLeak" })
+    @SuppressLint("SetJavaScriptEnabled")
     public WebpageItemViewCtrl(final DataMgr dataMgr, final Context context, final String uid, final boolean isMobilized) {
         super(dataMgr, R.layout.webpage_item, context);
 
         this.item = dataMgr.getItemByUid(uid, ITEM_PROJECTION);
         this.theme = new SettingTheme(dataMgr).getData();
         this.fontSize = new SettingFontSize(dataMgr).getData();
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
-                switch (msg.what) {
-                case MSG_LOADING_FINISHED:
-                    if (showMobilized) {
-                        view.findViewById(R.id.MobilizedProgress).setVisibility(View.GONE);
-                        view.findViewById(R.id.MobilizedContent).setVisibility(View.VISIBLE);
-                        mobilizedView.loadDataWithBaseURL(null, pageContent, "text/html", "utf-8", null);
-                    }
-                    break;
-                default:
-                    break;
-                }
-            }
-        };
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
+        // Disable hardware acceleration on Android 3.0-4.0 devices.
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN
+                && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
 
@@ -184,6 +189,7 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
         originalView.stopLoading();
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void showMobilizedPage() {
         showMobilized = true;
         view.findViewById(R.id.Mobilized).setVisibility(View.VISIBLE);
@@ -238,22 +244,22 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
                         builder.append(theme == SettingTheme.THEME_NORMAL ? DataUtils.DEFAULT_NORMAL_CSS
                                 : DataUtils.DEFAULT_DARK_CSS);
                         pageContent = builder.toString();
-                        handler.sendEmptyMessage(MSG_LOADING_FINISHED);
+                        handler.sendMessage(handler.obtainMessage(MSG_LOADING_FINISHED, WebpageItemViewCtrl.this));
                     } catch (final MalformedURLException exception) {
                         exception.printStackTrace();
                         pageContent = genFailedToLoadContentPage(context, theme);
-                        handler.sendEmptyMessage(MSG_LOADING_FINISHED);
+                        handler.sendMessage(handler.obtainMessage(MSG_LOADING_FINISHED, WebpageItemViewCtrl.this));
                     } catch (final IOException exception) {
                         exception.printStackTrace();
                         pageContent = genFailedToLoadContentPage(context, theme);
-                        handler.sendEmptyMessage(MSG_LOADING_FINISHED);
+                        handler.sendMessage(handler.obtainMessage(MSG_LOADING_FINISHED, WebpageItemViewCtrl.this));
                     }
                 }
             });
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();
         } else if (!thread.isAlive()) {
-            handler.sendEmptyMessage(MSG_LOADING_FINISHED);
+            handler.sendMessage(handler.obtainMessage(MSG_LOADING_FINISHED, WebpageItemViewCtrl.this));
         }
     }
 

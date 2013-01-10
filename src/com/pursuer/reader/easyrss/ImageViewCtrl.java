@@ -20,7 +20,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -38,33 +37,24 @@ import com.pursuer.reader.easyrss.view.OnScaleChangedListener;
 import com.pursuer.reader.easyrss.view.TouchImageView;
 
 public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListener {
-    final private static int MSG_IMG_FAILED = 0;
-    final private static int MSG_IMG_READY = 1;
-
-    final private String imgPath;
-    final private Handler handler;
-
-    @SuppressLint("HandlerLeak")
-    public ImageViewCtrl(final DataMgr dataMgr, final Context context, final String imgPath) {
-        super(dataMgr, R.layout.image, context);
-
-        this.imgPath = imgPath;
-        this.handler = new Handler() {
-            @Override
-            public void handleMessage(final Message msg) {
+    static final private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(final Message msg) {
+            if (msg.obj instanceof ImageViewCtrl) {
+                final ImageViewCtrl viewCtrl = (ImageViewCtrl) msg.obj;
                 switch (msg.what) {
                 case MSG_IMG_FAILED:
-                    view.findViewById(R.id.Loading).setVisibility(View.GONE);
-                    view.findViewById(R.id.Image).setVisibility(View.GONE);
-                    view.findViewById(R.id.ZoomControl).setVisibility(View.GONE);
-                    view.findViewById(R.id.Failed).setVisibility(View.VISIBLE);
+                    viewCtrl.view.findViewById(R.id.Loading).setVisibility(View.GONE);
+                    viewCtrl.view.findViewById(R.id.Image).setVisibility(View.GONE);
+                    viewCtrl.view.findViewById(R.id.ZoomControl).setVisibility(View.GONE);
+                    viewCtrl.view.findViewById(R.id.Failed).setVisibility(View.VISIBLE);
                     break;
                 case MSG_IMG_READY:
-                    final TouchImageView imageView = (TouchImageView) view.findViewById(R.id.Image);
-                    final FrameLayout zoomWrap = (FrameLayout) view.findViewById(R.id.ZoomControl);
-                    final ZoomControls zoomControls = new ZoomControls(context);
-                    final View btnSave = view.findViewById(R.id.BtnSave);
-                    final Bitmap image = (Bitmap) msg.obj;
+                    final TouchImageView imageView = (TouchImageView) viewCtrl.view.findViewById(R.id.Image);
+                    final FrameLayout zoomWrap = (FrameLayout) viewCtrl.view.findViewById(R.id.ZoomControl);
+                    final ZoomControls zoomControls = new ZoomControls(viewCtrl.context);
+                    final View btnSave = viewCtrl.view.findViewById(R.id.BtnSave);
+                    final Bitmap image = (Bitmap) viewCtrl.bitmap;
                     btnSave.setVisibility(View.VISIBLE);
                     btnSave.setOnClickListener(new OnClickListener() {
                         @Override
@@ -74,10 +64,10 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
                                         .getAbsolutePath()
                                         + File.separator
                                         + "EasyRSS-"
-                                        + Integer.toHexString(imgPath.hashCode()) + ".jpeg";
+                                        + Integer.toHexString(viewCtrl.imgPath.hashCode()) + ".jpeg";
                                 final FileOutputStream output = new FileOutputStream(path);
-                                Toast.makeText(context,
-                                        context.getString(R.string.MsgSavingImageTo) + " " + path + " ...",
+                                Toast.makeText(viewCtrl.context,
+                                        viewCtrl.context.getString(R.string.MsgSavingImageTo) + " " + path + " ...",
                                         Toast.LENGTH_LONG).show();
                                 image.compress(Bitmap.CompressFormat.JPEG, 100, output);
                             } catch (final Exception exception) {
@@ -85,10 +75,10 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
                             }
                         }
                     });
-                    view.findViewById(R.id.Loading).setVisibility(View.GONE);
+                    viewCtrl.view.findViewById(R.id.Loading).setVisibility(View.GONE);
                     imageView.setVisibility(View.VISIBLE);
                     zoomWrap.setVisibility(View.VISIBLE);
-                    view.findViewById(R.id.Failed).setVisibility(View.GONE);
+                    viewCtrl.view.findViewById(R.id.Failed).setVisibility(View.GONE);
                     imageView.setAutoFillScreen(true);
                     imageView.setImageBitmap(image);
                     imageView.setOnScaleChangedListener(new OnScaleChangedListener() {
@@ -118,12 +108,18 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
                     break;
                 }
             }
-        };
-    }
+        }
+    };
+    static final private int MSG_IMG_FAILED = 0;
+    static final private int MSG_IMG_READY = 1;
 
-    @Override
-    public void onNeedMoreItems() {
-        // TODO Auto-generated method stub
+    final private String imgPath;
+    private Bitmap bitmap;
+
+    public ImageViewCtrl(final DataMgr dataMgr, final Context context, final String imgPath) {
+        super(dataMgr, R.layout.image, context);
+
+        this.imgPath = imgPath;
     }
 
     @Override
@@ -142,10 +138,10 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
                 if (imgPath.endsWith(".erss")) {
                     final Bitmap bitmap = BitmapFactory.decodeFile(imgPath);
                     if (bitmap != null) {
-                        final Message message = handler.obtainMessage(MSG_IMG_READY, bitmap);
-                        handler.sendMessage(message);
+                        ImageViewCtrl.this.bitmap = bitmap;
+                        handler.sendMessage(handler.obtainMessage(MSG_IMG_READY, ImageViewCtrl.this));
                     } else {
-                        handler.sendEmptyMessage(MSG_IMG_FAILED);
+                        handler.sendMessage(handler.obtainMessage(MSG_IMG_FAILED, ImageViewCtrl.this));
                     }
                 } else {
                     try {
@@ -163,17 +159,17 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
                         final byte[] imageBytes = outputStream.toByteArray();
                         final Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                         if (bitmap != null) {
-                            final Message message = handler.obtainMessage(MSG_IMG_READY, bitmap);
-                            handler.sendMessage(message);
+                            ImageViewCtrl.this.bitmap = bitmap;
+                            handler.sendMessage(handler.obtainMessage(MSG_IMG_READY, ImageViewCtrl.this));
                         } else {
-                            handler.sendEmptyMessage(MSG_IMG_FAILED);
+                            handler.sendMessage(handler.obtainMessage(MSG_IMG_FAILED, ImageViewCtrl.this));
                         }
                     } catch (final MalformedURLException exception) {
                         exception.printStackTrace();
-                        handler.sendEmptyMessage(MSG_IMG_FAILED);
+                        handler.sendMessage(handler.obtainMessage(MSG_IMG_FAILED, ImageViewCtrl.this));
                     } catch (final IOException exception) {
                         exception.printStackTrace();
-                        handler.sendEmptyMessage(MSG_IMG_FAILED);
+                        handler.sendMessage(handler.obtainMessage(MSG_IMG_FAILED, ImageViewCtrl.this));
                     }
                 }
             }
@@ -194,6 +190,11 @@ public class ImageViewCtrl extends AbsViewCtrl implements ItemListWrapperListene
 
     @Override
     public void onDestory() {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void onNeedMoreItems() {
         // TODO Auto-generated method stub
     }
 }
