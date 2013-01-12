@@ -153,9 +153,10 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
                             NetworkMgr.getInstance().startImmediateItemStateSyncing();
                             break;
                         case 1:
-                            final ProgressDialog pDialog = ProgressDialog.show(viewCtrl.context,
-                                    viewCtrl.context.getString(R.string.TxtWorking),
-                                    viewCtrl.context.getString(R.string.TxtMarkingPreviousItemsAsRead));
+                            final ProgressDialog pDialog = ProgressDialog.show(new ContextThemeWrapper(
+                                    viewCtrl.context, android.R.style.Theme_DeviceDefault_Dialog), viewCtrl.context
+                                    .getString(R.string.TxtWorking), viewCtrl.context
+                                    .getString(R.string.TxtMarkingPreviousItemsAsRead));
                             final Thread thread = new Thread() {
                                 @Override
                                 public void run() {
@@ -311,7 +312,8 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
 
     private void markAllAsRead() {
         dataMgr.removeOnItemUpdatedListener(lstWrapper);
-        final ProgressDialog pDialog = ProgressDialog.show(context, context.getString(R.string.TxtWorking),
+        final ProgressDialog pDialog = ProgressDialog.show(new ContextThemeWrapper(context,
+                android.R.style.Theme_DeviceDefault_Dialog), context.getString(R.string.TxtWorking),
                 context.getString(R.string.TxtMarkingAllItemsAsRead));
         final Thread thread = new Thread() {
             @Override
