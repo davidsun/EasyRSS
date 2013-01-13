@@ -93,8 +93,8 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
         this.item = dataMgr.getItemByUid(uid, ITEM_PROJECTION);
         this.theme = new SettingTheme(dataMgr).getData();
         this.fontSize = new SettingFontSize(dataMgr).getData();
-        // Disable hardware acceleration on Android 3.0-4.0 devices.
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN
+        // Disable hardware acceleration on Android 3.0-4.1 devices.
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN_MR1
                 && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }

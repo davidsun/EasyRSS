@@ -99,8 +99,8 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
 
         final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.view = inflater.inflate(R.layout.single_item_view, null);
-        // Disable hardware acceleration on Android 3.0-4.0 devices.
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN
+        // Disable hardware acceleration on Android 3.0-4.1 devices.
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN_MR1
                 && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
