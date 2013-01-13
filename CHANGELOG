@@ -1,3 +1,6 @@
+0.5.16
+- Disable GPU acceleration support on Android 4.1 devises (for it may cause native crash).
+
 0.5.15
 - Enabling GPU acceleration support on Android 4.1/4.2 devices.
 - UI updates for popup windows.
