@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">Logger...</string>
+    <string name="MsgLoginSucceeded">Loggede ind!</string>
+    <string name="MsgLoginFailed">Log-ind mislykkeds, tjek venligst dit brugernavn og kodeord.</string>
+    <string name="MsgSyncOnNetwork">Autosynkronisering når netværk er tilgængeligt.</string>
+    <string name="MsgSyncOnWifi">Autosynkronisering når WIFI-netværk er tilgængeligt.</string>
+    <string name="MsgSyncDisabled">Autosynkronisering slået fra.</string>
+    <string name="MsgStarred">Stjernemarkerede.</string>
+    <string name="MsgUnstarred">Stjerne blev fjernet.</string>
+    <string name="MsgNoteShared">Delt med note.</string>
+    <string name="MsgLoadingMoreItems">Henter flere emner, vent venligst...</string>
+    <string name="MsgAuthenticationSucceeded">Autentificerede med success. Du er nu logget ind!</string>
+    <string name="MsgAuthenticationFailed">Autentificering fejlede.</string>
+    <string name="MsgCannotLaunchMarket">Desværre er Google Play ikke tilgængelig på din enhed.</string>
+    <string name="MsgFailedToLoadContent">Desværre kan indholdet for dette emne ikke indlæses.</string>
+    <string name="MsgTickerTextNewItems">Emner blev opdaterede</string>
+    <string name="MsgTitleNewItems1">Emner blev opdaterede, med</string>
+    <string name="MsgTitleNewItems2">ulæste emner.</string>
+    <string name="MsgClickToView">Klik for at se dem alle...</string>
+    <string name="MsgCopiedToClipboard">Kopierede til udklipsholderen.</string>
+    <string name="MsgSavingImageTo">Gemmer billede i</string>
+
+</resources>
