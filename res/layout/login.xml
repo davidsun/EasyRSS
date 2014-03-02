@@ -63,46 +63,16 @@
             android:layout_marginTop="5dip"
             android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/BtnShowAccounts"
-                android:layout_width="45dip"
-                android:layout_height="fill_parent"
-                android:src="@drawable/icon_add_account_xml" />
-
             <Button
                 android:id="@+id/BtnLogin"
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="3dip"
+                android:layout_marginBottom="5dip"
                 android:layout_weight="1"
                 android:text="@string/TxtLogin"
-                android:textSize="18dip"
+                android:textSize="18sp"
                 android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="36dip"
-            android:layout_marginLeft="30dip"
-            android:layout_marginRight="30dip"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="16dip"
-                android:layout_height="24dip"
-                android:layout_marginLeft="5dip"
-                android:src="@drawable/notify_line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dip"
-                android:layout_marginRight="40dip"
-                android:layout_marginTop="9dip"
-                android:text="@string/TxtLoginThroughAuthenticated"
-                android:textColor="#333"
-                android:textSize="11dip" >
-            </TextView>
         </LinearLayout>
     </LinearLayout>
 

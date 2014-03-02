@@ -26,7 +26,6 @@ import android.graphics.BitmapFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.pursuer.reader.easyrss.R;
 import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
 import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.data.Subscription;
 import com.pursuer.reader.easyrss.data.parser.OnSubscriptionRetrievedListener;
@@ -150,10 +149,6 @@ public class SubscriptionDataSyncer extends AbsDataSyncer {
             final SyncerSubscriptionListener listener = new SyncerSubscriptionListener();
             parser.parse(listener);
             dataMgr.addSubscriptions(listener.getSubscriptions());
-            final int sAll = listener.getSubscriptions().size();
-            final int sAllRange = sAll / 10 * 10;
-            GoogleAnalyticsMgr.getInstance().trackEvent(GoogleAnalyticsMgr.CATEGORY_SYNCING,
-                    GoogleAnalyticsMgr.ACTION_SYNCING_SUBSCRIPTIONS, sAllRange + "-" + (sAllRange + 9), sAll);
         } catch (final JsonParseException exception) {
             throw new DataSyncerException(exception);
         } catch (final IllegalStateException exception) {

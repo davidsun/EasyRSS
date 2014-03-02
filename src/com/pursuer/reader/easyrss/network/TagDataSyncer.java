@@ -21,7 +21,6 @@ import android.content.Context;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.pursuer.reader.easyrss.R;
 import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
 import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.data.Tag;
 import com.pursuer.reader.easyrss.data.parser.OnTagRetrievedListener;
@@ -111,10 +110,6 @@ public class TagDataSyncer extends AbsDataSyncer {
             final TagListener listener = new TagListener();
             parser.parse(listener);
             dataMgr.addTags(listener.getTags());
-            final int tAll = listener.getTags().size();
-            final int tAllRange = tAll / 10 * 10;
-            GoogleAnalyticsMgr.getInstance().trackEvent(GoogleAnalyticsMgr.CATEGORY_SYNCING,
-                    GoogleAnalyticsMgr.ACTION_SYNCING_TAGS, tAllRange + "-" + (tAllRange + 9), tAll);
         } catch (final JsonParseException exception) {
             throw new DataSyncerException(exception);
         } catch (final IllegalStateException exception) {
