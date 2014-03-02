@@ -15,7 +15,9 @@ import com.pursuer.reader.easyrss.R;
 import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
 import com.pursuer.reader.easyrss.account.ReaderAccountMgrListener;
 import com.pursuer.reader.easyrss.data.DataMgr;
+import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.network.NetworkMgr;
+import com.pursuer.reader.easyrss.network.url.AbsURL;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
 import android.accounts.Account;
@@ -41,6 +43,7 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
 
     final private Handler handler;
     private ProgressDialog authPendingDialog;
+    private String serverUrl;
     private String user;
     private String pass;
 
@@ -53,7 +56,7 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
             public void handleMessage(final Message msg) {
                 switch (msg.what) {
                 case MSG_LOGIN_SUCCEEDED:
-                    ReaderAccountMgr.getInstance().setClientLogin(user, pass);
+                    ReaderAccountMgr.getInstance().setClientLogin(serverUrl, user, pass);
                     Toast.makeText(context, R.string.MsgLoginSucceeded, Toast.LENGTH_LONG).show();
                     if (listener != null) {
                         listener.onLogin(true);
@@ -118,6 +121,8 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
             @Override
             public void onClick(final View view) {
                 view.setEnabled(false);
+                serverUrl = ((EditText) LoginViewCtrl.this.view.findViewById(R.id.TxtServerUrl)).getText().toString();
+                AbsURL.setServerUrl(serverUrl);
                 user = ((EditText) LoginViewCtrl.this.view.findViewById(R.id.TxtUsername)).getText().toString();
                 pass = ((EditText) LoginViewCtrl.this.view.findViewById(R.id.TxtPassword)).getText().toString();
                 ReaderAccountMgr.getInstance().tryClientLogin(user, pass);

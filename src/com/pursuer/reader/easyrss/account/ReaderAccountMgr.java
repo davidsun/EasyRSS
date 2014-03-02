@@ -17,6 +17,7 @@ import com.pursuer.reader.easyrss.data.DataMgr;
 import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.network.NetworkListener;
 import com.pursuer.reader.easyrss.network.NetworkMgr;
+import com.pursuer.reader.easyrss.network.url.AbsURL;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -205,8 +206,10 @@ public class ReaderAccountMgr implements NetworkListener {
         // TODO Auto-generated method stub
     }
 
-    public void setClientLogin(final String user, final String pass) {
+    public void setClientLogin(final String serverUrl, final String user, final String pass) {
         final DataMgr dataMgr = DataMgr.getInstance();
+        dataMgr.updateSetting(new Setting(Setting.SETTING_SERVER_URL, serverUrl));
+        AbsURL.setServerUrl(serverUrl);
         dataMgr.updateSetting(new Setting(Setting.SETTING_USERNAME, user));
         dataMgr.updateSetting(new Setting(Setting.SETTING_PASSWORD, pass));
         dataMgr.updateSetting(new Setting(Setting.SETTING_IS_CLIENT_LOGIN, String.valueOf(true)));

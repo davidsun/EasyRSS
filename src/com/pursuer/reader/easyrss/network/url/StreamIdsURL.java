@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class StreamIdsURL extends AbsURL {
-    private static final String URL_STREAM_IDS = URL_GOOGLE_READER_API + "/stream/items/ids";
+    private static final String URL_STREAM_IDS = URL_API + "/stream/items/ids";
 
     private String uid;
     private int limit;
@@ -35,7 +35,7 @@ public class StreamIdsURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_STREAM_IDS;
+        return serverUrl + URL_STREAM_IDS;
     }
 
     public int getLimit() {

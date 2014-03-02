@@ -18,7 +18,7 @@ import android.net.Uri;
  */
 
 public class StreamContentsURL extends AbsURL {
-    private static final String URL_STREAM_CONTENTS = URL_GOOGLE_READER_API + "/stream/contents/";
+    private static final String URL_STREAM_CONTENTS = URL_API + "/stream/contents/";
 
     private String uid;
     private String continuation;
@@ -51,7 +51,7 @@ public class StreamContentsURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return appendURL(URL_STREAM_CONTENTS, Uri.encode(uid));
+        return appendURL(serverUrl + URL_STREAM_CONTENTS, Uri.encode(uid));
     }
 
     public String getContinuation() {
