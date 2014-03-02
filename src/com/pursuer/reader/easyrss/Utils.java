@@ -29,7 +29,6 @@ import org.apache.http.conn.scheme.Scheme;
 
 import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
 import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
 import com.pursuer.reader.easyrss.network.NetworkMgr;
 
 import android.content.Context;
@@ -119,10 +118,6 @@ final public class Utils {
         }
         if (NotificationMgr.getInstance() == null) {
             NotificationMgr.init(context.getApplicationContext());
-        }
-        if (GoogleAnalyticsMgr.getInstance() == null) {
-            GoogleAnalyticsMgr.init(context.getApplicationContext());
-            GoogleAnalyticsMgr.getInstance().startTracking();
         }
     }
 

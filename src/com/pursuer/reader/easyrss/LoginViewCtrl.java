@@ -11,29 +11,22 @@
 
 package com.pursuer.reader.easyrss;
 
-import com.pursuer.reader.easyrss.R;
-import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
-import com.pursuer.reader.easyrss.account.ReaderAccountMgrListener;
-import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.Setting;
-import com.pursuer.reader.easyrss.network.NetworkMgr;
-import com.pursuer.reader.easyrss.network.url.AbsURL;
-import com.pursuer.reader.easyrss.view.AbsViewCtrl;
-
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
+import com.pursuer.reader.easyrss.account.ReaderAccountMgrListener;
+import com.pursuer.reader.easyrss.data.DataMgr;
+import com.pursuer.reader.easyrss.network.NetworkMgr;
+import com.pursuer.reader.easyrss.network.url.AbsURL;
+import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 
 public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListener {
     final private static int MSG_LOGIN_SUCCEEDED = 0;
@@ -129,74 +122,6 @@ public class LoginViewCtrl extends AbsViewCtrl implements ReaderAccountMgrListen
                 Toast.makeText(context, R.string.MsgLogging, Toast.LENGTH_LONG).show();
             }
         });
-
-        final View btnShowAccounts = view.findViewById(R.id.BtnShowAccounts);
-        final AccountManager accMgr = AccountManager.get(context);
-        final Account[] accounts = accMgr.getAccountsByType(ReaderAccountMgr.ACCOUNT_TYPE);
-        if (accounts.length > 0) {
-            btnShowAccounts.setEnabled(true);
-            btnShowAccounts.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    final CharSequence[] items = new String[accounts.length];
-                    for (int i = 0; i < accounts.length; i++) {
-                        items[i] = accounts[i].name;
-                    }
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,
-                            android.R.style.Theme_DeviceDefault_Dialog));
-                    builder.setTitle(R.string.TxtChooseYourAccount);
-                    builder.setNegativeButton(context.getString(R.string.TxtCancel),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(final DialogInterface dialog, final int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                        public void onClick(final DialogInterface dialog, final int id) {
-                            authPendingDialog = ProgressDialog.show(new ContextThemeWrapper(context,
-                                    android.R.style.Theme_DeviceDefault_Dialog),
-                                    context.getString(R.string.TxtWorking), context
-                                            .getString(R.string.TxtWaitingForAuthentication));
-                            user = items[id].toString();
-                            pass = null;
-                            ReaderAccountMgr.getInstance().tryNonClicentLogin(user);
-
-                            final Thread thread = new Thread() {
-                                final private static int WAIT_LIMIT = 60;
-
-                                @Override
-                                public void run() {
-                                    int times = 0;
-                                    final ReaderAccountMgr accMgr = ReaderAccountMgr.getInstance();
-                                    while (times < WAIT_LIMIT) {
-                                        try {
-                                            sleep(500);
-                                        } catch (final InterruptedException exception) {
-                                            exception.printStackTrace();
-                                        }
-                                        accMgr.refreshAuthState(user);
-                                        if (accMgr.isAuthValid()) {
-                                            break;
-                                        }
-                                        times++;
-                                    }
-                                    if (times < WAIT_LIMIT) {
-                                        handler.sendEmptyMessage(MSG_GAIN_AUTH_SUCCEEDED);
-                                    } else {
-                                        handler.sendEmptyMessage(MSG_GAIN_AUTH_FAILED);
-                                    }
-                                }
-                            };
-                            thread.setPriority(Thread.MIN_PRIORITY);
-                            thread.start();
-                        }
-                    });
-                    builder.show();
-                }
-            });
-        } else {
-            btnShowAccounts.setEnabled(false);
-        }
     }
 
     @Override

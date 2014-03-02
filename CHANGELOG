@@ -2,6 +2,8 @@
 - Customizable URL for choosing an alternative RSS service compatible with Google Reader API
 	such as FreshRSS http://freshrss.org/
 	by Alexandre Alapetite http://alexandre.alapetite.fr
+- Removed Google Analytics
+- Removed permissions GET_ACCOUNTS, USE_CREDENTIALS, MANAGE_ACCOUNTS
 
 0.5.16
 - Disable GPU acceleration support on Android 4.1 devises (for it may cause native crash).

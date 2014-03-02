@@ -13,23 +13,6 @@ package com.pursuer.reader.easyrss;
 
 import java.io.File;
 
-import com.pursuer.reader.easyrss.R;
-import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
-import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.DataUtils;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
-import com.pursuer.reader.easyrss.data.Setting;
-import com.pursuer.reader.easyrss.data.readersetting.SettingSyncMethod;
-import com.pursuer.reader.easyrss.data.readersetting.SettingTheme;
-import com.pursuer.reader.easyrss.data.readersetting.SettingVolumeKeySwitching;
-import com.pursuer.reader.easyrss.network.NetworkUtils;
-import com.pursuer.reader.easyrss.network.url.AbsURL;
-import com.pursuer.reader.easyrss.view.AbsViewCtrl;
-import com.pursuer.reader.easyrss.view.HorizontalSwipeView;
-import com.pursuer.reader.easyrss.view.HorizontalSwipeViewListener;
-import com.pursuer.reader.easyrss.view.ViewCtrlListener;
-import com.pursuer.reader.easyrss.view.ViewManager;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -49,6 +32,21 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 
+import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
+import com.pursuer.reader.easyrss.data.DataMgr;
+import com.pursuer.reader.easyrss.data.DataUtils;
+import com.pursuer.reader.easyrss.data.Setting;
+import com.pursuer.reader.easyrss.data.readersetting.SettingSyncMethod;
+import com.pursuer.reader.easyrss.data.readersetting.SettingTheme;
+import com.pursuer.reader.easyrss.data.readersetting.SettingVolumeKeySwitching;
+import com.pursuer.reader.easyrss.network.NetworkUtils;
+import com.pursuer.reader.easyrss.network.url.AbsURL;
+import com.pursuer.reader.easyrss.view.AbsViewCtrl;
+import com.pursuer.reader.easyrss.view.HorizontalSwipeView;
+import com.pursuer.reader.easyrss.view.HorizontalSwipeViewListener;
+import com.pursuer.reader.easyrss.view.ViewCtrlListener;
+import com.pursuer.reader.easyrss.view.ViewManager;
+
 public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeViewListener {
     /*
      * Same order as it is in home.xml
@@ -62,7 +60,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
     private static final long SWIPE_ANIMATION_TIME = 400;
 
     private HorizontalSwipeView swipeView;
-    private GoogleAnalyticsMgr googleAnalyticsMgr;
     private ViewManager viewMgr;
     private DataMgr dataMgr;
     private int totalSwipeX;
@@ -115,7 +112,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
                     final SettingsViewCtrl svc = new SettingsViewCtrl(dataMgr, this);
                     svc.setListener(this);
                     viewMgr.pushView(svc, R.anim.bottom_in, R.anim.scale_out);
-                    googleAnalyticsMgr.trackPageView("/SettingsViewCtrl");
                     return true;
                 } else if (viewMgr.getTopView() instanceof SettingsViewCtrl) {
                     onBackPressed();
@@ -144,7 +140,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
             } else {
                 swipeForward();
             }
-            googleAnalyticsMgr.trackPageView("/" + viewMgr.getTopView().getClass().getSimpleName());
         } else {
             finish();
         }
@@ -162,7 +157,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
         Utils.initManagers(this);
         dataMgr = DataMgr.getInstance();
         AbsURL.setServerUrl(dataMgr.getSettingByName(Setting.SETTING_SERVER_URL));
-        googleAnalyticsMgr = GoogleAnalyticsMgr.getInstance();
         final SettingTheme settingTheme = new SettingTheme(dataMgr);
         if (settingTheme.getData() == SettingTheme.THEME_NORMAL) {
             setTheme(R.style.Theme_Normal);
@@ -178,7 +172,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
             final HomeViewCtrl hvc = new HomeViewCtrl(dataMgr, this);
             hvc.setListener(this);
             viewMgr.pushView(hvc);
-            googleAnalyticsMgr.trackPageView("/HomeViewCtrl");
             final int sSync = new SettingSyncMethod(dataMgr).getData();
             if (sSync != SettingSyncMethod.SYNC_METHOD_MANUAL) {
                 NetworkUtils.doGlobalSyncing(this, sSync);
@@ -187,13 +180,11 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
                 final SettingsViewCtrl svc = new SettingsViewCtrl(dataMgr, this);
                 svc.setListener(this);
                 viewMgr.pushView(svc, -1, -1);
-                googleAnalyticsMgr.trackPageView("/SettingsViewCtrl");
             }
         } else {
             final LoginViewCtrl lvc = new LoginViewCtrl(dataMgr, this);
             lvc.setListener(this);
             viewMgr.pushView(lvc);
-            googleAnalyticsMgr.trackPageView("/LoginViewCtrl");
         }
 
         NetworkUtils.startSyncingTimer(this);
@@ -210,7 +201,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
         final ImageViewCtrl ivc = new ImageViewCtrl(dataMgr, this, imgPath);
         ivc.setListener(this);
         viewMgr.pushView(ivc, R.anim.bottom_in, R.anim.scale_out);
-        googleAnalyticsMgr.trackPageView("/ImageViewCtrl");
         swipeView.setRightSwipeValid(false);
     }
 
@@ -219,7 +209,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
         final FeedViewCtrl fvc = new FeedViewCtrl(dataMgr, this, uid, viewType);
         fvc.setListener(this);
         viewMgr.pushView(fvc, R.anim.right_in, R.anim.scale_out);
-        googleAnalyticsMgr.trackPageView("/FeedViewCtrl");
         swipeView.setRightSwipeValid(true);
     }
 
@@ -229,7 +218,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
                 (FeedViewCtrl) viewMgr.getTopView());
         ivc.setListener(this);
         viewMgr.pushView(ivc, R.anim.right_in, R.anim.scale_out);
-        googleAnalyticsMgr.trackPageView("/ItemViewCtrl");
         swipeView.setRightSwipeValid(true);
     }
 
@@ -239,7 +227,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
             final HomeViewCtrl hvc = new HomeViewCtrl(dataMgr, this);
             hvc.setListener(this);
             viewMgr.pushView(hvc, R.anim.right_in, R.anim.scale_out);
-            googleAnalyticsMgr.trackPageView("/HomeViewCtrl");
             final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(hvc.getView().getWindowToken(), 0);
 
@@ -294,7 +281,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
         final WebpageItemViewCtrl mivc = new WebpageItemViewCtrl(dataMgr, this, uid, isMobilized);
         mivc.setListener(this);
         viewMgr.pushView(mivc, R.anim.bottom_in, R.anim.scale_out);
-        googleAnalyticsMgr.trackPageView("/MobilizedItemViewCtrl");
         swipeView.setRightSwipeValid(false);
     }
 
@@ -329,7 +315,6 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
         final SettingsViewCtrl svc = new SettingsViewCtrl(dataMgr, this);
         svc.setListener(this);
         viewMgr.pushView(svc, R.anim.bottom_in, R.anim.scale_out);
-        googleAnalyticsMgr.trackPageView("/SettingsViewCtrl");
         swipeView.setRightSwipeValid(false);
     }
 

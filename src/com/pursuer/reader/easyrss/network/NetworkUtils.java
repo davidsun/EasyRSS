@@ -22,7 +22,6 @@ import com.pursuer.reader.easyrss.SyncingReceiver;
 import com.pursuer.reader.easyrss.Utils;
 import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
 import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
 import com.pursuer.reader.easyrss.data.readersetting.SettingImageFetching;
 import com.pursuer.reader.easyrss.data.readersetting.SettingSyncMethod;
 
@@ -72,7 +71,6 @@ final public class NetworkUtils {
             nMgr.startSync(TagDataSyncer.getInstance(dataMgr, syncingMethod));
             nMgr.startSync(SubscriptionDataSyncer.getInstance(dataMgr, syncingMethod));
             nMgr.startSync(GlobalItemDataSyncer.getInstance(dataMgr, syncingMethod));
-            GoogleAnalyticsMgr.getInstance().dispatch();
         }
     }
 

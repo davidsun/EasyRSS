@@ -19,7 +19,6 @@ import android.content.Context;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.pursuer.reader.easyrss.data.DataMgr;
-import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
 import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.data.UnreadCount;
 import com.pursuer.reader.easyrss.data.parser.OnUnreadCountRetrievedListener;
@@ -86,9 +85,5 @@ public class UnreadCountDataSyncer extends AbsDataSyncer {
         if (updTime < curTime) {
             dataMgr.updateSetting(new Setting(Setting.SETTING_GLOBAL_ITEM_UNREAD_COUNT, "0"));
         }
-        final int ucAll = dataMgr.getGlobalUnreadCount();
-        final int ucAllRange = ucAll / 100 * 100;
-        GoogleAnalyticsMgr.getInstance().trackEvent(GoogleAnalyticsMgr.CATEGORY_SYNCING,
-                GoogleAnalyticsMgr.ACTION_SYNCING_UNREADCOUNTS, ucAllRange + "-" + (ucAllRange + 99), ucAll);
     }
 }
