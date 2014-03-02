@@ -3,7 +3,7 @@
 	such as FreshRSS http://freshrss.org/
 	by Alexandre Alapetite http://alexandre.alapetite.fr
 - Removed Google Analytics
-- Removed permissions GET_ACCOUNTS, USE_CREDENTIALS, MANAGE_ACCOUNTS
+- Removed permissions GET_ACCOUNTS, USE_CREDENTIALS, MANAGE_ACCOUNTS, RECEIVE_BOOT_COMPLETED
 
 0.5.16
 - Disable GPU acceleration support on Android 4.1 devises (for it may cause native crash).
