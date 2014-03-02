@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class UnreadCountURL extends AbsURL {
-    private static final String URL_UNREAD_COUNT = URL_GOOGLE_READER_API + "/unread-count";
+    private static final String URL_UNREAD_COUNT = URL_API + "/unread-count";
 
     public UnreadCountURL(final boolean isHttpsConnection) {
         super(isHttpsConnection, true, true);
@@ -20,6 +20,6 @@ public class UnreadCountURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_UNREAD_COUNT;
+        return serverUrl + URL_UNREAD_COUNT;
     }
 }

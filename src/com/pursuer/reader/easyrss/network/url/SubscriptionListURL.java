@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class SubscriptionListURL extends AbsURL {
-    private static final String URL_SUBSCRIPTION_LIST = URL_GOOGLE_READER_API + "/subscription/list";
+    private static final String URL_SUBSCRIPTION_LIST = URL_API + "/subscription/list";
 
     public SubscriptionListURL(final boolean isHttpsConnection) {
         super(isHttpsConnection, true, true);
@@ -20,6 +20,6 @@ public class SubscriptionListURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_SUBSCRIPTION_LIST;
+        return serverUrl + URL_SUBSCRIPTION_LIST;
     }
 }

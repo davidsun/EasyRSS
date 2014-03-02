@@ -15,7 +15,7 @@ import com.pursuer.reader.easyrss.data.DataMgr;
 import com.pursuer.reader.easyrss.data.Setting;
 
 public class EditItemTagURL extends AbsURL {
-    private static final String URL_API_EDIT_TAG = URL_GOOGLE_READER_API + "/edit-tag?client=scroll";
+    private static final String URL_API_EDIT_TAG = URL_API + "/edit-tag?client=scroll";
 
     private String itemUid;
     private String tagUid;
@@ -52,7 +52,7 @@ public class EditItemTagURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_API_EDIT_TAG;
+        return serverUrl + URL_API_EDIT_TAG;
     }
 
     private void init() {

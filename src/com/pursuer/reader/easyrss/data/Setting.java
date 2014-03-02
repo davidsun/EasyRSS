@@ -31,6 +31,7 @@ public class Setting implements Entity {
 
     public static final String SETTING_AUTH = "auth";
     public static final String SETTING_TOKEN = "token";
+    public static final String SETTING_SERVER_URL = "serverUrl";
     public static final String SETTING_USERNAME = "username";
     public static final String SETTING_PASSWORD = "password";
     public static final String SETTING_SHOW_HELP = "showHelp";

@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class LoginURL extends AbsURL {
-    private static final String URL_API_LOGIN = "www.google.com/accounts/ClientLogin";
+    private static final String URL_API_LOGIN = "/accounts/ClientLogin";
 
     private transient String username;
     private transient String password;
@@ -42,7 +42,7 @@ public class LoginURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_API_LOGIN;
+        return serverUrl + URL_API_LOGIN;
     }
 
     public String getUsername() {
@@ -52,7 +52,7 @@ public class LoginURL extends AbsURL {
     private void init() {
         addParam("accountType", "GOOGLE");
         addParam("service", "reader");
-        addParam("source", "Sun-easyRSS-1.0");
+        addParam("source", "Sun-EasyRSS");
     }
 
     public void setPassword(final String password) {

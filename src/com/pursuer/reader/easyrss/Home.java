@@ -18,10 +18,12 @@ import com.pursuer.reader.easyrss.account.ReaderAccountMgr;
 import com.pursuer.reader.easyrss.data.DataMgr;
 import com.pursuer.reader.easyrss.data.DataUtils;
 import com.pursuer.reader.easyrss.data.GoogleAnalyticsMgr;
+import com.pursuer.reader.easyrss.data.Setting;
 import com.pursuer.reader.easyrss.data.readersetting.SettingSyncMethod;
 import com.pursuer.reader.easyrss.data.readersetting.SettingTheme;
 import com.pursuer.reader.easyrss.data.readersetting.SettingVolumeKeySwitching;
 import com.pursuer.reader.easyrss.network.NetworkUtils;
+import com.pursuer.reader.easyrss.network.url.AbsURL;
 import com.pursuer.reader.easyrss.view.AbsViewCtrl;
 import com.pursuer.reader.easyrss.view.HorizontalSwipeView;
 import com.pursuer.reader.easyrss.view.HorizontalSwipeViewListener;
@@ -159,6 +161,7 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
 
         Utils.initManagers(this);
         dataMgr = DataMgr.getInstance();
+        AbsURL.setServerUrl(dataMgr.getSettingByName(Setting.SETTING_SERVER_URL));
         googleAnalyticsMgr = GoogleAnalyticsMgr.getInstance();
         final SettingTheme settingTheme = new SettingTheme(dataMgr);
         if (settingTheme.getData() == SettingTheme.THEME_NORMAL) {

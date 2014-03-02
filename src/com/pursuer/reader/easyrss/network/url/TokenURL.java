@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class TokenURL extends AbsURL {
-    public static final String URL_API_TOKEN = URL_GOOGLE_READER_API + "/token";
+    public static final String URL_API_TOKEN = URL_API + "/token";
 
     public TokenURL(final boolean isHttpsConnection) {
         super(isHttpsConnection, true, false);
@@ -20,6 +20,6 @@ public class TokenURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_API_TOKEN;
+        return serverUrl + URL_API_TOKEN;
     }
 }

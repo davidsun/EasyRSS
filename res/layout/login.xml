@@ -21,13 +21,25 @@
             android:src="@+drawable/login_pic" />
 
         <EditText
-            android:id="@+id/TxtUsername"
+            android:id="@+id/TxtServerUrl"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dip"
             android:layout_marginRight="30dip"
             android:layout_marginTop="30dip"
-            android:hint="@string/TxtGoogleReaderAccount"
+            android:hint="@string/TxtServerUrl"
+            android:inputType="textUri"
+            android:orientation="horizontal">
+        </EditText>
+        
+        <EditText
+            android:id="@+id/TxtUsername"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="5dip"
+            android:hint="@string/TxtUsername"
             android:inputType="textEmailAddress" >
         </EditText>
 

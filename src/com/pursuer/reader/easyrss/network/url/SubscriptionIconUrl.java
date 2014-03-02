@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class SubscriptionIconUrl extends AbsURL {
-    final private static String URL_BASE = "s2.googleusercontent.com/s2/favicons";
+    final private static String URL_BASE = "www.google.com/s2/favicons";
 
     private String subscriptionUrl;
 

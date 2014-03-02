@@ -20,9 +20,10 @@ import org.apache.http.message.BasicNameValuePair;
 import android.net.Uri;
 
 public abstract class AbsURL {
-    protected static final String URL_GOOGLE_READER_BASE = "www.google.com/reader";
-    protected static final String URL_GOOGLE_READER_API = URL_GOOGLE_READER_BASE + "/api/0";
+    protected static final String URL_API = "/reader/api/0";
 
+    protected static String serverUrl = "";
+    
     protected static String appendParams(final String str, final String param) {
         if (str.length() == 0 || str.endsWith("&")) {
             return str + param;
@@ -98,7 +99,11 @@ public abstract class AbsURL {
     }
 
     public String getURL() {
-        return (isHttpsConnection ? "https://" : "http://") + getBaseURL();
+    	String baseUrl = getBaseURL();
+    	if (baseUrl.startsWith("http")) {
+    		return baseUrl;
+    	}
+        return (isHttpsConnection ? "https://" : "http://") + baseUrl;
     }
 
     public boolean isAuthNeeded() {
@@ -116,5 +121,9 @@ public abstract class AbsURL {
                 return;
             }
         }
+    }
+    
+    public static void setServerUrl(final String serverUrl) {
+        AbsURL.serverUrl = serverUrl;
     }
 }

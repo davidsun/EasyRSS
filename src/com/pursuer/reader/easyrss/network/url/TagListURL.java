@@ -12,7 +12,7 @@
 package com.pursuer.reader.easyrss.network.url;
 
 public class TagListURL extends AbsURL {
-    private static final String URL_TAG_LIST = URL_GOOGLE_READER_API + "/tag/list";
+    private static final String URL_TAG_LIST = URL_API + "/tag/list";
 
     public TagListURL(final boolean isHttpsConnection) {
         super(isHttpsConnection, true, true);
@@ -20,6 +20,6 @@ public class TagListURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return URL_TAG_LIST;
+        return serverUrl + URL_TAG_LIST;
     }
 }
