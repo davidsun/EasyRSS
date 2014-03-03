@@ -1,5 +1,6 @@
 EasyRSS is an Android client for RSS services compatible with Google Reader API.
-See http://easyrss.pursuer.me for more information.
+
+See http://easyrss.pursuer.me for more information about the original project.
 
 # Compatible RSS services
 * [FreshRSS](http://freshrss.org/) https://github.com/marienfressinaud/FreshRSS
