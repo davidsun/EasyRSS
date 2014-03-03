@@ -160,7 +160,7 @@ public class GlobalItemDataSyncer extends AbsDataSyncer implements DataSyncerLis
         long oldestTimestamp = (sSetting == null) ? (1L << 62L) : Long.valueOf(sSetting);
         long newNewestTimestamp = newestTimestamp;
         long newOldestTimestamp = (1L << 62L);
-        long lastTimestamp = (1L << 62L);
+        //long lastTimestamp = (1L << 62L);
         String continuation = null;
         do {
             notifyProgressChanged(context.getString(R.string.TxtSyncingAllItems), count, GLOBAL_ITEMS_LIMIT);
@@ -173,12 +173,13 @@ public class GlobalItemDataSyncer extends AbsDataSyncer implements DataSyncerLis
                 parser.parse(listener);
                 newOldestTimestamp = Math.min(newOldestTimestamp, listener.getOldestTimestamp());
                 newNewestTimestamp = Math.max(newNewestTimestamp, listener.getNewestTimestamp());
-                lastTimestamp = Math.min(lastTimestamp, listener.getOldestTimestamp());
+                //lastTimestamp = Math.min(lastTimestamp, listener.getOldestTimestamp());
                 continuation = listener.getContinuation();
                 final List<Item> items = listener.getItems();
                 dataMgr.addItems(items);
                 count += items.size();
-                if (newOldestTimestamp <= newestTimestamp || items.size() < limit) {
+                if (newOldestTimestamp <= newestTimestamp || items.size() < limit ||
+                    continuation == null || continuation.length() <= 0) {
                     break;
                 }
             } catch (final JsonParseException exception) {
