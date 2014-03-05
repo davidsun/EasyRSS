@@ -51,7 +51,7 @@ public class StreamContentsURL extends AbsURL {
 
     @Override
     public String getBaseURL() {
-        return appendURL(serverUrl + URL_STREAM_CONTENTS, Uri.encode(uid));
+        return appendURL(serverUrl + URL_STREAM_CONTENTS, Uri.encode(uid, "/"));
     }
 
     public String getContinuation() {

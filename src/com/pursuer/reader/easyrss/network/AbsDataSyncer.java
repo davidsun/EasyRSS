@@ -51,7 +51,7 @@ public abstract class AbsDataSyncer {
     final protected static int UNREAD_COUNT_LIMIT = 500;
     final protected static int GLOBAL_ITEMS_LIMIT = 300;
     final protected static int GLOBAL_ITEM_IDS_LIMIT = 600;
-    final protected static int ITEM_LIST_QUERY_LIMIT = 20;
+    final protected static int ITEM_LIST_QUERY_LIMIT = 50;
 
     public static final long TOKEN_EXPIRE_TIME = 2 * 60 * 1000;
 
