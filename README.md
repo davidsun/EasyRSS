@@ -6,6 +6,9 @@ See http://easyrss.pursuer.me for more information about the original project.
 * [FreshRSS](http://freshrss.org/) https://github.com/marienfressinaud/FreshRSS
  * `https://your.server.example/FreshRSS/p/api/greader.php`
 
+# Download
+* [APK available](https://github.com/Alkarex/EasyRSS/tree/master/Release)
+
 # Screenshots
 
 ![screenshot_2014-03-02-17-35-12](https://f.cloud.github.com/assets/1008324/2304613/dd61e240-a22a-11e3-87f3-518f3a8aabca.png)

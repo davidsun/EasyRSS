@@ -34,8 +34,8 @@
     <string name="TxtMarkingAllItemsAsRead">Marcando todos los artículos como leídos…</string>
     <string name="TxtClearingCache">Vaciando la caché…</string>
     <string name="TxtMarkingPreviousItemsAsRead">Marcando los artículos anteriores como leídos…</string>
-    <string name="TxtSettingsTitle">EasyRSS - Configuración</string>
-    <string name="TxtAboutTitle">EasyRSS - Acerca de</string>
+    <string name="TxtSettingsTitle">EasyRSS – Configuración</string>
+    <string name="TxtAboutTitle">EasyRSS – Acerca de</string>
     <string name="TxtSettings">Configuración</string>
     <string name="TxtAbout">Acerca de</string>
     <string name="TxtSendTo">Enviar a…</string>
@@ -88,7 +88,7 @@
 	<string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nComputer Science, Fudan University\nA Python and JavaScript lover\n\nBlog: pursuer.me/blog\nSobre mi: pursuer.me</string>
     <string name="TxtLastSync">Última sinc</string>
     <string name="TxtUnknown">Desconocido</string>
-    <string name="TxtSyncingSubscriptions">Sincronizando suscripciones …</string>
+    <string name="TxtSyncingSubscriptions">Sincronizando suscripciones…</string>
     <string name="TxtSyncingTags">Sincronizando etiquetas…</string>
     <string name="TxtSyncingAllItems">Sincronizando artículos…</string>
     <string name="TxtSyncingUnreadItems">Sincronizando artículos no leídos…</string>
@@ -106,13 +106,13 @@
     <string name="TxtRemoveStar">Eliminar como destacado</string>
     <string name="TxtMarkPreviousAsRead">Marcar el anterior como leído</string>
     <string name="TxtViaEasyRSS">a través de EasyRSS</string>
-    <string name="TxtUpdatingDB">Actualizando, por favor espere …</string>
+    <string name="TxtUpdatingDB">Actualizando, por favor espere…</string>
     <string name="TxtMobilizedPage">Página para móvil</string>
     <string name="TxtOriginalPage">Página original</string>
     <string name="TxtGenerateEasyRSSMobilizer">(Generado por EasyRSS Mobilizer)</string>
     <string name="TxtLessThanOneHourAgo">Hace menos de una hora</string>
-	<string name="TxtHoursAgo">horas antes</string>
-	<string name="TxtDaysAgo">días antes</string>
+	<string name="TxtHoursAgo">%d horas antes</string>
+	<string name="TxtDaysAgo">%d días antes</string>
     <string name="TxtUnableToLoadImage">No se puede cargar la imagen</string>
     <string name="TxtDontShowAgain">No mostrar este mensaje nunca más</string>
     <string name="TxtAccessMarkAllAsReadConfirmation">Puedes acceder a esta configuración a través de Configuración > Visualización > Confirmación al marcar todos los artículos como leídos.</string>

@@ -131,9 +131,9 @@ final public class Utils {
         if (delta < 60 * 60 * 1000) {
             return context.getString(R.string.TxtLessThanOneHourAgo);
         } else if (delta < 40 * 60 * 60 * 1000) {
-            return String.valueOf(delta / (60 * 60 * 1000) + 1) + " " + context.getString(R.string.TxtHoursAgo);
+            return context.getString(R.string.TxtHoursAgo, delta / (60 * 60 * 1000) + 1);
         } else {
-            return String.valueOf(delta / (24 * 60 * 60 * 1000) + 1) + " " + context.getString(R.string.TxtDaysAgo);
+            return context.getString(R.string.TxtDaysAgo, delta / (24 * 60 * 60 * 1000) + 1);
         }
     }
 

@@ -2,12 +2,12 @@
 <resources>
 
     <string-array name="SettingItemSync">
-        <item>Sincronización automática con WIFI</item>
+        <item>Sincronización automática con Wi-Fi</item>
         <item>Sincronización automática cuando la red esté disponible</item>
         <item>Desactivar la sincronización automática</item>
     </string-array>
     <string-array name="SettingImageFetching">
-        <item>Descargar imágenes con WIFI</item>
+        <item>Descargar imágenes con Wi-Fi</item>
         <item>Descargar imágenes cuando la red esté disponible</item>
         <item>No descargar imágenes</item>
     </string-array>
