@@ -1,15 +1,13 @@
-0.6.03 2014-03-07 by @Alkarex
+0.6.03 2014-03-07 by [@Alkarex](https://github.com/Alkarex)
 - Added French translation
 - Improved Danish translation
 
-0.6.02 2014-03-05 by @Alkarex
+0.6.02 2014-03-05 by [@Alkarex](https://github.com/Alkarex)
 - Avoid encoding slashes as `%2F` for better compatibility with [Apache](http://httpd.apache.org/docs/trunk/mod/core.html#allowencodedslashes) and IIS.
 - Minor bug corrections
 
-0.6.01 2014-03-01 by @Alkarex
-- Customizable URL for choosing an alternative RSS service compatible with Google Reader API
-	such as FreshRSS http://freshrss.org/
-	by Alexandre Alapetite http://alexandre.alapetite.fr
+0.6.01 2014-03-01 by [@Alkarex](https://github.com/Alkarex)
+- Customizable URL for choosing an alternative RSS service compatible with Google Reader API such as FreshRSS http://freshrss.org
 - Removed Google Analytics
 - Removed permissions GET_ACCOUNTS, USE_CREDENTIALS, MANAGE_ACCOUNTS, RECEIVE_BOOT_COMPLETED
 
