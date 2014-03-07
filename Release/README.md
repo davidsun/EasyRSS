@@ -1,4 +1,8 @@
-== Open source projects related ==
+== Related Open source projects ==
+
+FreshRSS
+- A free, self-hostable RSS aggregator, compatible with Google Reader API
+- https://github.com/marienfressinaud/FreshRSS
 
 LibAndroidHttp
 - cURL support for Android

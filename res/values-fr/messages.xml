@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="MsgLogging">Connexion…</string>
+	<string name="MsgLoginSucceeded">Connecté.</string>
+	<string name="MsgLoginFailed">La connexion a échoué ! Vérifier le nom d’utilisateur et mot de passe.</string>
+	<string name="MsgSyncOnNetwork">Auto-synchronisation quand le réseau est disponible.</string>
+	<string name="MsgSyncOnWifi">Auto-synchronisation par Wi-Fi.</string>
+	<string name="MsgSyncDisabled">Auto-synchronisation désactivée.</string>
+	<string name="MsgStarred">Ajouté aux favoris.</string>
+	<string name="MsgUnstarred">Supprimé des favoris.</string>
+	<string name="MsgNoteShared">Partagé avec un commentaire.</string>
+	<string name="MsgLoadingMoreItems">Veuillez patienter pendant le chargement d’articles supplémentaires…</string>
+	<string name="MsgAuthenticationSucceeded">Authentification réussie.</string>
+	<string name="MsgAuthenticationFailed">L’authentification a échoué !</string>
+	<string name="MsgCannotLaunchMarket">Google Play ne semble pas disponible sur votre appareil.</string>
+	<string name="MsgFailedToLoadContent">Le contenu de l’article n’a pas pu être chargé.</string>
+	<string name="MsgTickerTextNewItems">Articles mis à jour</string>
+	<string name="MsgTitleNewItems1">Articles mis à jour, avec</string>
+	<string name="MsgTitleNewItems2">articles non lus.</string>
+	<string name="MsgClickToView">Cliquer pour tous les voir…</string>
+	<string name="MsgCopiedToClipboard">Copié dans le presse-papier.</string>
+	<string name="MsgSavingImageTo">Sauve l’image dans</string>
+
+</resources>

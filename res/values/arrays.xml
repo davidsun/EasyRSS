@@ -2,12 +2,12 @@
 <resources>
 
     <string-array name="SettingItemSync">
-        <item>Auto sync on WIFI</item>
+        <item>Auto sync on Wi-Fi</item>
         <item>Auto sync when network is available</item>
         <item>Disable auto sync</item>
     </string-array>
     <string-array name="SettingImageFetching">
-        <item>Image fetching on WIFI</item>
+        <item>Image fetching on Wi-Fi</item>
         <item>Image fetching when network is available</item>
         <item>Disable image fetching</item>
     </string-array>
