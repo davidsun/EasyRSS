@@ -1,12 +1,21 @@
-0.6.01 2014-03-01
+0.6.03 2014-03-07 by @Alkarex
+- Added French translation
+- Improved Danish translation
+
+0.6.02 2014-03-05 by @Alkarex
+- Avoid encoding slashes as `%2F` for better compatibility with [Apache](http://httpd.apache.org/docs/trunk/mod/core.html#allowencodedslashes) and IIS.
+- Minor bug corrections
+
+0.6.01 2014-03-01 by @Alkarex
 - Customizable URL for choosing an alternative RSS service compatible with Google Reader API
 	such as FreshRSS http://freshrss.org/
 	by Alexandre Alapetite http://alexandre.alapetite.fr
 - Removed Google Analytics
 - Removed permissions GET_ACCOUNTS, USE_CREDENTIALS, MANAGE_ACCOUNTS, RECEIVE_BOOT_COMPLETED
 
-0.5.16
+0.5.16 Open Source
 - Disable GPU acceleration support on Android 4.1 devises (for it may cause native crash).
+- Added Danish translation
 
 0.5.15
 - Enabling GPU acceleration support on Android 4.1/4.2 devices.
