@@ -1,4 +1,4 @@
-== Related Open source projects ==
+# Related Open Source projects
 
 FreshRSS
 - A free, self-hostable RSS aggregator, compatible with Google Reader API
