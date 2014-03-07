@@ -1,6 +1,6 @@
 *EasyRSS* is an Android client for RSS services compatible with Google Reader API.
 
-It aims at providing the best user experience for users to read and manage their RSS items.
+It aims at providing the best user experience for users to read and manage their RSS feeds.
 
 # Features
 - Sync with RSS services compatible with Google Reader API
