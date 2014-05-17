@@ -24,3 +24,6 @@ It aims at providing the best user experience for users to read and manage their
 ![screenshot_2014-03-02-17-35-12](https://f.cloud.github.com/assets/1008324/2304613/dd61e240-a22a-11e3-87f3-518f3a8aabca.png)
 
 ![screenshot_2014-03-02-00-27-06](https://f.cloud.github.com/assets/1008324/2303004/6701c156-a199-11e3-95b4-dd1db8b17d82.png)
+
+# Reviews
+* (fr) [EasyRSS : L’application android opensource de la semaine | Wilfried Caruel](http://wilfriedcaruel.svnet.fr/2014/05/easyrss-lapplication-android-opensource-de-la-semaine/)
