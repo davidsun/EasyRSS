@@ -94,7 +94,7 @@
 	<string name="TxtSyncingUnreadItems">Synchronisation des articles non-lus…</string>
 	<string name="TxtSyncingItemContent">Synchronisation du contenu des articles…</string>
 	<string name="TxtSyncingItemStatus">Synchronisation du statut des articles…</string>
-	<string name="TxtLoadMoreItems">Charge plus d’articles</string>
+	<string name="TxtLoadMoreItems">Charger plus d’articles</string>
 	<string name="TxtLoading">Chargement</string>
 	<string name="TxtLoadingNow">Chargement…</string>
 	<string name="TxtWaitingForAuthentication">En attente d’authentification…</string>
