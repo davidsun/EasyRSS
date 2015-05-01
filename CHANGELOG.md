@@ -1,3 +1,6 @@
+0.6.04 2015-05-02 by [@Alkarex](https://github.com/Alkarex)
+- Added support for HTTPS TLSv1.1 and TLSv1.2 for Android 4.1+
+
 0.6.03 2014-03-07 by [@Alkarex](https://github.com/Alkarex)
 - Added French translation
 - Improved Danish translation

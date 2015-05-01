@@ -41,7 +41,6 @@
     <string name="TxtSendItemContentTo">へアイテムの内容を送信…</string>
     <string name="TxtHelp">ヘルプ</string>
     <string name="TxtLogout">ログアウト</string>
-    <string name="TxtShareWithNote">共有してノートをする</string>
     <string name="TxtSettingAutoSync">自動同期</string>
     <string name="TxtSettingAutoSyncIntro">この機能をオンにすれば、EasyRSSは特定なネットワーク環境で自動にGoogle Readerから新しいアイテムをダウロードして、同期します。</string>
     <string name="TxtSettingImageFetching">画像のロード</string>

@@ -6,7 +6,7 @@
 - Website: http://easyrss.pursuer.me
 
 ## Translations
-Spanish @teki207, Japanese [@Soyofuki](https://github.com/Soyofuki), Danish [@simongray](https://github.com/Alkarex) + [@Alkarex](https://github.com/Alkarex), French [@Alkarex](https://github.com/Alkarex)
+Spanish @teki207, Japanese [@Soyofuki](https://github.com/Soyofuki), Danish [@simongray](https://github.com/simongray) + [@Alkarex](https://github.com/Alkarex), French [@Alkarex](https://github.com/Alkarex)
 
 ## What’s new?
 See [changelog](https://github.com/Alkarex/EasyRSS/blob/master/CHANGELOG.md)
@@ -20,7 +20,7 @@ RSS, Google Reader, NewsRob, gReader
 
 FreshRSS
 - A free, self-hostable RSS aggregator, compatible with Google Reader API
-- https://github.com/marienfressinaud/FreshRSS
+- https://github.com/FreshRSS/FreshRSS
 
 LibAndroidHttp
 - cURL support for Android

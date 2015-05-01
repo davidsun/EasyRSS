@@ -16,7 +16,7 @@ It aims at providing the best user experience for users to read and manage their
 * [APK available](https://github.com/Alkarex/EasyRSS/tree/master/Release)
 
 # Compatible RSS services
-* [FreshRSS](http://freshrss.org/) https://github.com/marienfressinaud/FreshRSS
+* [FreshRSS](http://freshrss.org/) https://github.com/FreshRSS/FreshRSS
  * `https://your.server.example/FreshRSS/p/api/greader.php`
 
 # Screenshots

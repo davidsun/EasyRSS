@@ -16,7 +16,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.http.HttpStatus;
 
@@ -50,6 +55,8 @@ public class NetworkClient {
 
     private String auth;
 
+    SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCustom();
+
     private NetworkClient() {
         // TODO empty method
     }
@@ -67,10 +74,20 @@ public class NetworkClient {
         return ret;
     }
 
+    HttpURLConnection makeConnection(final String url) throws MalformedURLException, IOException {
+        final URLConnection urlConnection = new URL(url).openConnection();
+        final HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnection;
+        httpURLConnection.setConnectTimeout(40 * 1000);
+        httpURLConnection.setReadTimeout(30 * 1000);
+        if (url.toLowerCase().startsWith("https://")) {
+            final HttpsURLConnection httpsURLConnection = (HttpsURLConnection)httpURLConnection;
+            httpsURLConnection.setSSLSocketFactory(this.sslSocketFactory);
+        }
+        return httpURLConnection;
+    }
+
     public InputStream doGetStream(final String url) throws Exception {
-        final HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setConnectTimeout(40 * 1000);
-        conn.setReadTimeout(30 * 1000);
+        final HttpURLConnection conn = makeConnection(url);
         conn.setRequestMethod("GET");
         if (auth != null) {
             conn.setRequestProperty("Authorization", "GoogleLogin auth=" + auth);
@@ -106,9 +123,7 @@ public class NetworkClient {
     }
 
     public InputStream doPostStream(final String url, final String params) throws IOException, NetworkException {
-        final HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setConnectTimeout(40 * 1000);
-        conn.setReadTimeout(30 * 1000);
+    	final HttpURLConnection conn = makeConnection(url);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         if (auth != null) {
