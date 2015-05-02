@@ -75,8 +75,7 @@ public class NetworkClient {
     }
 
     HttpURLConnection makeConnection(final String url) throws MalformedURLException, IOException {
-        final URLConnection urlConnection = new URL(url).openConnection();
-        final HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnection;
+        final HttpURLConnection httpURLConnection = (HttpURLConnection)(new URL(url).openConnection());
         httpURLConnection.setConnectTimeout(40 * 1000);
         httpURLConnection.setReadTimeout(30 * 1000);
         if (url.toLowerCase().startsWith("https://")) {
