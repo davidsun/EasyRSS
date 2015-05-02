@@ -17,8 +17,8 @@ public class SSLSocketFactoryCustom extends SSLSocketFactory {
 	}
 
 	@Override
-	public Socket createSocket(Socket arg0, String arg1, int arg2, boolean arg3) throws IOException {
-		return this.sslSocketFactory.createSocket(arg0, arg1, arg2, arg3);
+	public Socket createSocket(Socket s, String host, int port, boolean autoClose) throws IOException {
+		return this.sslSocketFactory.createSocket(s, host, port, autoClose);
 	}
 
 	@Override
