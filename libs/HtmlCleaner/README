@@ -1,0 +1,13 @@
+HtmlCleaner is a project originally developed by Vladimir Nikic (http://htmlcleaner.sourceforge.net/).
+
+This version is modified by Zheng Sun.
+
+Briefly speaking, the modifications are
+
+* Added *final* keyword to variables if possible, to avoid memory leaks
+* Changed some methods for better performance
+* Add new class *FastHtmlSerializer* to output the HTML tree non-recursively, to avoid stack overflow (especially for Android)
+* Other minor changes 
+
+HtmlCleaner is used as HTML parser in EasyRSS (http://easyrss.pursuer.me/).
+Author: Zheng Sun (http://pursuer.me).
