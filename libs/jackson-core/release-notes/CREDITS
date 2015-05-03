@@ -1,0 +1,59 @@
+Here are people who have contributed to the development of Jackson JSON processor
+core component, version 2.x
+(version numbers in brackets indicate release in which the problem was fixed)
+
+(note: for older credits, check out release notes for 1.x versions)
+
+Tatu Saloranta, tatu.saloranta@iki.fi: author
+
+Pascal G�linas:
+  * Reported [JACKSON-827]: 2.0.0 was accidentally requiring JDK 1.6
+    (should still be 1.5)
+   (2.0.1)
+
+Ben Gertzfield (bgertzfield@github):
+  * Contributed [Issue#49]: Improvements to VersionUtil to more efficiently
+    read dynamically generated/embedded version information, to improve
+    Android startup time
+   (2.2.0)
+
+Klaus Brunner (KlausBrunner@github)
+  * Reported [Issue#48]: Problem with URLs, spaces
+
+Eugene Brevdo (ebrevdo@github)
+  * Contributed #84: Support 'Infinity' as alternative (no leading plus)
+   (2.2.3)
+
+Marcin Zukowski (eruure@github)
+  * Reported #115: JsonGenerator writeRawValue problem with surrogate UTF-8 characters
+   (2.3.0)
+
+Steve van Loben Sels
+  * Reported #116: WriterBasedJsonGenerator produces truncated Unicode escape sequences
+   (2.3.0)
+
+Shay Banon
+  * Reported #145: NPE at BytesToNameCanonicalizer
+   (2.4.2)
+
+rjmac@github
+  * Reported #146: Error while parsing negative floats at the end of the input buffer
+   (2.4.2)
+  * Reported #148: BytesToNameCanonicalizer can mishandle leading null byte(s).
+   (2.5.0)
+
+Alex Soto: (lordofthejars@github)
+  * Reported #173: An exception is thrown for a valid JsonPointer expression
+   (2.4.5)
+
+Aaron Digulla:
+  * Contributed #166: Allow to configure line endings and indentation
+   (2.5.0)
+
+Derek Clarkson (drekka@github)
+  * Reported #184: WRITE_NUMBERS_AS_STRINGS disables WRITE_BIGDECIMAL_AS_PLAIN
+   (2.4.6 / 2.5.2)
+
+Masaru Hasegawa (masaruh@github):
+  * Reported, contributed fix for#182: Inconsistent TextBuffer#getTextBuffer behavior
+   (2.6.0)

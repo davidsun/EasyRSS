@@ -1,3 +1,6 @@
+0.6.05 2015-05-03 by [@Alkarex](https://github.com/Alkarex)
+- Cleaned dependencies/libraries and replaced the remaining ones with their source code, for submission to F-Droid.
+
 0.6.04 2015-05-02 by [@Alkarex](https://github.com/Alkarex)
 - Added support for HTTPS TLSv1.1 and TLSv1.2 for Android 4.1+
 
