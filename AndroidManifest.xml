@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.freshrss.easyrss"
-    android:versionCode="101"
+    android:versionCode="606"
     android:versionName="@string/Version" >
 
     <uses-sdk
