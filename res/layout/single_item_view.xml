@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.pursuer.reader.easyrss.view.OverScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<org.freshrss.easyrss.view.OverScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ItemScrollView"
     style="?verticalScrollView"
     android:layout_width="fill_parent"
@@ -212,4 +212,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</com.pursuer.reader.easyrss.view.OverScrollView>
+</org.freshrss.easyrss.view.OverScrollView>

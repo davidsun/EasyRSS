@@ -79,8 +79,6 @@
     <string name="TxtCleaningDatabase">正在清理旧版本的数据库…</string>
     <string name="TxtRemovingOutdatedItems">正在移除过期的阅读条目…</string>
     <string name="TxtCurrentVersion">当前版本</string>
-    <string name="TxtRate">给这款应用评分</string>
-    <string name="TxtRateIntro">在 Android 市场上给这款应用评分。</string>
     <string name="TxtAboutEasyRSS">关于 EasyRSS (@EasyRSS)</string>
     <string name="TxtAboutEasyRSSIntro">EasyRSS 期望提供给每个使用 Android 手机的 Google Reader 用户最好的用户体验。EasyRSS的最大特点是保持了数据的同步——它能够在网络可用时下载阅读条目和其中的图片，以及同步每一条目的阅读状态，使用户能够在网络不可用时依然可以阅读他想要阅读的内容，并和 Google 的数据保持同步。\n\n网址：easyrss.pursuer.me\n邮箱：easyrssofficial@gmail.com</string>
     <string name="TxtAboutAuthor">关于作者</string>

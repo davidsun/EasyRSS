@@ -78,8 +78,6 @@
     <string name="TxtCleaningDatabase">古いバージョンのデータベースをクリアしています…</string>
     <string name="TxtRemovingOutdatedItems">古いアイテムをクリアしています…</string>
     <string name="TxtCurrentVersion">現在のバージョン</string>
-    <string name="TxtRate">レートします</string>
-    <string name="TxtRateIntro">マーケットでこのアプリをレートします。</string>
     <string name="TxtAboutEasyRSS">EasyRSSについて (@EasyRSS)</string>
     <string name="TxtAboutEasyRSSIntro">EasyRSSはアンドロイドユーザーに最高のGoogle Reader体験を提供することを目指しています。EasyRSSの利点はいつもデータ同期できること。利用可能のネットワークがあれば、アイテムと画像のダウロードと同期はできる。そしてネットワークがない時も観覧可能になります。\n\ウェブサイト：easyrss.pursuer.me\nメールアドレス：easyrssofficial@gmail.com</string>
     <string name="TxtAboutAuthor">作成者について</string>

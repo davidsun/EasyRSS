@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pursuer.reader.easyrss"
+    package="org.freshrss.easyrss"
     android:versionCode="101"
     android:versionName="@string/Version" >
 
@@ -24,7 +24,7 @@
         android:icon="@drawable/icon"
         android:label="@string/AppName" >
         <activity
-            android:name="com.pursuer.reader.easyrss.Home"
+            android:name="org.freshrss.easyrss.Home"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Normal"
@@ -36,20 +36,20 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.pursuer.reader.easyrss.BootReceiver" >
+        <receiver android:name="org.freshrss.easyrss.BootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.pursuer.reader.easyrss.SyncingReceiver" >
+        <receiver android:name="org.freshrss.easyrss.SyncingReceiver" >
             <intent-filter>
                 <action android:name="android.net.ConnectivityManager.CONNECTIVITY_ACTION" />
             </intent-filter>
         </receiver>
 
         <provider
-            android:name="com.pursuer.reader.easyrss.data.DataProvider"
-            android:authorities="com.pursuer.reader.easyrss.data"
+            android:name="org.freshrss.easyrss.data.DataProvider"
+            android:authorities="org.freshrss.easyrss.data"
             android:exported="false" />
     </application>
 
