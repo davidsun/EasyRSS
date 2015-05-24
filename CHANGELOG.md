@@ -1,3 +1,6 @@
+0.6.06 2015-05-24 by [@Alkarex](https://github.com/Alkarex)
+- Renamed package and namespace to org.freshrss.easyrss. More cleaning for F-Droid.
+
 0.6.05 2015-05-03 by [@Alkarex](https://github.com/Alkarex)
 - Cleaned dependencies/libraries and replaced the remaining ones with their source code, for submission to F-Droid.
 
