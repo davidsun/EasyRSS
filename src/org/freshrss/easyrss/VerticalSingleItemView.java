@@ -327,7 +327,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
         settings.setJavaScriptEnabled(true);
         settings.setDefaultFontSize(fontSize);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        settings.setRenderPriority(RenderPriority.LOW);
+        //settings.setRenderPriority(RenderPriority.LOW);
 
         final StringBuffer content = new StringBuffer();
         if (item.getState().isCached()) {

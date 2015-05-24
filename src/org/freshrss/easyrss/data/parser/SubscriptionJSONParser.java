@@ -40,7 +40,7 @@ public class SubscriptionJSONParser {
 
     public void parse() throws JsonParseException, IOException, IllegalStateException {
         final JsonFactory factory = new JsonFactory();
-        final JsonParser parser = factory.createJsonParser(input);
+        final JsonParser parser = factory.createParser(input);
         Subscription sub = new Subscription();
         int level = 0;
         boolean found = false;

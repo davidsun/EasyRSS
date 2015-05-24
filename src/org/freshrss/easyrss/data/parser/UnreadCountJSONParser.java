@@ -26,12 +26,12 @@ public class UnreadCountJSONParser {
 
     public UnreadCountJSONParser(final byte[] content) throws JsonParseException, IOException {
         final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createJsonParser(content);
+        this.parser = factory.createParser(content);
     }
 
     public UnreadCountJSONParser(final InputStream input) throws JsonParseException, IOException {
         final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createJsonParser(input);
+        this.parser = factory.createParser(input);
     }
 
     public void setListener(final OnUnreadCountRetrievedListener listener) {

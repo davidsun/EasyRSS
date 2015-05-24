@@ -26,12 +26,12 @@ public class ItemIdJSONParser {
 
     public ItemIdJSONParser(final byte[] input) throws JsonParseException, IOException {
         final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createJsonParser(input);
+        this.parser = factory.createParser(input);
     }
 
     public ItemIdJSONParser(final InputStream input) throws JsonParseException, IOException {
         final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createJsonParser(input);
+        this.parser = factory.createParser(input);
     }
 
     public OnItemIdRetrievedListener getListener() {

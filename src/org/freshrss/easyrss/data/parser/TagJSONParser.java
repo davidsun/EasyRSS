@@ -38,7 +38,7 @@ public class TagJSONParser {
 
     public void parse() throws JsonParseException, IOException, IllegalStateException {
         final JsonFactory factory = new JsonFactory();
-        final JsonParser parser = factory.createJsonParser(input);
+        final JsonParser parser = factory.createParser(input);
         Tag tag = new Tag();
         int level = 0;
         boolean found = false;
