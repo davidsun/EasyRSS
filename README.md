@@ -13,7 +13,7 @@ The recommended RSS back-end service is [FreshRSS](http://freshrss.org/).
 - Font size adjustment
 
 # Download
-* [APK available](./Release/)
+* [APK available](./releases/)
 * (Soon on [F-Droid](https://f-droid.org/))
 
 ## What’s new?
