@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.pursuer.reader.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<org.freshrss.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="?pageBackground"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -147,4 +147,4 @@
             android:background="@drawable/up_shadow" />
     </RelativeLayout>
 
-</com.pursuer.reader.easyrss.view.CachedLinearLayout>
+</org.freshrss.easyrss.view.CachedLinearLayout>

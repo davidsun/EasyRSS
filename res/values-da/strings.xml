@@ -74,8 +74,6 @@
     <string name="TxtSettingSyncIntervalIntro">Sæt intervallet mellem synkroniseringer (når AUTOSYNKRONISERING er slået til).</string>
     <string name="TxtThemeDark">Mørk</string>
     <string name="TxtThemeNormal">Standard</string>
-    <string name="TxtRate">Skriv en anmeldelse af denne app</string>
-    <string name="TxtRateIntro">Skriv en ameldelse af EasyRSS på Google Play Store</string>
     <string name="TxtCurrentVersion">Nuværende version</string>
     <string name="TxtNotCalculated">Ikke udregnet.</string>
     <string name="TxtButtonCalculation">∑</string>
@@ -84,7 +82,7 @@
     <string name="TxtRemovingOutdatedItems">Fjerner forældede emner…</string>
     <string name="TxtAboutEasyRSS">Om EasyRSS</string>
     <string name="TxtAboutEasyRSSIntro">EasyRSS giver dig den nemmeste adgang til din RSS-server, som er en let og elegant måde at få nyheder og meninger fra hele verden. EasyRSS’ bedste funktion er at den kan downloade Google Reader-emner når netværket er utilgængeligt og synkronisere læsetilstand af emner til serveren, samtidig med at den giver en behagelig måde for brugeren at få fat i de nyeste nyheder når netværket er utilgængeligt. \n\nHjemmeside: easyrss.pursuer.me\nEmail: easyrssofficial@gmail.com</string>
-    <string name="TxtAboutAuthor">Om hovedudvikleren</string>
+    <string name="TxtAboutAuthor">Om den oprindelige udvikler</string>
     <string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nDatalogi, Fudan Universitet\nEn Python og JavaScript-elsker\n\nBlog: pursuer.me/blog\nOm: pursuer.me</string>
     <string name="TxtLastSync">Sidste synkronisering</string>
     <string name="TxtUnknown">Ukendt</string>

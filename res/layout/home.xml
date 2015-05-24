@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.pursuer.reader.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<org.freshrss.easyrss.view.CachedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/HomeView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -120,7 +120,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1" >
 
-        <com.pursuer.reader.easyrss.view.HorizontalPager
+        <org.freshrss.easyrss.view.HorizontalPager
             android:id="@+id/HomeListPager"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
@@ -139,7 +139,7 @@
                 android:id="@+id/HomeListUnread"
                 layout="@layout/standard_list" >
             </include>
-        </com.pursuer.reader.easyrss.view.HorizontalPager>
+        </org.freshrss.easyrss.view.HorizontalPager>
 
         <View
             android:layout_width="fill_parent"
@@ -210,4 +210,4 @@
         </Button>
     </LinearLayout>
 
-</com.pursuer.reader.easyrss.view.CachedLinearLayout>
+</org.freshrss.easyrss.view.CachedLinearLayout>

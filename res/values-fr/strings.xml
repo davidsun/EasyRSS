@@ -75,8 +75,6 @@
 	<string name="TxtThemeDark">Sombre</string>
 	<string name="TxtThemeNormal">Défaut</string>
 	<string name="TxtRate">Noter EasyRSS</string>
-	<string name="TxtRateIntro">Noter EasyRSS sur Google Play</string>
-	<string name="TxtCurrentVersion">Version actuelle</string>
 	<string name="TxtNotCalculated">Non calculé.</string>
 	<string name="TxtButtonCalculation">∑</string>
 	<string name="TxtCalculating">Calcule…</string>
@@ -84,7 +82,7 @@
 	<string name="TxtRemovingOutdatedItems">Suppression des articles obsolètes…</string>
 	<string name="TxtAboutEasyRSS">À propos de EasyRSS</string>
 	<string name="TxtAboutEasyRSSIntro">EasyRSS est un client pour les services RSS (système de réception d’actualités) compatibles avec feu Google Reader, et qui permet la lecture des articles hors-ligne. \n\nWebsite: easyrss.pursuer.me\nEmail: easyrssofficial@gmail.com</string>
-	<string name="TxtAboutAuthor">À propos de l’auteur principal</string>
+	<string name="TxtAboutAuthor">À propos de l’auteur initial</string>
 	<string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nUniversité de Fudan\nAmateur de Python et de JavaScript\n\nBlog : pursuer.me/blog\nÀ propos : pursuer.me</string>
 	<string name="TxtLastSync">Dernière synchronisation </string>
 	<string name="TxtUnknown">Inconnue</string>
