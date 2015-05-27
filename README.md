@@ -14,7 +14,7 @@ The recommended RSS back-end service is [FreshRSS](http://freshrss.org/).
 
 # Download
 * [![f-droid-button_bigger](https://cloud.githubusercontent.com/assets/1008324/7830569/e744b9ae-044e-11e5-9009-ab3285d216ab.png)](https://f-droid.org/repository/browse/?fdid=org.freshrss.easyrss)
-* [APK available](./releases/)
+* [APK available](../../releases/)
 
 ## What’s new?
 See [changelog](./CHANGELOG.md)
