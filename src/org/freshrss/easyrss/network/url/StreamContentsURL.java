@@ -26,23 +26,6 @@ public class StreamContentsURL extends AbsURL {
     private int limit;
     private boolean isUnread;
 
-    public StreamContentsURL(final boolean isHttpsConnection, final String uid, final boolean isUnread) {
-        super(isHttpsConnection, true, true);
-        init(uid, null, 20, 0, isUnread);
-    }
-
-    public StreamContentsURL(final boolean isHttpsConnection, final String uid, final String continuation,
-            final boolean isUnread) {
-        super(isHttpsConnection, true, true);
-        init(uid, continuation, 20, 0, isUnread);
-    }
-
-    public StreamContentsURL(final boolean isHttpsConnection, final String uid, final String continuation,
-            final long newestItemTime, final boolean isUnread) {
-        super(isHttpsConnection, true, true);
-        init(uid, continuation, newestItemTime, 20, isUnread);
-    }
-
     public StreamContentsURL(final boolean isHttpsConnection, final String uid, final String continuation,
             final long newestItemTime, final int limit, final boolean isUnread) {
         super(isHttpsConnection, true, true);

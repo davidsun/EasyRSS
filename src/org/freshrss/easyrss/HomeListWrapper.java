@@ -132,10 +132,6 @@ class HomeListWrapper implements OnTagUpdatedListener, OnSubscriptionUpdatedList
         return type == HomeListWrapperType.TYPE_UNREAD;
     }
 
-    public void repaint() {
-        adapter.notifyDataSetChanged();
-    }
-
     public void setAdapterListener(final OnItemTouchListener itemTouchListener) {
         adapter.setListener(itemTouchListener);
     }
@@ -154,7 +150,7 @@ class HomeListWrapper implements OnTagUpdatedListener, OnSubscriptionUpdatedList
         return type != HomeListWrapperType.TYPE_STARRED;
     }
 
-    public void updateGlobalUnreadCount(final int unreadCount) {
+    private void updateGlobalUnreadCount(final int unreadCount) {
         adapter.updateItem(new ListItemSubTag("", view.getContext().getString(getFirstItemTitleResId()),
                 showNumber() ? unreadCount : 0, view.getResources(), getDefaultIconResId()));
     }

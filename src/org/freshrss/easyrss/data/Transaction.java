@@ -51,7 +51,7 @@ public class Transaction implements Entity {
         init(null, null, null, null);
     }
 
-    public Transaction(final long id, final String uid, final String content, final int type) {
+    private Transaction(final long id, final String uid, final String content, final int type) {
         init(id, uid, content, type);
     }
 

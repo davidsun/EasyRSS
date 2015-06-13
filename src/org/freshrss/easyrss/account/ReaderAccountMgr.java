@@ -70,8 +70,8 @@ public class ReaderAccountMgr implements NetworkListener {
         }
     };
 
-    public static final String ACCOUNT_TYPE = "com.google";
-    public static final String ACCOUNT_AUTH_TYPE = "reader";
+    private static final String ACCOUNT_TYPE = "com.google";
+    private static final String ACCOUNT_AUTH_TYPE = "reader";
 
     private static ReaderAccountMgr instance;
 

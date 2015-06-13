@@ -59,11 +59,6 @@ public class Setting implements Entity {
     public static final String SETTING_BROWSER_CHOICE = "browserChoice";
     public static final String SETTING_VOLUMN_KEY_SWITCHING = "volumnKeySwitching";
 
-    public static Setting fromCursor(final Cursor cur) {
-        return new Setting(Utils.getStringFromCursor(cur, Setting._NAME),
-                Utils.getStringFromCursor(cur, Setting._VALUE));
-    }
-
     private String name;
     private String value;
 

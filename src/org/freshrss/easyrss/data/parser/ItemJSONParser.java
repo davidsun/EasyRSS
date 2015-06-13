@@ -28,11 +28,6 @@ public class ItemJSONParser {
     final private JsonParser parser;
     private OnItemRetrievedListener listener;
 
-    public ItemJSONParser(final byte[] input) throws JsonParseException, IOException {
-        final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createParser(input);
-    }
-
     public ItemJSONParser(final InputStream input) throws JsonParseException, IOException {
         final JsonFactory factory = new JsonFactory();
         this.parser = factory.createParser(input);
@@ -42,7 +37,7 @@ public class ItemJSONParser {
         return listener;
     }
 
-    public void parse() throws JsonParseException, IOException {
+    private void parse() throws JsonParseException, IOException {
         Item item = new Item();
         int level = 0;
         boolean found = false;

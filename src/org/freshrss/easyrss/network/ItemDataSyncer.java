@@ -69,7 +69,7 @@ public class ItemDataSyncer extends AbsDataSyncer implements DataSyncerListener 
 
     private static Map<Pair<String, Boolean>, ItemDataSyncer> instances = new HashMap<Pair<String, Boolean>, ItemDataSyncer>();
 
-    public static void clearInstance(final ItemDataSyncer instance) {
+    private static void clearInstance(final ItemDataSyncer instance) {
         synchronized (instances) {
             instances.remove(Pair.create(instance.getUid(), instance.isUnread()));
         }

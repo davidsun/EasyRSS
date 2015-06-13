@@ -208,7 +208,7 @@ public class TouchImageView extends ImageView {
         setScale(scale, width / 2.0f, height / 2.0f);
     }
 
-    public void setScale(float scale, final float posX, final float posY) {
+    private void setScale(float scale, final float posX, final float posY) {
         if (scale > maxScale) {
             scale = maxScale;
         } else if (scale < minScale) {

@@ -21,10 +21,6 @@ public class ItemId implements Entity {
         init(null, null);
     }
 
-    public ItemId(final String uid, final long timestamp) {
-        init(uid, timestamp);
-    }
-
     @Override
     public void clear() {
         init(null, null);

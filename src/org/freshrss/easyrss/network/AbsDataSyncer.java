@@ -37,18 +37,9 @@ public abstract class AbsDataSyncer {
         public DataSyncerException(final String message) {
             super(message);
         }
-
-        public DataSyncerException(final String message, final Throwable cause) {
-            super(message, cause);
-        }
-
-        public DataSyncerException(final Throwable cause) {
-            super(cause);
-        }
     }
 
     final protected static int CONTENT_IO_BUFFER_SIZE = 16384;
-    final protected static int UNREAD_COUNT_LIMIT = 500;
     final protected static int GLOBAL_ITEMS_LIMIT = 300;
     final protected static int GLOBAL_ITEM_IDS_LIMIT = 600;
     final protected static int ITEM_LIST_QUERY_LIMIT = 50;
@@ -98,14 +89,6 @@ public abstract class AbsDataSyncer {
         }
     }
 
-    protected Reader httpGetQueryReader(final AbsURL url) throws DataSyncerException {
-        try {
-            return new InputStreamReader(httpGetQueryStream(url), HTTP.UTF_8);
-        } catch (final UnsupportedEncodingException e) {
-            throw new DataSyncerException(e);
-        }
-    }
-
     protected InputStream httpGetQueryStream(final AbsURL url) throws DataSyncerException {
         final NetworkClient client = NetworkClient.getInstance();
         if (url.isAuthNeeded()) {
@@ -150,7 +133,7 @@ public abstract class AbsDataSyncer {
         }
     }
 
-    protected InputStream httpPostQueryStream(final AbsURL url) throws DataSyncerException {
+    private InputStream httpPostQueryStream(final AbsURL url) throws DataSyncerException {
         final NetworkClient client = NetworkClient.getInstance();
         if (url.isAuthNeeded()) {
             final String auth = ReaderAccountMgr.getInstance().blockingGetAuth();
@@ -180,27 +163,6 @@ public abstract class AbsDataSyncer {
     protected void notifyProgressChanged(final String text, final int progress, final int maxProgress) {
         if (listener != null) {
             listener.onProgressChanged(text, progress, maxProgress);
-        }
-    }
-
-    protected String parseContent(final Reader in) throws DataSyncerException {
-        final StringBuilder builder = new StringBuilder();
-        try {
-            final char buff[] = new char[8192];
-            int len;
-            final BufferedReader reader = new BufferedReader(in, 8192);
-            while ((len = reader.read(buff, 0, buff.length)) != -1) {
-                builder.append(buff, 0, len);
-            }
-            return builder.toString();
-        } catch (IOException e) {
-            throw new DataSyncerException(e);
-        } finally {
-            try {
-                in.close();
-            } catch (final IOException exception) {
-                exception.printStackTrace();
-            }
         }
     }
 

@@ -24,7 +24,7 @@ public abstract class AbsURL {
 
     protected static String serverUrl = "";
     
-    protected static String appendParams(final String str, final String param) {
+    private static String appendParams(final String str, final String param) {
         if (str.length() == 0 || str.endsWith("&")) {
             return str + param;
         } else {
@@ -55,7 +55,7 @@ public abstract class AbsURL {
     final private boolean isListQuery;
     final private boolean isHttpsConnection;
 
-    public AbsURL(final boolean isHttpsConnection, final boolean authNeeded, final boolean isListQuery) {
+    AbsURL(final boolean isHttpsConnection, final boolean authNeeded, final boolean isListQuery) {
         this.params = new ArrayList<NameValuePair>();
         this.authNeeded = authNeeded;
         this.isListQuery = isListQuery;
@@ -63,10 +63,6 @@ public abstract class AbsURL {
     }
 
     protected void addParam(final String key, final int value) {
-        addParam(key, String.valueOf(value));
-    }
-
-    protected void addParam(final String key, final long value) {
         addParam(key, String.valueOf(value));
     }
 

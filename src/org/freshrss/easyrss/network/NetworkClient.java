@@ -31,16 +31,8 @@ public class NetworkClient {
     public class NetworkException extends Exception {
         private static final long serialVersionUID = 1L;
 
-        public NetworkException(final String message) {
+        private NetworkException(final String message) {
             super(message);
-        }
-
-        public NetworkException(final String message, final Throwable cause) {
-            super(message, cause);
-        }
-
-        public NetworkException(final Throwable cause) {
-            super(cause);
         }
     }
 
@@ -55,7 +47,7 @@ public class NetworkClient {
 
     private String auth;
 
-    SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCustom();
+    private SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCustom();
 
     private NetworkClient() {
         // TODO empty method
@@ -74,7 +66,7 @@ public class NetworkClient {
         return ret;
     }
 
-    HttpURLConnection makeConnection(final String url) throws MalformedURLException, IOException {
+    private HttpURLConnection makeConnection(final String url) throws MalformedURLException, IOException {
         final HttpURLConnection httpURLConnection = (HttpURLConnection)(new URL(url).openConnection());
         httpURLConnection.setConnectTimeout(40 * 1000);
         httpURLConnection.setReadTimeout(30 * 1000);

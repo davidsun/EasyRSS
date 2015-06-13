@@ -35,9 +35,9 @@ public class Item implements Entity {
     public static final String _TIMESTAMP = "timestamp";
     public static final String _UPDATETIME = "updateTime";
 
-    public static final String[] OWN_COLUMNS = { _UID, _AUTHOR, _HREF, _SOURCEURI, _SOURCETITLE, _TITLE, _TIMESTAMP,
+    private static final String[] OWN_COLUMNS = { _UID, _AUTHOR, _HREF, _SOURCEURI, _SOURCETITLE, _TITLE, _TIMESTAMP,
             _UPDATETIME };
-    public static final String[] OWN_COLUMNS_TYPE = { "TEXT PRIMARY KEY", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT",
+    private static final String[] OWN_COLUMNS_TYPE = { "TEXT PRIMARY KEY", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT",
             "INTEGER", "INTEGER" };
     public static final String[] COLUMNS = Utils.arrayMerge(OWN_COLUMNS, ItemState.OWN_COLUMNS);
     public static final String[] COLUMNS_TYPE = Utils.arrayMerge(OWN_COLUMNS_TYPE, ItemState.OWN_COLUMN_TYPE);
@@ -46,7 +46,7 @@ public class Item implements Entity {
             { _SOURCEURI, ItemState._ISREAD }, { _SOURCEURI, ItemState._ISSTARRED }, { _TIMESTAMP },
             { _TIMESTAMP, ItemState._ISREAD }, { _TIMESTAMP, ItemState._ISSTARRED } };
 
-    public static final String UID_PREFIX = "tag:google.com,2005:reader/item/";
+    private static final String UID_PREFIX = "tag:google.com,2005:reader/item/";
 
     public static Item fromCursor(final Cursor cur) {
         final ItemState state = ItemState.fromCursor(cur);
@@ -80,13 +80,7 @@ public class Item implements Entity {
         init(null, null, null, null, null, null, null, null, null, null, null);
     }
 
-    public Item(final String author, final String uid, final String href, final String sourceUri,
-            final String sourceTitle, final String title, final List<String> tags, final long updateTime,
-            final long timestamp, final ItemState state) {
-        init(author, uid, null, href, sourceUri, sourceTitle, title, tags, updateTime, timestamp, state);
-    }
-
-    public Item(final String author, final String uid, final String href, final String sourceUri,
+    private Item(final String author, final String uid, final String href, final String sourceUri,
             final String sourceTitle, final String title, final long updateTime, final long timestamp,
             final ItemState state) {
         init(author, uid, null, href, sourceUri, sourceTitle, title, null, updateTime, timestamp, state);

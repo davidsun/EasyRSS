@@ -74,17 +74,10 @@ public class Scroller {
     }
 
     /**
-     * Create a Scroller with the default duration and interpolator.
-     */
-    public Scroller(Context context) {
-        this(context, null);
-    }
-
-    /**
      * Create a Scroller with the specified interpolator. If the interpolator is
      * null, the default (viscous) interpolator will be used.
      */
-    public Scroller(Context context, Interpolator interpolator) {
+    private Scroller(Context context, Interpolator interpolator) {
         mFinished = true;
         mInterpolator = interpolator;
         final float ppi = context.getResources().getDisplayMetrics().density * 160.0f;
@@ -102,16 +95,6 @@ public class Scroller {
      */
     public final boolean isFinished() {
         return mFinished;
-    }
-
-    /**
-     * Force the finished field to a particular value.
-     * 
-     * @param finished
-     *            The new finished value.
-     */
-    public final void forceFinished(boolean finished) {
-        mFinished = finished;
     }
 
     /**
@@ -188,83 +171,6 @@ public class Scroller {
     }
 
     /**
-     * Call this when you want to know the new location. If it returns true, the
-     * animation is not yet finished. loc will be altered to provide the new
-     * location.
-     */
-    public boolean computeScrollOffset() {
-        if (mFinished) {
-            return false;
-        }
-
-        final int timePassed = (int) (AnimationUtils.currentAnimationTimeMillis() - mStartTime);
-
-        if (timePassed < mDuration) {
-            switch (mMode) {
-            case SCROLL_MODE:
-                float x = (float) timePassed * mDurationReciprocal;
-
-                if (mInterpolator == null) {
-                    x = viscousFluid(x);
-                } else {
-                    x = mInterpolator.getInterpolation(x);
-                }
-
-                mCurrX = mStartX + Math.round(x * mDeltaX);
-                mCurrY = mStartY + Math.round(x * mDeltaY);
-                break;
-            case FLING_MODE:
-                final float timePassedSeconds = timePassed / 1000.0f;
-                final float distance = (mVelocity * timePassedSeconds)
-                        - (mDeceleration * timePassedSeconds * timePassedSeconds / 2.0f);
-
-                mCurrX = mStartX + Math.round(distance * mCoeffX);
-                // Pin to mMinX <= mCurrX <= mMaxX
-                mCurrX = Math.min(mCurrX, mMaxX);
-                mCurrX = Math.max(mCurrX, mMinX);
-
-                mCurrY = mStartY + Math.round(distance * mCoeffY);
-                // Pin to mMinY <= mCurrY <= mMaxY
-                mCurrY = Math.min(mCurrY, mMaxY);
-                mCurrY = Math.max(mCurrY, mMinY);
-
-                if (mCurrX == mFinalX && mCurrY == mFinalY) {
-                    mFinished = true;
-                }
-
-                break;
-            }
-        } else {
-            mCurrX = mFinalX;
-            mCurrY = mFinalY;
-            mFinished = true;
-        }
-        return true;
-    }
-
-    /**
-     * Start scrolling by providing a starting point and the distance to travel.
-     * The scroll will use the default value of 250 milliseconds for the
-     * duration.
-     * 
-     * @param startX
-     *            Starting horizontal scroll offset in pixels. Positive numbers
-     *            will scroll the content to the left.
-     * @param startY
-     *            Starting vertical scroll offset in pixels. Positive numbers
-     *            will scroll the content up.
-     * @param dx
-     *            Horizontal distance to travel. Positive numbers will scroll
-     *            the content to the left.
-     * @param dy
-     *            Vertical distance to travel. Positive numbers will scroll the
-     *            content up.
-     */
-    public void startScroll(int startX, int startY, int dx, int dy) {
-        startScroll(startX, startY, dx, dy, DEFAULT_DURATION);
-    }
-
-    /**
      * Start scrolling by providing a starting point and the distance to travel.
      * 
      * @param startX
@@ -282,7 +188,7 @@ public class Scroller {
      * @param duration
      *            Duration of the scroll in milliseconds.
      */
-    public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+    private void startScroll(int startX, int startY, int dx, int dy, int duration) {
         mMode = SCROLL_MODE;
         mFinished = false;
         mDuration = duration;
@@ -294,63 +200,6 @@ public class Scroller {
         mDeltaX = dx;
         mDeltaY = dy;
         mDurationReciprocal = 1.0f / (float) mDuration;
-    }
-
-    /**
-     * Start scrolling based on a fling gesture. The distance travelled will
-     * depend on the initial velocity of the fling.
-     * 
-     * @param startX
-     *            Starting point of the scroll (X)
-     * @param startY
-     *            Starting point of the scroll (Y)
-     * @param velocityX
-     *            Initial velocity of the fling (X) measured in pixels per
-     *            second.
-     * @param velocityY
-     *            Initial velocity of the fling (Y) measured in pixels per
-     *            second
-     * @param minX
-     *            Minimum X value. The scroller will not scroll past this point.
-     * @param maxX
-     *            Maximum X value. The scroller will not scroll past this point.
-     * @param minY
-     *            Minimum Y value. The scroller will not scroll past this point.
-     * @param maxY
-     *            Maximum Y value. The scroller will not scroll past this point.
-     */
-    public void fling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY, int maxY) {
-        mMode = FLING_MODE;
-        mFinished = false;
-
-        final float velocity = (float) Math.hypot(velocityX, velocityY);
-
-        mVelocity = velocity;
-        mDuration = (int) (1000 * velocity / mDeceleration); // Duration is in
-        // milliseconds
-        mStartTime = AnimationUtils.currentAnimationTimeMillis();
-        mStartX = startX;
-        mStartY = startY;
-
-        mCoeffX = velocity == 0 ? 1.0f : velocityX / velocity;
-        mCoeffY = velocity == 0 ? 1.0f : velocityY / velocity;
-
-        final int totalDistance = (int) ((velocity * velocity) / (2 * mDeceleration));
-
-        mMinX = minX;
-        mMaxX = maxX;
-        mMinY = minY;
-        mMaxY = maxY;
-
-        mFinalX = startX + Math.round(totalDistance * mCoeffX);
-        // Pin to mMinX <= mFinalX <= mMaxX
-        mFinalX = Math.min(mFinalX, mMaxX);
-        mFinalX = Math.max(mFinalX, mMinX);
-
-        mFinalY = startY + Math.round(totalDistance * mCoeffY);
-        // Pin to mMinY <= mFinalY <= mMaxY
-        mFinalY = Math.min(mFinalY, mMaxY);
-        mFinalY = Math.max(mFinalY, mMinY);
     }
 
     static float viscousFluid(float x) {
@@ -367,41 +216,11 @@ public class Scroller {
     }
 
     /**
-     * Stops the animation. Contrary to {@link #forceFinished(boolean)},
-     * aborting the animating cause the scroller to move to the final x and y
-     * position
-     * 
-     * @see #forceFinished(boolean)
-     */
-    public void abortAnimation() {
-        mCurrX = mFinalX;
-        mCurrY = mFinalY;
-        mFinished = true;
-    }
-
-    /**
-     * Extend the scroll animation. This allows a running animation to scroll
-     * further and longer, when used with {@link #setFinalX(int)} or
-     * {@link #setFinalY(int)}.
-     * 
-     * @param extend
-     *            Additional time to scroll in milliseconds.
-     * @see #setFinalX(int)
-     * @see #setFinalY(int)
-     */
-    public void extendDuration(int extend) {
-        final int passed = timePassed();
-        mDuration = passed + extend;
-        mDurationReciprocal = 1.0f / (float) mDuration;
-        mFinished = false;
-    }
-
-    /**
      * Returns the time elapsed since the beginning of the scrolling.
      * 
      * @return The elapsed time in milliseconds.
      */
-    public int timePassed() {
+    private int timePassed() {
         return (int) (AnimationUtils.currentAnimationTimeMillis() - mStartTime);
     }
 

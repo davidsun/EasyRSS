@@ -38,7 +38,7 @@ public class ItemState implements Entity {
         init(null, null, null);
     }
 
-    public ItemState(final boolean isCached, final boolean isRead, final boolean isStarred) {
+    private ItemState(final boolean isCached, final boolean isRead, final boolean isStarred) {
         init(isCached, isRead, isStarred);
     }
 

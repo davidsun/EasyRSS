@@ -77,7 +77,7 @@ public class TransactionDataSyncer extends AbsDataSyncer {
         }
     }
 
-    final static int SYNCING_THREAD_COUNT = 5;
+    private final static int SYNCING_THREAD_COUNT = 5;
 
     final private List<Transaction> transactions;
     private int progress;

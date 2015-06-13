@@ -8,9 +8,9 @@ import java.net.UnknownHostException;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
-public class SSLSocketFactoryCustom extends SSLSocketFactory {
+class SSLSocketFactoryCustom extends SSLSocketFactory {
 
-	final SSLSocketFactory sslSocketFactory;
+	private final SSLSocketFactory sslSocketFactory;
 	
 	public SSLSocketFactoryCustom() {
 		this.sslSocketFactory = (SSLSocketFactory)SSLSocketFactory.getDefault();

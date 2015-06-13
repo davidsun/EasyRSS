@@ -15,11 +15,11 @@ import org.freshrss.easyrss.data.DataMgr;
 import org.freshrss.easyrss.data.Setting;
 
 public class SettingSyncInterval extends AbsSetting<Integer> {
-    public static final int SYNC_INTERVAL_ONE_HOUR = 0;
-    public static final int SYNC_INTERVAL_TWO_HOURS = 1;
-    public static final int SYNC_INTERVAL_THREE_HOURS = 2;
-    public static final int SYNC_INTERVAL_FOUR_HOURS = 3;
-    public static final int SYNC_INTERVAL_SIX_HOURS = 4;
+    private static final int SYNC_INTERVAL_ONE_HOUR = 0;
+    private static final int SYNC_INTERVAL_TWO_HOURS = 1;
+    private static final int SYNC_INTERVAL_THREE_HOURS = 2;
+    private static final int SYNC_INTERVAL_FOUR_HOURS = 3;
+    private static final int SYNC_INTERVAL_SIX_HOURS = 4;
 
     private static Integer value;
 

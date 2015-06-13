@@ -11,10 +11,7 @@
 
 package org.freshrss.easyrss.data;
 
-import org.freshrss.easyrss.Utils;
-
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.net.Uri;
 
 public class SubscriptionTag implements Entity {
@@ -28,11 +25,6 @@ public class SubscriptionTag implements Entity {
     public static final String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + _SUBSCRIPTIONUID
             + " TEXT," + _TAGUID + " TEXT, PRIMARY KEY (" + _SUBSCRIPTIONUID + "," + _TAGUID + "))";
     public static final String[][] INDEX_COLUMNS = { { _SUBSCRIPTIONUID }, { _TAGUID } };
-
-    public static SubscriptionTag fromCursor(final Cursor cur) {
-        return new SubscriptionTag(Utils.getStringFromCursor(cur, SubscriptionTag._SUBSCRIPTIONUID),
-                Utils.getStringFromCursor(cur, SubscriptionTag._TAGUID));
-    }
 
     private String subscriptionUid;
     private String tagUid;

@@ -14,7 +14,6 @@ package org.freshrss.easyrss.listadapter;
 import android.view.View;
 
 public abstract class AbsListAdapterInflater {
-    static public final int MSG_SETTING_FONT_SIZE_UPDATED = 0;
 
     protected int fontSize;
 
@@ -24,10 +23,6 @@ public abstract class AbsListAdapterInflater {
 
     public int getFontSize() {
         return fontSize;
-    }
-
-    public View inflate(final View view, final AbsListItem obj) {
-        return inflateObject(view, obj);
     }
 
     abstract protected View inflateObject(View view, AbsListItem obj);

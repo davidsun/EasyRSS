@@ -12,7 +12,7 @@
 package org.freshrss.easyrss.network.url;
 
 public class TokenURL extends AbsURL {
-    public static final String URL_API_TOKEN = URL_API + "/token";
+    private static final String URL_API_TOKEN = URL_API + "/token";
 
     public TokenURL(final boolean isHttpsConnection) {
         super(isHttpsConnection, true, false);

@@ -82,25 +82,8 @@ public class PopupMenu extends PopupWindow {
         itemView.put(id, container);
     }
 
-    public void clearItems() {
-        viewGroup.removeAllViews();
-        viewGroup.invalidate();
-        itemView.clear();
-    }
-
     public PopupMenuListener getListener() {
         return listener;
-    }
-
-    public void removeItem(final int id) {
-        final View view = itemView.get(id);
-        if (view == null) {
-            return;
-        }
-        view.setOnClickListener(null);
-        viewGroup.removeView(view);
-        viewGroup.measure(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        itemView.remove(id);
     }
 
     public void setListener(final PopupMenuListener listener) {

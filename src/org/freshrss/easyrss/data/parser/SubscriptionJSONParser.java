@@ -38,7 +38,7 @@ public class SubscriptionJSONParser {
         this.listener = listener;
     }
 
-    public void parse() throws JsonParseException, IOException, IllegalStateException {
+    private void parse() throws JsonParseException, IOException, IllegalStateException {
         final JsonFactory factory = new JsonFactory();
         final JsonParser parser = factory.createParser(input);
         Subscription sub = new Subscription();

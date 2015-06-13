@@ -14,7 +14,6 @@ package org.freshrss.easyrss;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
-import org.freshrss.easyrss.R;
 import org.freshrss.easyrss.HomeListWrapper.HomeListWrapperType;
 import org.freshrss.easyrss.data.DataMgr;
 import org.freshrss.easyrss.data.DataUtils;
@@ -49,9 +48,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 

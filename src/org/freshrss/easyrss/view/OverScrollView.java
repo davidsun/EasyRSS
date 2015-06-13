@@ -85,7 +85,7 @@ public class OverScrollView extends FrameLayout {
         return getChildAt(0).getMeasuredHeight() - topScrollMargin - bottomScrollMargin;
     }
 
-    public void fling(final int velocityY) {
+    private void fling(final int velocityY) {
         scroller.fling(getScrollX(), getScrollY(), 0, velocityY, 0, 0, getMinScrollY(), getMaxScrollY(), 0,
                 Math.min(topScrollMargin, bottomScrollMargin) - 1);
         invalidate();

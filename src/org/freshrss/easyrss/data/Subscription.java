@@ -45,7 +45,7 @@ public class Subscription implements Entity {
 
     public static Subscription fromCursor(final Cursor cur) {
         return new Subscription(Utils.getStringFromCursor(cur, _UID), Utils.getStringFromCursor(cur, _URL),
-                Utils.getStringFromCursor(cur, _TITLE), Utils.getBolbFromCursor(cur, _ICON), Utils.getIntFromCursor(
+                Utils.getStringFromCursor(cur, _TITLE), Utils.getBlobFromCursor(cur, _ICON), Utils.getIntFromCursor(
                         cur, _UNREADCOUNT), Utils.getLongFromCursor(cur, _UPDATETIME), Utils.getStringFromCursor(cur,
                         _SORTID), Utils.getLongFromCursor(cur, _FIRSTITEMMSEC));
     }
@@ -64,15 +64,9 @@ public class Subscription implements Entity {
         init(null, null, null, null, null, null, null, null, null);
     }
 
-    public Subscription(final String uid, final String url, final String title, final byte[] icon,
+    private Subscription(final String uid, final String url, final String title, final byte[] icon,
             final int unreadCount, final long updateTime, final String sortId, final long firstItemMsec) {
         initFromByteArray(uid, url, title, icon, null, unreadCount, updateTime, sortId, firstItemMsec);
-    }
-
-    public Subscription(final String uid, final String url, final String title, final byte[] icon,
-            final List<String> tags, final int unreadCount, final long updateTime, final String sortId,
-            final long firstItemMsec) {
-        initFromByteArray(uid, url, title, icon, tags, unreadCount, updateTime, sortId, firstItemMsec);
     }
 
     public void addTag(final String tag) {

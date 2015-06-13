@@ -97,33 +97,7 @@ final public class DataMgr {
         dbOpenHelper = DBOpenHelper.getInstance();
     }
 
-    public void addItem(final Item item) {
-        final ContentResolver resolver = context.getContentResolver();
-        final Cursor cur = resolver.query(Item.CONTENT_URI, new String[] { Item._UID }, Item._UID + "=?",
-                new String[] { item.getUid() }, null);
-        if (cur.getCount() == 0) {
-            resolver.insert(Item.CONTENT_URI, item.toContentValues());
-        } else {
-            resolver.update(Item.CONTENT_URI, item.toUpdateContentValues(), Item._UID + "=?",
-                    new String[] { item.getUid() });
-        }
-        cur.close();
-
-        resolver.delete(ItemTag.CONTENT_URI, ItemTag._ITEMUID + "=?", new String[] { item.getUid() });
-        final ItemTag itemTag = new ItemTag();
-        itemTag.setItemUid(item.getUid());
-        for (final String tag : item.getTags()) {
-            itemTag.setTagUid(tag);
-            resolver.insert(ItemTag.CONTENT_URI, itemTag.toContentValues());
-        }
-        notifyItemUpdated(item);
-    }
-
     public void addItems(final List<Item> items) {
-        addItems(items, null);
-    }
-
-    public void addItems(final List<Item> items, Long lastTimestamp) {
         final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.beginTransaction();
         try {
@@ -204,20 +178,6 @@ final public class DataMgr {
         }
     }
 
-    public void addSubscription(final Subscription sub) {
-        final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        database.beginTransaction();
-        try {
-            addSubscription(database, sub);
-            database.setTransactionSuccessful();
-        } catch (final Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            database.endTransaction();
-        }
-        notifySubscriptionUpdated(sub);
-    }
-
     public void addSubscriptions(final List<Subscription> subs) {
         final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.beginTransaction();
@@ -236,7 +196,7 @@ final public class DataMgr {
         }
     }
 
-    public void addTag(final SQLiteDatabase database, final Tag tag) throws Exception {
+    private void addTag(final SQLiteDatabase database, final Tag tag) throws Exception {
         final Cursor cur = database.query(Tag.TABLE_NAME, new String[] { Tag._UID, Tag._UNREADCOUNT }, Tag._UID + "=?",
                 new String[] { tag.getUid() }, null, null, null);
         if (cur.getCount() == 0) {
@@ -247,20 +207,6 @@ final public class DataMgr {
             tag.setUnreadCount(cur.getInt(1));
         }
         cur.close();
-    }
-
-    public void addTag(final Tag tag) {
-        final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        database.beginTransaction();
-        try {
-            addTag(tag);
-            database.setTransactionSuccessful();
-        } catch (final Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            database.endTransaction();
-        }
-        notifyTagUpdated(tag);
     }
 
     public void addTags(final List<Tag> tags) {
@@ -299,31 +245,6 @@ final public class DataMgr {
         return ret;
     }
 
-    public int calcUnreadItemsCountByUid(final String uid) {
-        final ContentResolver resolver = context.getContentResolver();
-        int ret = 0;
-        if (uid.startsWith("feed/")) {
-            final Cursor cur = resolver.query(Item.CONTENT_URI, new String[] { "count(*)" }, ItemState._ISREAD
-                    + "=0 AND " + Item._SOURCEURI + "=?", new String[] { uid }, null);
-            ret = (cur.moveToFirst()) ? cur.getInt(0) : 0;
-            cur.close();
-        } else if (uid.indexOf("/label/") != -1) {
-            Cursor cur;
-            try {
-                cur = resolver.query(
-                        Uri.withAppendedPath(Tag.CONTENT_URI, "/items/" + URLEncoder.encode(uid, "UTF-8")),
-                        new String[] { "count(*)" }, ItemState._ISREAD + "=0", new String[] {}, null);
-                ret = (cur.moveToFirst()) ? cur.getInt(0) : 0;
-                cur.close();
-            } catch (final UnsupportedEncodingException exception) {
-                exception.printStackTrace();
-            }
-        } else if (uid.endsWith("/state/com.google/reading-list")) {
-            ret = calcGlobalUnreadItemCount();
-        }
-        return ret;
-    }
-
     public void clearAll() {
         clearItems();
         final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
@@ -333,7 +254,7 @@ final public class DataMgr {
         database.execSQL("DELETE FROM " + Setting.TABLE_NAME);
     }
 
-    public void clearItems() {
+    private void clearItems() {
         final SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.execSQL("DELETE FROM " + Item.TABLE_NAME);
         database.execSQL("DELETE FROM " + ItemTag.TABLE_NAME);
@@ -360,11 +281,7 @@ final public class DataMgr {
         return ret;
     }
 
-    public List<Tag> getItemTagsByUid(final String uid) {
-        return getItemTagsByUid(uid, null);
-    }
-
-    public List<Tag> getItemTagsByUid(final String uid, final String[] projection) {
+    private List<Tag> getItemTagsByUid(final String uid, final String[] projection) {
         final List<Tag> ret = new ArrayList<Tag>();
         final ContentResolver resolver = context.getContentResolver();
         try {
@@ -393,7 +310,7 @@ final public class DataMgr {
         return getSubscriptionByUid(uid, null);
     }
 
-    public Subscription getSubscriptionByUid(final String uid, final String[] projection) {
+    private Subscription getSubscriptionByUid(final String uid, final String[] projection) {
         final ContentResolver resolver = context.getContentResolver();
         final Cursor cur = resolver.query(Subscription.CONTENT_URI, projection, Subscription._UID + "=?",
                 new String[] { uid }, null);
@@ -402,29 +319,15 @@ final public class DataMgr {
         return ret;
     }
 
-    public Tag getTagByUid(final String uid) {
+    private Tag getTagByUid(final String uid) {
         return getTagByUid(uid, null);
     }
 
-    public Tag getTagByUid(final String uid, final String[] projection) {
+    private Tag getTagByUid(final String uid, final String[] projection) {
         final ContentResolver resolver = context.getContentResolver();
         final Cursor cur = resolver.query(Tag.CONTENT_URI, projection, Tag._UID + "=?", new String[] { uid }, null);
         final Tag ret = (cur.moveToFirst()) ? Tag.fromCursor(cur) : null;
         cur.close();
-        return ret;
-    }
-
-    public int getUnreadCountByUid(final String uid) {
-        int ret = 0;
-        if (uid.startsWith("feed/")) {
-            final Subscription sub = getSubscriptionByUid(uid);
-            ret = (sub == null) ? 0 : sub.getUnreadCount();
-        } else if (uid.indexOf("/label/") != -1) {
-            final Tag tag = getTagByUid(uid);
-            ret = (tag == null) ? 0 : tag.getUnreadCount();
-        } else if (uid.endsWith("/state/com.google/reading-list")) {
-            ret = getGlobalUnreadCount();
-        }
         return ret;
     }
 
@@ -435,7 +338,7 @@ final public class DataMgr {
         resolver.update(Item.CONTENT_URI, values, ItemState._ISREAD + "=0", null);
     }
 
-    public void markAllItemsAsRead(final SQLiteDatabase database) {
+    private void markAllItemsAsRead(final SQLiteDatabase database) {
         final ContentValues values = new ContentValues();
         values.put(ItemState._ISREAD, true);
         database.update(Item.TABLE_NAME, values, ItemState._ISREAD + "=0", null);
@@ -513,31 +416,7 @@ final public class DataMgr {
         notifyItemUpdated(item);
     }
 
-    public void markItemsAsReadByTimestampRange(final Long tLow, final Long tHigh) {
-        if (tLow == null && tHigh == null) {
-            markAllItemsAsRead();
-            return;
-        }
-        final ContentResolver resolver = context.getContentResolver();
-        final ContentValues values = new ContentValues();
-        values.put(ItemState._ISREAD, true);
-        final StringBuilder buff = new StringBuilder(128);
-        if (tLow == null) {
-            buff.append(Item._TIMESTAMP + "<");
-            buff.append(tHigh);
-        } else if (tHigh == null) {
-            buff.append(Item._TIMESTAMP + ">");
-            buff.append(tLow);
-        } else {
-            buff.append(Item._TIMESTAMP + "<");
-            buff.append(tHigh);
-            buff.append(" AND " + Item._TIMESTAMP + ">");
-            buff.append(tLow);
-        }
-        resolver.update(Item.CONTENT_URI, values, buff.toString(), null);
-    }
-
-    public void markItemsAsReadByTimestampRange(final SQLiteDatabase database, final Long tLow, final Long tHigh) {
+    private void markItemsAsReadByTimestampRange(final SQLiteDatabase database, final Long tLow, final Long tHigh) {
         if (tLow == null && tHigh == null) {
             markAllItemsAsRead(database);
             return;
@@ -558,10 +437,6 @@ final public class DataMgr {
             buff.append(tLow);
         }
         database.update(Item.TABLE_NAME, values, buff.toString(), null);
-    }
-
-    public void markItemsAsReadItemIds(final List<ItemId> itemIds) {
-        markItemsAsReadItemIds(itemIds, 0, itemIds.size(), false);
     }
 
     public void markItemsAsReadItemIds(final List<ItemId> itemIds, int left, int right) {
@@ -650,14 +525,7 @@ final public class DataMgr {
         }
     }
 
-    public int removeItemByUid(final SQLiteDatabase database, final String uid) {
-        final int ret = database.delete(Item.TABLE_NAME, Item._UID + "=?", new String[] { uid });
-        database.delete(ItemTag.TABLE_NAME, ItemTag._ITEMUID + "=?", new String[] { uid });
-        DataUtils.deleteFile(new File(Item.getStoragePathByUid(uid)));
-        return ret;
-    }
-
-    public int removeItemByUid(final String uid) {
+    private int removeItemByUid(final String uid) {
         final ContentResolver resolver = context.getContentResolver();
         final int ret = resolver.delete(Item.CONTENT_URI, Item._UID + "=?", new String[] { uid });
         resolver.delete(ItemTag.CONTENT_URI, ItemTag._ITEMUID + "=?", new String[] { uid });
@@ -747,13 +615,7 @@ final public class DataMgr {
         return resolver.delete(Setting.CONTENT_URI, Setting._NAME + "=?", new String[] { name });
     }
 
-    public int removeSubscriptionByUid(final SQLiteDatabase database, final String uid) {
-        final int ret = database.delete(Subscription.TABLE_NAME, Subscription._UID + "=?", new String[] { uid });
-        database.delete(SubscriptionTag.TABLE_NAME, SubscriptionTag._SUBSCRIPTIONUID + "=?", new String[] { uid });
-        return ret;
-    }
-
-    public int removeSubscriptionByUid(final String uid) {
+    private int removeSubscriptionByUid(final String uid) {
         final ContentResolver resolver = context.getContentResolver();
         final int ret = resolver.delete(Subscription.CONTENT_URI, Subscription._UID + "=?", new String[] { uid });
         resolver.delete(SubscriptionTag.CONTENT_URI, SubscriptionTag._SUBSCRIPTIONUID + "=?", new String[] { uid });
@@ -773,7 +635,7 @@ final public class DataMgr {
     /*
      * Remember: the updating of setting is not notified here!
      */
-    public void updateSetting(final SQLiteDatabase database, final Setting setting) {
+    private void updateSetting(final SQLiteDatabase database, final Setting setting) {
         database.execSQL(SQLConstants.INSERT_OR_REPLACE_SETTING, new String[] { setting.getName(), setting.getValue() });
     }
 
@@ -783,26 +645,6 @@ final public class DataMgr {
         values.put(Subscription._ICON, icon);
         resolver.update(Subscription.CONTENT_URI, values, Subscription._UID + "=?", new String[] { uid });
         notifySubscriptionUpdated(getSubscriptionByUid(uid));
-    }
-
-    public void updateUnreadCount(final UnreadCount unread) {
-        final String uid = unread.getUid();
-        final ContentResolver resolver = context.getContentResolver();
-        final ContentValues values = new ContentValues();
-        if (uid.startsWith("feed/")) {
-            values.put(Subscription._UNREADCOUNT, unread.getCount());
-            values.put(Subscription._UPDATETIME, System.currentTimeMillis());
-            resolver.update(Subscription.CONTENT_URI, values, Subscription._UID + "=?", new String[] { uid });
-            notifySubscriptionUpdated(getSubscriptionByUid(uid));
-        } else if (uid.indexOf("/label/") != -1) {
-            values.put(Tag._UNREADCOUNT, unread.getCount());
-            values.put(Tag._UPDATETIME, System.currentTimeMillis());
-            resolver.update(Tag.CONTENT_URI, values, Tag._UID + "=?", new String[] { uid });
-            notifyTagUpdated(getTagByUid(uid));
-        } else if (uid.endsWith("/state/com.google/reading-list")) {
-            updateSetting(new Setting(Setting.SETTING_GLOBAL_ITEM_UNREAD_COUNT, unread.getCount()));
-            updateSetting(new Setting(Setting.SETTING_GLOBAL_ITEM_UPDATE_TIME, System.currentTimeMillis()));
-        }
     }
 
     public void updateUnreadCounts(final List<UnreadCount> unreadCounts) {

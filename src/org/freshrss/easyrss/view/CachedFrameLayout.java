@@ -95,11 +95,6 @@ public class CachedFrameLayout extends FrameLayout implements ICachedView {
         }
     }
 
-    @Override
-    public void setAlpha(final float alpha) {
-        paint.setAlpha((int) (255 * alpha));
-    }
-
     private void updateCache() {
         setDrawingCacheEnabled(true);
         final Bitmap current = getDrawingCache();

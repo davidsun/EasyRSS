@@ -307,28 +307,6 @@ public class OverScroller {
 
     /**
      * Start scrolling by providing a starting point and the distance to travel.
-     * The scroll will use the default value of 250 milliseconds for the
-     * duration.
-     * 
-     * @param startX
-     *            Starting horizontal scroll offset in pixels. Positive numbers
-     *            will scroll the content to the left.
-     * @param startY
-     *            Starting vertical scroll offset in pixels. Positive numbers
-     *            will scroll the content up.
-     * @param dx
-     *            Horizontal distance to travel. Positive numbers will scroll
-     *            the content to the left.
-     * @param dy
-     *            Vertical distance to travel. Positive numbers will scroll the
-     *            content up.
-     */
-    public void startScroll(int startX, int startY, int dx, int dy) {
-        startScroll(startX, startY, dx, dy, DEFAULT_DURATION);
-    }
-
-    /**
-     * Start scrolling by providing a starting point and the distance to travel.
      * 
      * @param startX
      *            Starting horizontal scroll offset in pixels. Positive numbers
@@ -376,10 +354,6 @@ public class OverScroller {
         final boolean spingbackX = mScrollerX.springback(startX, minX, maxX);
         final boolean spingbackY = mScrollerY.springback(startY, minY, maxY);
         return spingbackX || spingbackY;
-    }
-
-    public void fling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY, int maxY) {
-        fling(startX, startY, velocityX, velocityY, minX, maxX, minY, maxY, 0, 0);
     }
 
     /**

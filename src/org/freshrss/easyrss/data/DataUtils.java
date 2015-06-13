@@ -91,16 +91,6 @@ final public class DataUtils {
         return android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "EasyRSS";
     }
 
-    public static String getUserIdFromTagUid(final String uid) {
-        final int start = uid.indexOf('/') + 1;
-        final int end = uid.indexOf('/', start);
-        return uid.substring(start, end);
-    }
-
-    public static boolean isReadingListUid(final String uid) {
-        return uid.endsWith("/state/com.google/reading-list");
-    }
-
     public static boolean isReadUid(final String uid) {
         return uid.endsWith("/state/com.google/read");
     }
@@ -259,16 +249,6 @@ final public class DataUtils {
             final OutputStream out = new FileOutputStream(new File(item.getStrippedContentStoragePath()));
             serializer.writeToStream(node, out);
             out.close();
-        }
-    }
-
-    public static void writeToFile(final String str, final File file) {
-        try {
-            final BufferedWriter output = new BufferedWriter(new FileWriter(file), 8192);
-            output.write(str);
-            output.close();
-        } catch (final IOException exception) {
-            exception.printStackTrace();
         }
     }
 

@@ -12,7 +12,6 @@
 package org.freshrss.easyrss.data.parser;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.freshrss.easyrss.data.UnreadCount;
 
@@ -29,16 +28,11 @@ public class UnreadCountJSONParser {
         this.parser = factory.createParser(content);
     }
 
-    public UnreadCountJSONParser(final InputStream input) throws JsonParseException, IOException {
-        final JsonFactory factory = new JsonFactory();
-        this.parser = factory.createParser(input);
-    }
-
     public void setListener(final OnUnreadCountRetrievedListener listener) {
         this.listener = listener;
     }
 
-    public void parse() throws JsonParseException, IOException, IllegalStateException {
+    private void parse() throws JsonParseException, IOException, IllegalStateException {
         UnreadCount count = new UnreadCount();
         int level = 0;
         boolean found = false;

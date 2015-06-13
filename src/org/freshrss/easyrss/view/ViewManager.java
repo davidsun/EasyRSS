@@ -56,10 +56,6 @@ public class ViewManager {
         return viewCtrls.size();
     }
 
-    public void popView() {
-        popView(-1, -1);
-    }
-
     public void popView(final Animation inAnimation, final Animation outAnimation) {
         if (viewCtrls.isEmpty()) {
             return;

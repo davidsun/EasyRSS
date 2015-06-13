@@ -22,10 +22,6 @@ public class UnreadCount implements Entity {
         init(null, null, null);
     }
 
-    public UnreadCount(final String uid, final int count, final long newestItemTime) {
-        init(uid, count, newestItemTime);
-    }
-
     @Override
     public void clear() {
         init(null, null, null);

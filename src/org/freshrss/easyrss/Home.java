@@ -56,7 +56,7 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
     public static final int VIEW_TYPE_ALL = 1;
     public static final int VIEW_TYPE_UNREAD = 2;
 
-    public static final String BUNDLE_KEY_SHOW_SETTINGS = "showSettings";
+    private static final String BUNDLE_KEY_SHOW_SETTINGS = "showSettings";
 
     private static final long SWIPE_ANIMATION_TIME = 400;
 

@@ -12,10 +12,8 @@
 package org.freshrss.easyrss;
 
 import java.lang.reflect.Array;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Date;
-import org.freshrss.easyrss.R;
+
 import org.freshrss.easyrss.account.ReaderAccountMgr;
 import org.freshrss.easyrss.data.DataMgr;
 import org.freshrss.easyrss.network.NetworkMgr;
@@ -41,25 +39,7 @@ final public class Utils {
         return mergedArray;
     }
 
-    @SuppressWarnings("deprecation")
-    public static String decodeSubscriptionURL(final String url) {
-        if (url.startsWith("feed/")) {
-            return "feed/" + URLDecoder.decode(url.substring(5));
-        } else {
-            return url;
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    public static String encodeSubscriptionURL(final String url) {
-        if (url.startsWith("feed/")) {
-            return "feed/" + URLEncoder.encode(url.substring(5));
-        } else {
-            return url;
-        }
-    }
-
-    public static byte[] getBolbFromCursor(final Cursor cur, final String column) {
+    public static byte[] getBlobFromCursor(final Cursor cur, final String column) {
         final int idx = cur.getColumnIndex(column);
         return (idx == -1) ? null : cur.getBlob(idx);
     }
@@ -112,10 +92,6 @@ final public class Utils {
 
     public static boolean toBoolean(final int x) {
         return (x == 0) ? false : true;
-    }
-
-    public static int toInt(final boolean x) {
-        return (x) ? 1 : 0;
     }
 
     private Utils() {

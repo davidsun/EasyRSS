@@ -18,16 +18,6 @@ public class StreamIdsURL extends AbsURL {
     private int limit;
     private boolean isUnread;
 
-    public StreamIdsURL(final boolean isHttpsConnection, final String uid) {
-        super(isHttpsConnection, true, true);
-        init(uid, 100, false);
-    }
-
-    public StreamIdsURL(final boolean isHttpsConnection, final String uid, final int limit) {
-        super(isHttpsConnection, true, true);
-        init(uid, limit, false);
-    }
-
     public StreamIdsURL(final boolean isHttpsConnection, final String uid, final int limit, final boolean isUnread) {
         super(isHttpsConnection, true, true);
         init(uid, limit, isUnread);

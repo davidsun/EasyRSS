@@ -25,7 +25,7 @@ abstract public class AbsListItem {
     public static final String ITEM_TITLE_TYPE_STARRED = "STARRED";
     public static final String ITEM_TITLE_TYPE_UNREAD = "UNREAD";
 
-    protected String id;
+    private String id;
 
     public AbsListItem(final String id) {
         this.id = id;

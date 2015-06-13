@@ -25,11 +25,11 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 public class DataProvider extends ContentProvider {
-    public static final String AUTHORITY = "org.freshrss.easyrss.data";
+    private static final String AUTHORITY = "org.freshrss.easyrss.data";
 
     private DBOpenHelper mDbHelper;
 
-    public static final String CONTENT_HEAD = "content://";
+    private static final String CONTENT_HEAD = "content://";
     public static final String ITEM_CONTENT_URI = CONTENT_HEAD + AUTHORITY + "/" + Item.TABLE_NAME;
     public static final String ITEMTAG_CONTENT_URI = CONTENT_HEAD + AUTHORITY + "/" + ItemTag.TABLE_NAME;
     public static final String SUBSCRIPTION_CONTENT_URI = CONTENT_HEAD + AUTHORITY + "/" + Subscription.TABLE_NAME;

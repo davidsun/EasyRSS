@@ -22,7 +22,7 @@ public abstract class AbsViewCtrl implements NetworkListener {
     final protected Context context;
     final protected DataMgr dataMgr;
     final protected ICachedView view;
-    final protected int resId;
+    final private int resId;
     protected ViewCtrlListener listener;
 
     public AbsViewCtrl(final DataMgr dataMgr, final int resId, final Context context) {
@@ -50,7 +50,7 @@ public abstract class AbsViewCtrl implements NetworkListener {
         // TODO Empty method
     }
 
-    protected void handleOnLogin(final boolean succeeded) {
+    private void handleOnLogin(final boolean succeeded) {
         // TODO Empty method
     }
 

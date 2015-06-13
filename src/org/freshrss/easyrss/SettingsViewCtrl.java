@@ -641,7 +641,7 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
         }
     }
 
-    public void showSettingTheme() {
+    private void showSettingTheme() {
         final TextView txt = (TextView) view.findViewById(R.id.TxtTheme);
         final SettingTheme setting = new SettingTheme(dataMgr);
         if (setting.getData() == SettingTheme.THEME_NORMAL) {

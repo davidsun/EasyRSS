@@ -31,11 +31,6 @@ public class ItemTag implements Entity {
 
     public static final String[][] INDEX_COLUMNS = { { _ITEMUID }, { _TAGUID } };
 
-    public static ItemTag fromCursor(final Cursor cur) {
-        return new ItemTag(Utils.getStringFromCursor(cur, ItemTag._ITEMUID), Utils.getStringFromCursor(cur,
-                ItemTag._TAGUID));
-    }
-
     private String itemUid;
     private String tagUid;
 
@@ -43,7 +38,7 @@ public class ItemTag implements Entity {
         init(null, null);
     }
 
-    public ItemTag(final String itemUid, final String tagUid) {
+    private ItemTag(final String itemUid, final String tagUid) {
         init(itemUid, tagUid);
     }
 

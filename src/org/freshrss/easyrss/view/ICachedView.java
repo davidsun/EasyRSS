@@ -23,11 +23,7 @@ public interface ICachedView {
 
     View findViewById(int id);
 
-    int getMeasuredWidth();
-
     IBinder getWindowToken();
-
-    void setAlpha(float alpha);
 
     void setAnimation(Animation animation);
 
