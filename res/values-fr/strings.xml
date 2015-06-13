@@ -81,9 +81,9 @@
 	<string name="TxtCleaningDatabase">Nettoyage de la base de données…</string>
 	<string name="TxtRemovingOutdatedItems">Suppression des articles obsolètes…</string>
 	<string name="TxtAboutEasyRSS">À propos de EasyRSS</string>
-	<string name="TxtAboutEasyRSSIntro">EasyRSS est un client pour les services RSS (système de réception d’actualités) compatibles avec feu Google Reader, et qui permet la lecture des articles hors-ligne. \n\nWebsite: easyrss.pursuer.me\nEmail: easyrssofficial@gmail.com</string>
+	<string name="TxtAboutEasyRSSIntro">EasyRSS est un client pour les services RSS (système de réception d’actualités) compatibles avec feu Google Reader, et qui permet la lecture des articles hors-ligne. \n\nhttps://github.com/Alkarex/EasyRSS</string>
 	<string name="TxtAboutAuthor">À propos de l’auteur initial</string>
-	<string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nUniversité de Fudan\nAmateur de Python et de JavaScript\n\nBlog : pursuer.me/blog\nÀ propos : pursuer.me</string>
+	<string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nUniversité de Fudan\nwww.pursuer.me</string>
 	<string name="TxtLastSync">Dernière synchronisation </string>
 	<string name="TxtUnknown">Inconnue</string>
 	<string name="TxtSyncingSubscriptions">Synchronisation des flux…</string>

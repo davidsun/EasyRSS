@@ -80,9 +80,9 @@
     <string name="TxtRemovingOutdatedItems">正在移除过期的阅读条目…</string>
     <string name="TxtCurrentVersion">当前版本</string>
     <string name="TxtAboutEasyRSS">关于 EasyRSS (@EasyRSS)</string>
-    <string name="TxtAboutEasyRSSIntro">EasyRSS 期望提供给每个使用 Android 手机的 Google Reader 用户最好的用户体验。EasyRSS的最大特点是保持了数据的同步——它能够在网络可用时下载阅读条目和其中的图片，以及同步每一条目的阅读状态，使用户能够在网络不可用时依然可以阅读他想要阅读的内容，并和 Google 的数据保持同步。\n\n网址：easyrss.pursuer.me\n邮箱：easyrssofficial@gmail.com</string>
+    <string name="TxtAboutEasyRSSIntro">EasyRSS\nhttps://github.com/Alkarex/EasyRSS</string>
     <string name="TxtAboutAuthor">关于作者</string>
-    <string name="TxtAboutAuthorIntro">孙征 (@sunzheng91)\n复旦大学计算机科学与技术\nPython 与 JavaScript 爱好者\n\n博客：pursuer.me/blog\n关于：pursuer.me</string>
+    <string name="TxtAboutAuthorIntro">孙征 (@sunzheng91)\n复旦大学计算机科学与技术\nwww.pursuer.me</string>
     <string name="TxtLastSync">上次同步时间</string>
     <string name="TxtUnknown">未知</string>
     <string name="TxtSyncingSubscriptions">正在同步订阅…</string>

@@ -81,9 +81,9 @@
     <string name="TxtCleaningDatabase">Renser databasen…</string>
     <string name="TxtRemovingOutdatedItems">Fjerner forældede emner…</string>
     <string name="TxtAboutEasyRSS">Om EasyRSS</string>
-    <string name="TxtAboutEasyRSSIntro">EasyRSS giver dig den nemmeste adgang til din RSS-server, som er en let og elegant måde at få nyheder og meninger fra hele verden. EasyRSS’ bedste funktion er at den kan downloade Google Reader-emner når netværket er utilgængeligt og synkronisere læsetilstand af emner til serveren, samtidig med at den giver en behagelig måde for brugeren at få fat i de nyeste nyheder når netværket er utilgængeligt. \n\nHjemmeside: easyrss.pursuer.me\nEmail: easyrssofficial@gmail.com</string>
+    <string name="TxtAboutEasyRSSIntro">EasyRSS er en klient for RSS tjenester (nyheder) kompatibelt med Google Reader, og som tillader at læse artikler offline.\n\nhttps://github.com/Alkarex/EasyRSS</string>
     <string name="TxtAboutAuthor">Om den oprindelige udvikler</string>
-    <string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nDatalogi, Fudan Universitet\nEn Python og JavaScript-elsker\n\nBlog: pursuer.me/blog\nOm: pursuer.me</string>
+    <string name="TxtAboutAuthorIntro">Zheng Sun (@sunzheng91)\nDatalogi, Fudan Universitet\nwww.pursuer.me</string>
     <string name="TxtLastSync">Sidste synkronisering</string>
     <string name="TxtUnknown">Ukendt</string>
     <string name="TxtSyncingSubscriptions">Synkroniserer abonnementer…</string>

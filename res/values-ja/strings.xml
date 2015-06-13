@@ -79,9 +79,9 @@
     <string name="TxtRemovingOutdatedItems">古いアイテムをクリアしています…</string>
     <string name="TxtCurrentVersion">現在のバージョン</string>
     <string name="TxtAboutEasyRSS">EasyRSSについて (@EasyRSS)</string>
-    <string name="TxtAboutEasyRSSIntro">EasyRSSはアンドロイドユーザーに最高のGoogle Reader体験を提供することを目指しています。EasyRSSの利点はいつもデータ同期できること。利用可能のネットワークがあれば、アイテムと画像のダウロードと同期はできる。そしてネットワークがない時も観覧可能になります。\n\ウェブサイト：easyrss.pursuer.me\nメールアドレス：easyrssofficial@gmail.com</string>
+    <string name="TxtAboutEasyRSSIntro">EasyRSS\nhttps://github.com/Alkarex/EasyRSS</string>
     <string name="TxtAboutAuthor">作成者について</string>
-    <string name="TxtAboutAuthorIntro">孫征 (@sunzheng91)\n復旦大学計算機科学専攻\nPython と JavaScript のファン\n\nブログ：pursuer.me/blog\nウェブサイト：pursuer.me</string>
+    <string name="TxtAboutAuthorIntro">孫征 (@sunzheng91)\n復旦大学計算機科学専攻\nwww.pursuer.me</string>
     <string name="TxtLastSync">前回の同期</string>
     <string name="TxtUnknown">不明</string>
     <string name="TxtSyncingSubscriptions">登録してるフィードを同期中…</string>
