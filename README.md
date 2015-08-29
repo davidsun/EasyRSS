@@ -28,6 +28,7 @@ See [changelog](./CHANGELOG.md)
 # Compatible RSS services
 * [FreshRSS](http://freshrss.org/) https://github.com/FreshRSS/FreshRSS
  * `https://your.server.example/FreshRSS/p/api/greader.php`
+ * Documentation: [English](https://github.com/FreshRSS/FreshRSS/issues/443#issuecomment-36666133), [français](https://github.com/FreshRSS/FreshRSS/issues/957#issuecomment-134388220) 
 
 ## Credits
 [Fork](https://github.com/Alkarex/EasyRSS) by [Alexandre Alapetite](http://alexandre.alapetite.fr/) adding the possibility to use any back-end server.
