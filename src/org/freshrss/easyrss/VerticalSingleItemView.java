@@ -38,6 +38,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -320,7 +322,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
         menu.findViewById(R.id.BtnOpenLink).setOnClickListener(null);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
     public void loadContent() {
         final WebSettings settings = webView.getSettings();
         settings.setDefaultTextEncodingName(HTTP.UTF_8);
@@ -331,20 +333,20 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
 
         final StringBuffer content = new StringBuffer();
         if (item.getState().isCached()) {
-            settings.setBlockNetworkImage(true);
             content.append(DataUtils.readFromFile(new File(item.getFullContentStoragePath())));
         } else {
             final SettingImageFetching sImgFetch = new SettingImageFetching(dataMgr);
             if (NetworkUtils.checkImageFetchingNetworkStatus(context, sImgFetch.getData())) {
-                settings.setBlockNetworkImage(false);
                 content.append(DataUtils.readFromFile(new File(item.getOriginalContentStoragePath())));
             } else {
-                settings.setBlockNetworkImage(true);
                 content.append(DataUtils.readFromFile(new File(item.getStrippedContentStoragePath())));
             }
         }
         content.append(DataUtils.DEFAULT_JS);
         content.append(theme == SettingTheme.THEME_NORMAL ? DataUtils.DEFAULT_NORMAL_CSS : DataUtils.DEFAULT_DARK_CSS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
         webView.loadDataWithBaseURL("file://" + item.getStoragePath() + "/", content.toString(), null, "utf-8", null);
     }
 
