@@ -39,6 +39,8 @@
         <item>3 timer</item>
         <item>4 timer</item>
         <item>6 timer</item>
+        <item>20 minutter</item>
+        <item>30 minutter</item>
     </string-array>
 
 </resources>

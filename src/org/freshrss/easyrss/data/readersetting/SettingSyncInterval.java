@@ -20,6 +20,8 @@ public class SettingSyncInterval extends AbsSetting<Integer> {
     private static final int SYNC_INTERVAL_THREE_HOURS = 2;
     private static final int SYNC_INTERVAL_FOUR_HOURS = 3;
     private static final int SYNC_INTERVAL_SIX_HOURS = 4;
+    private static final int SYNC_INTERVAL_TWENTY_MINUTES = 5;
+    private static final int SYNC_INTERVAL_THIRTY_MINUTES = 6;
 
     private static Integer value;
 
@@ -64,6 +66,10 @@ public class SettingSyncInterval extends AbsSetting<Integer> {
             return 4 * 3600;
         case SYNC_INTERVAL_SIX_HOURS:
             return 6 * 3600;
+        case SYNC_INTERVAL_TWENTY_MINUTES:
+            return 20 * 60;
+        case SYNC_INTERVAL_THIRTY_MINUTES:
+            return 30 * 60;
         default:
             return 0;
         }

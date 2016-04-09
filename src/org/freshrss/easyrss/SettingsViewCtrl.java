@@ -309,7 +309,7 @@ public class SettingsViewCtrl extends AbsViewCtrl implements OnSettingUpdatedLis
     private void showSettingSyncInterval() {
         final TextView txt = (TextView) view.findViewById(R.id.TxtSyncInterval);
         final SettingSyncInterval setting = new SettingSyncInterval(dataMgr);
-        txt.setText(setting.toSeconds() / 3600 + "H");
+        txt.setText((setting.toSeconds() / 360) / 10.0 + "H");
 
         final View settingFontSize = view.findViewById(R.id.SettingSyncInterval);
         settingFontSize.setOnTouchListener(new OnTouchListener() {

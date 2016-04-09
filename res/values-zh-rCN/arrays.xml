@@ -21,6 +21,8 @@
         <item>3小时</item>
         <item>4小时</item>
         <item>6小时</item>
+        <item>20分钟</item>
+        <item>30分钟</item>
     </string-array>
 
 </resources>
