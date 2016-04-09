@@ -50,7 +50,12 @@ public class ItemIdJSONParser {
             case VALUE_STRING:
                 if (level == 3) {
                     if ("id".equals(name)) {
-                        itemId.setUid(Long.toHexString(Long.valueOf(parser.getText())));
+                    	String uid = parser.getText();
+                    	try {
+                    		uid = Long.toHexString(Long.valueOf(parser.getText()));
+                    	}
+                    	catch (final NumberFormatException nfe) {}
+                    	itemId.setUid(uid);
                     } else if ("timestampUsec".equals(name)) {
                         itemId.setTimestamp(Long.valueOf(parser.getText()));
                     }
