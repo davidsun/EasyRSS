@@ -1,3 +1,6 @@
+0.6.08 2017-07-22 by [@Alkarex](https://github.com/Alkarex)
+- Bumped version number for F-Droid.
+
 0.6.06 2015-05-24 by [@Alkarex](https://github.com/Alkarex)
 - Renamed package and namespace to org.freshrss.easyrss. More cleaning for F-Droid.
 
