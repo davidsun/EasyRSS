@@ -38,7 +38,7 @@ public class SettingNotificationOn extends AbsSetting<Boolean> {
 
     @Override
     protected void setStaticValue(final Boolean value) {
-        SettingNotificationOn.value = value;
+        //SettingNotificationOn.value = value; //TODO: Fixme first in org.freshrss.easyrss.NotificationMgr
     }
 
     @Override
