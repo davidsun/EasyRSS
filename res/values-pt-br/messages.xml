@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="MsgLogging">Acessando agora…</string>
+    <string name="MsgLoginSucceeded">Acessado!</string>
+    <string name="MsgLoginFailed">Falha no acesso, por favor verifique seu usuário e senha.</string>
+    <string name="MsgSyncOnNetwork">Sincronizar automaticamente quando os dados móveis estiverem disponíveis.</string>
+    <string name="MsgSyncOnWifi">Sincronizar automaticamente quando a rede Wi-Fi estiver disponível.</string>
+    <string name="MsgSyncDisabled">Sincronização autmática desabilitada.</string>
+    <string name="MsgStarred">Com estrela.</string>
+    <string name="MsgUnstarred">Estrela removida.</string>
+    <string name="MsgNoteShared">Compartilhado como nota.</string>
+    <string name="MsgLoadingMoreItems">Carregando mais itens, por favor aguarde…</string>
+    <string name="MsgAuthenticationSucceeded">Autenticação bem sucedida, succeeded!</string>
+    <string name="MsgAuthenticationFailed">Falha de autenticação.</string>
+    <string name="MsgCannotLaunchMarket">Desculpe, Loja Android não está disponível no seu dispositivo.</string>
+    <string name="MsgFailedToLoadContent">Desculpe, o conteúdo desse item não pode ser carregado.</string>
+    <string name="MsgTickerTextNewItems">Itens atualizados</string>
+    <string name="MsgTitleNewItems1">Itens atualizados, com</string>
+    <string name="MsgTitleNewItems2">itens naõ lidos.</string>
+    <string name="MsgClickToView">Aperte para ver todos…</string>
+    <string name="MsgCopiedToClipboard">Copiado para a área de transferência.</string>
+    <string name="MsgSavingImageTo">Salvando imagem para</string>
+
+</resources>
+    <string name="MsgLogging">Registrando agora…</string>
+    <string name="MsgLoginSucceeded">Acessado!</string>
+    <string name="MsgLoginFailed">Falha de acesso, favor verifique seu nome de usuário e senha.</string>
+    <string name="MsgSyncOnNetwork">Sincronizar automaticamente quando o serviço de dados estiver disponível.</string>
+    <string name="MsgSyncOnWifi">Sincronizar automaticamente quando o Wi-Fi estiver disponível.</string>
+    <string name="MsgSyncDisabled">Sincronização automática desabilitada.</string>
+    <string name="MsgStarred">Marcado com Estrela.</string>
+    <string name="MsgUnstarred">Estrela removida.</string>
+    <string name="MsgNoteShared">Compartilhar com nota.</string>
+    <string name="MsgLoadingMoreItems">Mais itens a carregar, favor espere um momento…</string>
+    <string name="MsgAuthenticationSucceeded">Autenticação realizada, acessado com sucesso!</string>
+    <string name="MsgAuthenticationFailed">Falha de autenticação.</string>
+    <string name="MsgCannotLaunchMarket">Desculpe, Android Market não está disponível no seu aparelho.</string>
+    <string name="MsgFailedToLoadContent">Desculpe, o item desse conteúdo não pode ser carregado.</string>
+    <string name="MsgTickerTextNewItems">Itens atualizados</string>
+    <string name="MsgTitleNewItems1">Itens atualizados, com</string>
+    <string name="MsgTitleNewItems2">Itens não lidos.</string>
+    <string name="MsgClickToView">Aperte para ver todos eles</string>
+    <string name="MsgCopiedToClipboard">Copiado para a área de transferência.</string>
+    <string name="MsgSavingImageTo">Salvar imagem para</string>
+</resources>
