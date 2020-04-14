@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    useLibrary 'org.apache.http.legacy'
+
+    sourceSets {
+        main {
+            java {
+                srcDir '../libs/HtmlCleaner/src'
+                srcDir '../libs/jackson-core/src/main/java'
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "org.freshrss.easyrss"
+        minSdkVersion 7
+        targetSdkVersion 29
+        versionCode 700
+        versionName '0.7.0'
+    }
+}
