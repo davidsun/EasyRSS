@@ -51,7 +51,6 @@ public class NotificationMgr {
         showNotification = true;
     }
 
-    @SuppressWarnings("deprecation")
     public void showNewItemsNotification(final int itemCount) {
         if (!showNotification) {
             return;
@@ -61,9 +60,12 @@ public class NotificationMgr {
         notification.defaults = Notification.FLAG_AUTO_CANCEL;
         final Intent intent = new Intent(context, Home.class);
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        //TODO: Fixme: `setLatestEventInfo` is removed in Android 6.0 Marshmallow, API 23
+        /*
         notification.setLatestEventInfo(context, context.getString(R.string.MsgTitleNewItems1) + ' ' + itemCount + ' '
                 + context.getString(R.string.MsgTitleNewItems2), context.getString(R.string.MsgClickToView),
                 pendingIntent);
         notificationManager.notify(NOTIFICATION_ID_NEW_ITEMS, notification);
+        */
     }
 }

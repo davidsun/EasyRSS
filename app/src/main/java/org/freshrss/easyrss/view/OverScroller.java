@@ -140,7 +140,7 @@ public class OverScroller {
     public float getCurrVelocity() {
         float squaredNorm = mScrollerX.mCurrVelocity * mScrollerX.mCurrVelocity;
         squaredNorm += mScrollerY.mCurrVelocity * mScrollerY.mCurrVelocity;
-        return FloatMath.sqrt(squaredNorm);
+        return (float)Math.sqrt(squaredNorm);
     }
 
     /**

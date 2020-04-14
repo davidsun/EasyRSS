@@ -310,7 +310,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
 
     public void holdItemViewScroll() {
         itemScrollView.setScrollHold(true);
-        itemScrollView.setOnScrollChangeListener(null);
+        itemScrollView.setOnScrollChangeListener((OnScrollChangedListener) null);
         itemScrollView.setOnTouchListener(null);
         webView.stopLoading();
         webView.setWebViewClient(null);

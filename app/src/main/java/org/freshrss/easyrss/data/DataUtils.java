@@ -36,6 +36,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.ClipboardManager;
 import android.text.Html;
+import android.util.Log;
 import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
@@ -88,7 +89,8 @@ final public class DataUtils {
     }
 
     public static String getAppFolderPath() {
-        return android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "EasyRSS";
+        //return android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "EasyRSS";   //Not compatible with Android 6.0 Marshmallow
+        return DataMgr.getInstance().getContext().getFilesDir() + File.separator + "EasyRSS";
     }
 
     public static boolean isReadUid(final String uid) {
@@ -208,7 +210,9 @@ final public class DataUtils {
 
     public static void writeItemToFile(final Item item) throws IOException {
         final File fdir = new File(item.getStoragePath());
-        fdir.mkdirs();
+        if (!fdir.mkdirs()) {
+            Log.d("EasyRSS", "Cannot make dir: " + item.getStoragePath());
+        }
         final String content = item.getContent();
         final HtmlCleaner cleaner = new HtmlCleaner();
         final TagNode node = cleaner.clean((content == null) ? "" : content);

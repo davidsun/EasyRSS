@@ -21,7 +21,7 @@ public interface ICachedView {
 
     void enableCache();
 
-    View findViewById(int id);
+    <T extends View> T findViewById(int id);
 
     IBinder getWindowToken();
 
