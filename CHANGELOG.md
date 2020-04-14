@@ -3,6 +3,7 @@
 - Update source code for compatibility Android 10.0 Q, API 29 (retaining compatibility with Android 2.1 Eclair, API 7)
 - Move local files to internal storage, as external storage code is not compatible with Android 6+
 - (Temporarily) disable *New items notification*, which was not compatible with Android 6+
+- i18n: [pt-BR](https://github.com/Alkarex/EasyRSS/pull/42)
 
 0.6.08 2017-07-22 by [@Alkarex](https://github.com/Alkarex)
 - Bumped version number for F-Droid.
