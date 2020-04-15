@@ -1,6 +1,6 @@
 *EasyRSS* is an Android app for RSS services compatible with Google Reader API.
 
-The recommended RSS back-end service is [FreshRSS](http://freshrss.org/).
+The recommended RSS back-end service is [FreshRSS](https://freshrss.org/).
 
 # Features
 - Sync with RSS services compatible with Google Reader API
@@ -26,20 +26,21 @@ See [changelog](./CHANGELOG.md)
 ![screenshot_2014-03-02-00-27-06](https://f.cloud.github.com/assets/1008324/2303004/6701c156-a199-11e3-95b4-dd1db8b17d82.png)
 
 # Compatible RSS services
-* [FreshRSS](http://freshrss.org/) https://github.com/FreshRSS/FreshRSS
- * `https://your.server.example/FreshRSS/p/api/greader.php`
- * Documentation: [English](https://github.com/FreshRSS/FreshRSS/issues/443#issuecomment-36666133), [français](https://github.com/FreshRSS/FreshRSS/issues/957#issuecomment-133581712) 
+* [FreshRSS](https://freshrss.org/) https://github.com/FreshRSS/FreshRSS
+ * `https://freshrss.example.net/api/greader.php`
+ * Documentation: [English](https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html), [français](https://freshrss.github.io/FreshRSS/fr/users/06_Mobile_access.html) 
 
 ## Credits
-[Fork](https://github.com/Alkarex/EasyRSS) by [Alexandre Alapetite](http://alexandre.alapetite.fr/) adding the possibility to use any back-end server.
+[Fork](https://github.com/Alkarex/EasyRSS) by [Alexandre Alapetite](https://alexandre.alapetite.fr/)([@Alkarex](https://github.com/Alkarex)) adding the possibility to use any back-end server.
 The [original project](http://easyrss.pursuer.me/) by [Zheng Sun](http://pursuer.me/) was [released as open source](https://github.com/davidsun/EasyRSS)
 and stopped at version 0.5.x when its back-end service [Google Reader closed in July 2013](http://www.google.com/reader/about/).
 
 ### Translations
-Spanish @teki207,
-Japanese [@Soyofuki](https://github.com/Soyofuki),
-Danish [@simongray](https://github.com/simongray) + [@Alkarex](https://github.com/Alkarex),
-French [@Alkarex](https://github.com/Alkarex)
+* Spanish @teki207,
+* Japanese [@Soyofuki](https://github.com/Soyofuki)
+* Danish [@simongray](https://github.com/simongray) + [@Alkarex](https://github.com/Alkarex)
+* French [@Alkarex](https://github.com/Alkarex)
+* Portuguese [@iramaro](https://github.com/iramaro)
 
 ### Related Open Source projects
 
