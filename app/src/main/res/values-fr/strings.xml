@@ -74,7 +74,7 @@
 	<string name="TxtSettingSyncIntervalIntro">Définit l’intervalle de temps entre deux synchronisation (s’applique uniquement si la synchronisation automatique est activée).</string>
 	<string name="TxtThemeDark">Sombre</string>
 	<string name="TxtThemeNormal">Défaut</string>
-	<string name="TxtRate">Noter EasyRSS</string>
+	<string name="TxtCurrentVersion">Version actuelle</string>
 	<string name="TxtNotCalculated">Non calculé.</string>
 	<string name="TxtButtonCalculation">∑</string>
 	<string name="TxtCalculating">Calcule…</string>

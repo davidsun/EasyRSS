@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="AppName">EasyRSS</string>
     <string name="TxtLogin">Acesso</string>
     <string name="TxtOK">OK</string>
@@ -19,26 +20,8 @@
     <string name="TxtReading">Lendo</string>
     <string name="TxtAll">Todos</string>
     <string name="TxtAllSubscriptions">Todas subinscrições</string>
-    <string name="TxtTags">Tags</string>
     <string name="TxtSubscriptions">Subinscrições</string>
-    <string name="TxtCancel">Cancelaar</string>
-    <string name="TxtServerUrl">URL do serviço RSS</string>
-    <string name="TxtUsername">Nome do usuário</string>
-    <string name="TxtGoogleReaderAccount">Conta no Google Reader</string>
-    <string name="TxtPassword">Senha</string>
-    <string name="TxtNoMoreItems">Sem mais itens</string>
-    <string name="TxtNoMoreTags">Sem mais marcadores</string>
-    <string name="TxtNoMoreSubscriptions">Sem mais assinaturas</string>
-    <string name="TxtConfirmation">Confirmação</string>
-    <string name="TxtConfirmationMarkAllAsRead">Certeza em marcar todos os itens como lidos?</string>
-    <string name="TxtConfirmationLogout">EasyRSS limpará o cache. Tem certeza em desconectar?</string>
-    <string name="TxtSyncing">Sincronização</string>
-    <string name="TxtStorage">Armazenamento</string>
-    <string name="TxtReading">Leitura</string>
-    <string name="TxtAll">Todas</string>
-    <string name="TxtAllSubscriptions">Todas assinaturas</string>
     <string name="TxtTags">Marcadores</string>
-    <string name="TxtSubscriptions">Assinaturas</string>
     <string name="TxtStarred">Com estrela</string>
     <string name="TxtUnread">Não lido</string>
     <string name="TxtEntries">entradas</string>
@@ -50,14 +33,6 @@
     <string name="TxtWorking">Trabalhando</string>
     <string name="TxtMarkingAllItemsAsRead">Marcando todos os itens como lido...</string>
     <string name="TxtClearingCache">Limpando o cache...</string>
-    <string name="TxtMarkingPreviousItemsAsRead">Marcando os itens anteriores como lidos...</string>
-    <string name="TxtAllUnreadItems">Itens não lidos</string>
-    <string name="TxtAllStarredItems">Todos itens com estrela</string>
-    <string name="TxtNoPreviousItem">Nenhum item anterior</string>
-    <string name="TxtNoNextItem">Nenhum próximo item</string>
-    <string name="TxtWorking">Trabalhando</string>
-    <string name="TxtMarkingAllItemsAsRead">Marcando todos os itens como lidos...</string>
-    <string name="TxtClearingCache">Limpando o cache.../string>
     <string name="TxtMarkingPreviousItemsAsRead">Marcando os itens anteriores como lidos...</string>
     <string name="TxtSettingsTitle">EasyRSS – Configurações</string>
     <string name="TxtAboutTitle">EasyRSS – Sobre</string>
@@ -74,18 +49,6 @@
     <string name="TxtSettingImageFetchingIntro">Escolha sob quais condições de rede o EasyRSS fará o  download automático das imagens nos itens.</string>
     <string name="TxtSettingImagePrefetching">Pré carregamento de imagem</string>
     <string name="TxtSettingImagePrefetchingIntro">Fazer download de imagens dos itens ao sincronizar (quando o CARREGAMENTO DE IMAGEM estiver ligado).</string>
-    <string name="TxtSettingMaxNoOfItems">Número máximo de itens no cartão SD</string>
-    <string name="TxtSendTo">Enviar para...</string>
-    <string name="TxtSendItemTextTo">Enviar o texto do item para...</string>
-    <string name="TxtSendItemContentTo">Enviar o conteúdo do item para...</string>
-    <string name="TxtHelp">Ajuda</string>
-    <string name="TxtLogout">Desconectar</string>
-    <string name="TxtSettingAutoSync">Sincronização automática</string>
-    <string name="TxtSettingAutoSyncIntro">Quando a SINCRONIZAÇÃO AUTOMÁTICA está ligada, o EasyRSS fará o download dos itens mais recentes do Google Reader automaticamente, sincronizando o status com os novos itens.</string>
-    <string name="TxtSettingImageFetching">Busca de imagem</string>
-    <string name="TxtSettingImageFetchingIntro">Escolha sob quais condições de rede o EasyRSS fará o download automático das imagens dos itens.</string>
-    <string name="TxtSettingImagePrefetching">Pré busca de imagens</string>
-    <string name="TxtSettingImagePrefetchingIntro">Desejar fazer o download das imagens dos itens enquanto sincroniza (quando a BUSCA DE IMAGEM está ligada).</string>
     <string name="TxtSettingMaxNoOfItems">Número máximo de itens no cartão SD</string>
     <string name="TxtSettingMaxNoOfItemsIntro">Para melhor esperiência de leitura quando a rede de dados móveis estiver indisponível, todo item (inclusive as imagens) serão baixados para o cartão SD. Isso pode ocupar grande quantidade de espaço do SD.</string>
     <string name="TxtSettingSpaceCalculation">Calcule o espaço ocupado pelo EasyRSS</string>
@@ -159,4 +122,5 @@
     <string name="TxtAccessBrowserChoice">Voce pode acessar essa configuração em Configurações > Leitura > Navegador.</string>
     <string name="TxtCopyToClipboard">Copiar para área de transferência</string>
     <string name="TxtSyncFailed">Falha sincronização</string>
+
 </resources>
