@@ -27,11 +27,12 @@ See [changelog](./CHANGELOG.md)
 
 # Compatible RSS services
 * [FreshRSS](https://freshrss.org/) https://github.com/FreshRSS/FreshRSS
- * `https://freshrss.example.net/api/greader.php`
- * Documentation: [English](https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html), [français](https://freshrss.github.io/FreshRSS/fr/users/06_Mobile_access.html) 
+	* `https://freshrss.example.net/api/greader.php`
+	* Documentation: [English](https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html), [français](https://freshrss.github.io/FreshRSS/fr/users/06_Mobile_access.html) 
 
 ## Credits
 [Fork](https://github.com/Alkarex/EasyRSS) by [Alexandre Alapetite](https://alexandre.alapetite.fr/)([@Alkarex](https://github.com/Alkarex)) adding the possibility to use any back-end server.
+
 The [original project](http://easyrss.pursuer.me/) by [Zheng Sun](http://pursuer.me/) was [released as open source](https://github.com/davidsun/EasyRSS)
 and stopped at version 0.5.x when its back-end service [Google Reader closed in July 2013](http://www.google.com/reader/about/).
 
