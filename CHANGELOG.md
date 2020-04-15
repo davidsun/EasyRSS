@@ -1,4 +1,4 @@
-0.7.1 2020-04-15 by [@Alkarex](https://github.com/Alkarex)
+0.7.2 2020-04-15 by [@Alkarex](https://github.com/Alkarex)
 - Stable release
 
 0.7.0 2020-04-14 by [@Alkarex](https://github.com/Alkarex)
