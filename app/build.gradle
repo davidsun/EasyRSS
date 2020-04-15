@@ -17,7 +17,7 @@ android {
         applicationId "org.freshrss.easyrss"
         minSdkVersion 7
         targetSdkVersion 29
-        versionCode 700
-        versionName '0.7.0'
+        versionCode 701
+        versionName '0.7.1'
     }
 }

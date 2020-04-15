@@ -1,3 +1,6 @@
+0.7.1 2020-04-15 by [@Alkarex](https://github.com/Alkarex)
+- Stable release
+
 0.7.0 2020-04-14 by [@Alkarex](https://github.com/Alkarex)
 - Update IDE to Android Studio 3.6.2 (IntelliJ) with Gradle
 - Update source code for compatibility Android 10.0 Q, API 29 (retaining compatibility with Android 2.1 Eclair, API 7)
