@@ -115,7 +115,7 @@ public class SubscriptionDataSyncer extends AbsDataSyncer {
             final String uid = cur.getString(0);
             final byte[] data = cur.getBlob(1);
             final String subUrl = cur.getString(2);
-            if (subUrl != null && data == null) {
+            if (subUrl != null && !subUrl.trim().equals("") && data == null) {
                 final SubscriptionIconUrl fetchUrl = new SubscriptionIconUrl(isHttpsConnection, subUrl);
                 try {
                     final byte[] iconData = httpGetQueryByte(fetchUrl);
