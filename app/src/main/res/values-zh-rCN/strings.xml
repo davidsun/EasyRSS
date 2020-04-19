@@ -41,7 +41,6 @@
     <string name="TxtSendItemContentTo">发送条目内容至…</string>
     <string name="TxtHelp">帮助</string>
     <string name="TxtLogout">登出</string>
-    <string name="TxtShareWithNote">分享并添加笔记</string>
     <string name="TxtSettingAutoSync">自动同步</string>
     <string name="TxtSettingAutoSyncIntro">在此项功能被打开时，EasyRSS会在特定的网络环境下自动从Google Reader下载最新的阅读条目，并同步阅读状态。</string>
     <string name="TxtSettingImageFetching">图片加载</string>

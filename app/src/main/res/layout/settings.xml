@@ -342,7 +342,7 @@
                     android:paddingTop="12dip" >
 
                     <TextView
-                        android:id="@+id/TitleName"
+                        android:id="@+id/TitleName2"
                         android:layout_width="wrap_content"
                         android:layout_height="0dip"
                         android:layout_weight="1"
@@ -469,7 +469,7 @@
                     android:paddingTop="12dip" >
 
                     <TextView
-                        android:id="@+id/TitleName"
+                        android:id="@+id/TitleName3"
                         android:layout_width="wrap_content"
                         android:layout_height="0dip"
                         android:layout_weight="1"
@@ -524,7 +524,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/SettingSyncStatus"
+                        android:id="@+id/SettingSyncStatus2"
                         android:layout_width="80dip"
                         android:layout_height="wrap_content"
                         android:src="@drawable/setting_browser_choice" >
@@ -789,7 +789,7 @@
                     android:paddingTop="12dip" >
 
                     <TextView
-                        android:id="@+id/TitleName"
+                        android:id="@+id/TitleName4"
                         android:layout_width="wrap_content"
                         android:layout_height="0dip"
                         android:layout_weight="1"
