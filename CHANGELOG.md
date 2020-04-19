@@ -1,3 +1,6 @@
+0.7.4 2020-04-19 by [@Alkarex](https://github.com/Alkarex)
+- Fix warnings for F-Droid
+
 0.7.2 2020-04-15 by [@Alkarex](https://github.com/Alkarex)
 - Stable release
 
