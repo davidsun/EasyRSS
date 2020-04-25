@@ -80,6 +80,17 @@ public class ItemJSONParser {
                     item.setHref(parser.getText());
                 }
                 break;
+            case VALUE_NUMBER_INT:
+                if (level == 3) {
+                    if ("updated".equals(name)) {
+                        item.setUpdateTime(parser.getLongValue() * 1000000);
+                    } else if ("published".equals(name)) {
+                        if (item.getUpdateTime(true) <= 0) {
+                            item.setUpdateTime(parser.getLongValue() * 1000000);
+                        }
+                    }
+                }
+                break;
             case FIELD_NAME:
                 if (level == 1 && "items".equals(name)) {
                     found = true;

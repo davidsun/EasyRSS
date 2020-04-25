@@ -85,7 +85,7 @@ public class ItemListWrapper implements OnItemUpdatedListener {
 
     public void updateItem(final Item item) {
         adapter.updateItem(new ListItemItem(item.getUid(), item.getTitle(), item.getSourceTitle(), item.getState()
-                .isRead(), item.getState().isStarred(), item.getTimestamp()));
+                .isRead(), item.getState().isStarred(), item.getUpdateTime()));
     }
 
     public void updateItemEndDisabled() {

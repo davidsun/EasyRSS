@@ -205,7 +205,7 @@ public class FeedViewCtrl extends AbsViewCtrl implements ItemListWrapperListener
 
     final private static String INTENT_KEY_ID = "id";
     final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, ItemState._ISREAD,
-            ItemState._ISSTARRED, Item._TIMESTAMP, Item._SOURCETITLE };
+            ItemState._ISSTARRED, Item._TIMESTAMP, Item._UPDATETIME, Item._SOURCETITLE };
 
     final private static int MSG_DISMISS_DIALOG = 1;
     final private static int MSG_ITEM_LONG_CLICK = 0;

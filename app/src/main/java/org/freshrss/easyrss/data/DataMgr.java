@@ -565,7 +565,7 @@ final public class DataMgr {
         int ret = 0;
         final ContentResolver resolver = context.getContentResolver();
         final Cursor cur = resolver.query(Uri.withAppendedPath(Item.CONTENT_URI, "offset/" + limit),
-                new String[] { Item._UID }, null, null, Item._UPDATETIME + " DESC");
+                new String[] { Item._UID }, null, null, Item._TIMESTAMP + " DESC");
         for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
             ret += removeItemByUid(Item.fromCursor(cur).getUid());
         }

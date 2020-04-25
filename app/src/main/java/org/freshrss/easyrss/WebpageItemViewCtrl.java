@@ -65,7 +65,7 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
             }
         }
     };
-    final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, Item._TIMESTAMP,
+    final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, Item._TIMESTAMP, Item._UPDATETIME,
             Item._SOURCETITLE, Item._AUTHOR, Item._HREF };
     final private static int MSG_LOADING_FINISHED = 0;
 
@@ -208,7 +208,7 @@ public class WebpageItemViewCtrl extends AbsViewCtrl {
         final StringBuilder infoText = new StringBuilder();
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         sdf.setTimeZone(TimeZone.getDefault());
-        infoText.append(sdf.format(Utils.timestampToDate(item.getTimestamp())));
+        infoText.append(sdf.format(Utils.timestampToDate(item.getUpdateTime())));
         if (item.getAuthor() != null && item.getAuthor().length() > 0) {
             infoText.append(" | By ");
             infoText.append(item.getAuthor());

@@ -160,7 +160,10 @@ public class Item implements Entity {
     }
 
     public long getUpdateTime() {
-        return updateTime;
+        return updateTime > 0 ? updateTime : timestamp;
+    }
+    public long getUpdateTime(final boolean raw) {
+        return raw ? updateTime : getUpdateTime();
     }
 
     private void init(final String author, final String uid, final String content, final String href,
@@ -174,7 +177,7 @@ public class Item implements Entity {
         this.sourceTitle = (sourceTitle == null) ? "" : sourceTitle;
         this.title = (title == null) ? "" : title;
         this.tags = (tags == null) ? new LinkedList<String>() : tags;
-        this.updateTime = (updateTime == null) ? System.currentTimeMillis() : updateTime;
+        this.updateTime = (updateTime == null) ? 0 : updateTime;
         this.timestamp = (timestamp == null) ? 0 : timestamp;
         this.state = (state == null) ? new ItemState() : state;
     }

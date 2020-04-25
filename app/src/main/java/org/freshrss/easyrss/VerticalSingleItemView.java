@@ -62,7 +62,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchListener {
     final private static String ITEM_PROJECTION[] = new String[] { Item._UID, Item._TITLE, ItemState._ISCACHED,
-            ItemState._ISREAD, ItemState._ISSTARRED, Item._TIMESTAMP, Item._SOURCETITLE, Item._AUTHOR, Item._HREF };
+            ItemState._ISREAD, ItemState._ISSTARRED, Item._TIMESTAMP, Item._UPDATETIME, Item._SOURCETITLE, Item._AUTHOR, Item._HREF };
 
     final private DataMgr dataMgr;
     final private Context context;
@@ -240,7 +240,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
         final StringBuilder infoText = new StringBuilder();
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         sdf.setTimeZone(TimeZone.getDefault());
-        infoText.append(sdf.format(Utils.timestampToDate(item.getTimestamp())));
+        infoText.append(sdf.format(Utils.timestampToDate(item.getUpdateTime())));
         if (item.getAuthor() != null && item.getAuthor().length() > 0) {
             infoText.append(" | By ");
             infoText.append(item.getAuthor());
