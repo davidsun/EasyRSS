@@ -1,3 +1,6 @@
+0.7.5-dev 2020-0X-XX by [@Alkarex](https://github.com/Alkarex)
+- Use published time instead of crawl time from API to show article publication date
+
 0.7.4 2020-04-19 by [@Alkarex](https://github.com/Alkarex)
 - Fix warnings for F-Droid
 
