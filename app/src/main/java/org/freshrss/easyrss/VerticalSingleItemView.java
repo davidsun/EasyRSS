@@ -118,7 +118,7 @@ public class VerticalSingleItemView implements OnScrollChangedListener, OnTouchL
             @Override
             public boolean onTouch(final View view, final MotionEvent event) {
                 boolean ret = false;
-                final TextView txt = (TextView) view.findViewById(R.id.BtnText);
+                final TextView txt = (TextView) view.findViewById(R.id.BtnText2);
                 switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     txt.setTextColor(0xFF787878);
