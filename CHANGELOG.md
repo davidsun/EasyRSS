@@ -1,4 +1,9 @@
-0.7.5-dev 2020-0X-XX by [@Alkarex](https://github.com/Alkarex)
+0.7.6 2020-05-28 by [@Alkarex](https://github.com/Alkarex)
+- Fix regression: crash when clicking "Original page"
+- Allow HTTP (in addition of HTTPS)
+- Fix logout
+
+0.7.5-dev 2020-04-25 by [@Alkarex](https://github.com/Alkarex)
 - Use published time instead of crawl time from API to show article publication date
 
 0.7.4 2020-04-19 by [@Alkarex](https://github.com/Alkarex)
