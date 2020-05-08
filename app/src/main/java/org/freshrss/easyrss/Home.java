@@ -251,7 +251,7 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
             public void onClick(final DialogInterface dialog, final int which) {
                 ProgressDialog.show(new ContextThemeWrapper(Home.this, android.R.style.Theme_DeviceDefault_Dialog),
                         Home.this.getString(R.string.TxtWorking), Home.this.getString(R.string.TxtClearingCache));
-                final Handler handler = new Handler() {
+                /*final Handler handler = new Handler() {
                     @Override
                     public void handleMessage(final Message msg) {
                         final Intent intent = new Intent(Home.this, Home.class);
@@ -259,14 +259,15 @@ public class Home extends Activity implements ViewCtrlListener, HorizontalSwipeV
                         Home.this.startActivity(intent);
                         finish();
                     }
-                };
+                };*/
                 final Thread thread = new Thread() {
                     @Override
                     public void run() {
                         DataMgr.getInstance().clearAll();
                         ReaderAccountMgr.getInstance().clearLogin();
                         DataUtils.deleteFile(new File(DataUtils.getAppFolderPath()));
-                        handler.sendEmptyMessage(0);
+                        //handler.sendEmptyMessage(0);
+                        System.exit(0);
                     }
                 };
                 thread.setPriority(Thread.MIN_PRIORITY);
