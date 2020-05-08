@@ -139,7 +139,7 @@ public class GlobalItemDataSyncer extends AbsDataSyncer implements DataSyncerLis
         NetworkMgr.getInstance().startSyncItemContent();
 
         final SettingNotificationOn sNotification = new SettingNotificationOn(dataMgr);
-        if (sNotification.getData()) {
+        if (sNotification.getData() != null) {
             final String sSetting = dataMgr.getSettingByName(Setting.SETTING_GLOBAL_ITEM_UNREAD_COUNT);
             final int unreadCount = (sSetting == null) ? 0 : Integer.valueOf(sSetting);
             if (unreadCount > 0) {
